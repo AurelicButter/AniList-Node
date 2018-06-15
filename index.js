@@ -1,18 +1,7 @@
 const fetch = require('node-fetch');
+const User = require('./user');
 
-var query = `query ($id: Int) { # Define which variables will be used in the query (id)
-    Media (id: $id, type: ANIME) { # Insert our variables into the query arguments (id) (type: ANIME is hard-coded in the query)
-      id
-      title {
-        romaji
-        english
-        native
-      }
-    }
-  }`,
-variables = {
-    id: 15125
-},
+var body = new User("Butterstroke").profile(),
 url = 'https://graphql.anilist.co',
 options = {
     method: 'POST',
@@ -20,15 +9,10 @@ options = {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     },
-    body: JSON.stringify({
-        query: query,
-        variables: variables
-    })
+    body: JSON.stringify({ query: body[0], variables: body[1] })
 };
 
-fetch(url, options).then(handleResponse)
-                   .then(handleData)
-                   .catch(handleError);
+fetch(url, options).then(handleResponse).then(handleData).catch(handleError);
 
 function handleResponse(response) {
     return response.json().then(function (json) {
@@ -37,10 +21,10 @@ function handleResponse(response) {
 }
 
 function handleData(data) {
-    console.log(data);
+    console.log(data.data);
 }
 
 function handleError(error) {
-    alert('Error, check console');
     console.error(error);
+    console.log(error.errors[0].locations)
 }
