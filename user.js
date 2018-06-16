@@ -1,35 +1,28 @@
 module.exports = class User {
-    constructor(uname, id) {
-        this.uname = uname;
-        this.id = id;
-    };
+    constructor(uname, id) { if (!uname || !id) { throw new Error("AniList username or id is missing!"); } };
 
-    profile() {
-        var start = this.variables();
+    profile(uname, id) {
+        var start = this.variables(uname, id);
         var query = start[1] + this.query("profile") + " } }";
         return [query, start[0]];
     };
 
-    stats() {
-        var start = this.variables();
+    stats(uname, id) {
+        var start = this.variables(uname, id);
         var query = start[1] + this.query("stats") + " } }";
         return [query, start[0]];
     };
 
     query(type) {
         if (type === "profile") {
-            var info = `id name
-            about
-            avatar { large medium } bannerImage
-            isFollowing
+            return `id name about
+            avatar { large medium } bannerImage isFollowing
             options { titleLanguage displayAdultContent airingNotifications profileColor }
             mediaListOptions { scoreFormat rowOrder useLegacyLists sharedTheme sharedThemeEnabled }
             unreadNotificationCount
-            siteUrl
-            donatorTier moderatorStatus
-            updatedAt`;
+            siteUrl donatorTier moderatorStatus updatedAt`;
         } else if (type === "stats") {
-            var info = `stats {
+            return `stats {
                 watchedTime chaptersRead
                 activityHistory { date amount level }
                 animeStatusDistribution { status amount }
@@ -48,16 +41,15 @@ module.exports = class User {
                 favouredFormats { format amount }
             }`;
         }
-        return info;
     };
 
-    variables() {
+    variables(uname, id) {
         const vari = new Object();
-        if (this.uname.length > 1) { 
+        if (uname.length > 1) { 
             vari.name = this.uname; 
             var text = `query ($name: String) { User (name: $name) { `;
         }
-        else if (this.id.length > 1) { 
+        else if (id.length > 1) { 
             vari.id = this.id; 
             var text = `query ($id: Int) { User (id: $id) { `;
         }

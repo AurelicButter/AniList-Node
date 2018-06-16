@@ -1,50 +1,5 @@
 function queryBuilder(type) {
     switch (type) {
-        case "manga":
-            var query = `id idMal
-                title { romaji english native userPreferred }
-                type
-                description
-                format
-                status
-                startDate { year month day }
-                endDate { year month day }
-                volumes
-                countryOfOrigin
-                isLicensed
-                updatedAt
-                coverImage { large medium }
-                bannerImage
-                genres
-                synonyms
-                averageScore
-                meanScore
-                popularity
-                trending
-                tags { id }
-                relations { edges { id } }
-                characters { edges { id } }
-                staff { edges { id } }
-                isFavourite
-                isAdult
-                trends {
-                    edges {
-                        node {
-                            averageScore
-                            popularity
-                            inProgress
-                            episode
-                        }
-                    }
-                }
-                externalLinks { id }
-                rankings { id }
-                mediaListEntry { id }
-                reviews { edges { node { id } } }
-                siteUrl
-                autoCreateForumThread
-                modNotes`;
-            break;
         case "character":
             var query = `id
                 name { first last native }
