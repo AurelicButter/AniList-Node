@@ -1,8 +1,12 @@
+const fetcher = require('./fetcher');
+const Fetch = new fetcher();
+
 module.exports = class media {
-    constructor(id) { if (!id) { throw new Error("Media id is not provided!"); } };
+    constructor() { };
 
     anime(id) {
-        return [`query ($id: Int) { Media (id: $id, type: ANIME) { 
+        if (!id) { throw new Error("Media id is not provided!"); }
+        return Fetch.send(`query ($id: Int) { Media (id: $id, type: ANIME) { 
             id idMal title { romaji english native userPreferred }
             type episodes description
             format status
@@ -26,11 +30,12 @@ module.exports = class media {
             rankings { id }
             mediaListEntry { id }
             reviews { edges { node { id } } }
-            siteUrl autoCreateForumThread modNotes } }`, { id: id } ];
+            siteUrl autoCreateForumThread modNotes } }`, { id: id });
     };
 
     manga(id) {
-        return [`query ($id: Int) { Media (id: $id, type: MANGA) { id idMal
+        if (!id) { throw new Error("Media id is not provided!"); }
+        return Fetch.send(`query ($id: Int) { Media (id: $id, type: MANGA) { id idMal
             title { romaji english native userPreferred }
             type description format status
             startDate { year month day } endDate { year month day }
@@ -47,6 +52,6 @@ module.exports = class media {
             rankings { id }
             mediaListEntry { id }
             reviews { edges { node { id } } }
-            siteUrl autoCreateForumThread modNotes } }`, { id: id } ];
+            siteUrl autoCreateForumThread modNotes } }`, { id: id });
     };
 };
