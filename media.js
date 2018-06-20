@@ -5,7 +5,7 @@ module.exports = class media {
     constructor() { };
 
     anime(id) {
-        if (!id) { throw new Error("Media id is not provided!"); }
+        if (!id) { throw new Error("Anime id is not provided!"); }
         return Fetch.send(`query ($id: Int) { Media (id: $id, type: ANIME) { 
             id idMal title { romaji english native userPreferred }
             type episodes description
@@ -34,7 +34,7 @@ module.exports = class media {
     };
 
     manga(id) {
-        if (!id) { throw new Error("Media id is not provided!"); }
+        if (!id) { throw new Error("Manga id is not provided!"); }
         return Fetch.send(`query ($id: Int) { Media (id: $id, type: MANGA) { id idMal
             title { romaji english native userPreferred }
             type description format status

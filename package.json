@@ -1,12 +1,22 @@
 {
   "name": "anilist-node",
   "version": "1.0.0",
-  "description": "",
+  "description": "A lightweight Node.js wrapper for the AniList API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Butterstroke",
+  "author": {
+    "name": "Yvain Hoekstra",
+    "email": "konirosen@protonmail.ch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/butterstroke/Anilist-Node"
+  },
+  "bugs": {
+    "url": "https://github.com/butterstroke/Anilist-Node/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "node-fetch": "^2.1.2"
