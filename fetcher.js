@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 module.exports = class fetcher {
     constructor () { };
 
-    async send(query, variables) {
+    async send(query, variables, auth) {
         if (!query || !variables) { throw new Error("Query or variables are not given!"); }
         var options = {
             method: 'POST',
@@ -13,6 +13,7 @@ module.exports = class fetcher {
             },
             body: JSON.stringify({ query: query, variables: variables })
         };
+        if (auth) { options.headers.Authorization = 'Bearer ' + auth; }
         var response = await fetch('https://graphql.anilist.co', options);
         var json = await response.json();
 

@@ -2,14 +2,14 @@ const fetcher = require('./fetcher');
 const Fetch = new fetcher();
 
 module.exports = class people {
-    constructor() { }
+    constructor(accessKey) { this.accessKey = accessKey; }
 
     character(id) {
         if (!id) { throw new Error("Person id is not provided"); }
         return Fetch.send(`query ($id: Int) { Character (id: $id) { id name { first last native }
         image { large medium }
         description isFavourite siteUrl
-        media { edges { id } } } }`, { id: id });
+        media { edges { id } } } }`, { id: id }, this.accessKey);
     };
 
     staff(id) {
@@ -19,6 +19,6 @@ module.exports = class people {
             image { large medium }
             description isFavourite siteUrl
             staffMedia { edges { id } }
-            characters { edges { id } } } }`, { id: id });
+            characters { edges { id } } } }`, { id: id }, this.accessKey);
     };
 };
