@@ -1,8 +1,8 @@
-const User = require('./user');
-const media = require('./media');
-const people = require('./people');
+const User = require('./lib/user');
+const media = require('./lib/media');
+const people = require('./lib/people');
 const search = require('./search.json');
-const fetcher = require('./fetcher');
+const fetcher = require('./lib/fetcher');
 const Fetch = new fetcher();
 
 module.exports = class AniList {
@@ -25,7 +25,7 @@ module.exports = class AniList {
         switch (type) {
             case "anime": var query = search["anime"]; break;
             case "manga": var query = search["manga"]; break;
-            case "char": var query = search["char"]; break;
+            case "character": var query = search["char"]; break;
             case "staff": var query = search["staff"]; break;
             case "studio": var query = search["studio"]; break;
             default: throw new Error("Type not supported.");
