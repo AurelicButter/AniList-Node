@@ -2,15 +2,21 @@ const User = require('./lib/user');
 const media = require('./lib/media');
 const people = require('./lib/people');
 const search = require('./search.json');
-const fetcher = require('./lib/fetcher');
-const Fetch = new fetcher();
+const Fetch = require('./lib/fetcher');
+const auth = require('./lib/authorization');
 
 module.exports = class AniList {
     constructor (accessKey) { 
-        if (!accessKey) { var accessKey = null; }
-        this.user = new User(accessKey);        
-        this.media = new media(accessKey);
-        this.people = new people(accessKey);
+        if (accessKey) {
+            people.key = accessKey;
+            media.key = accessKey;
+            User.key = accessKey;
+        } else { var accessKey = null; }
+
+        this.user = User;        
+        this.media = media;
+        this.people = people;
+        this.auth = auth;
         this.accessKey = accessKey;
     };
 

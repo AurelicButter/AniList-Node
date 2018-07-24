@@ -43,7 +43,7 @@
 - `media.trending` | The amount of related activity in the past hour
 - `media.rankings` | The ranking of the media in a particular time span and format compared to others. Returns one value: id
 - `media.relations` | All media ids that relate to the media
-- `media.mediaListEntry` | [Requires login] User's media list entry. Gives a value of id.
+- `media.mediaListEntry` | [Requires login] User's media list entry. Gives a value of id. This is required for list edits.
 - `media.autoCreateForumThread` | Checks if the media gets a thread automatically for each release
 - `media.externalLinks` | External links associated with the media
 - `media.updatedAt` | Timestamp of when the page was last updated

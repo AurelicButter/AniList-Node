@@ -10,12 +10,9 @@ AND not having a client and token with AniList
 If that doesn't apply (ie: general searches, user lookups), you may install with `npm install anilist-node`
 
 ### Getting your token
-You only need to generate a token once in order to use. To start, head to [Anilist's Developer Page](https://anilist.co/settings/developer) and click "Create New Client". Note the client id. Next, change the name of the settings_example.json to settings.json or copy paste into a new JSON file. As long as the end result leads to a settings.json with content like in the example JSON file. Add your email, password, and client id in the proper spots and save. In the same directory, run `node authorization.js`. A file titled "token.txt" should appear. That is your token. Store it securely. There is an example in the Example section on how to use the token.
+You only need to generate a token once in order to use. To start, head to [Anilist's Developer Page](https://anilist.co/settings/developer) and click "Create New Client". Note the client id. Then use the auth function, providing client id, email, and password. The function will return the token. Store it securely. There is an example in the Example section on how to use the token. 
 
-Optional:
-- You may delete your AniList credentials from the settings.json file (Email, password, and client id if you feel inclined)
-- You may uninstall puppeteer via `npm uninstall puppeeteer` in the anilist-node directory
-- You may delete authorization.js file and token.txt (Do store your token securely elsewhere before doing so)
+If you wish to save space afterwards and know how to do so, you may uninstall puppeteer from the anilist-node directory.
 
 ## Example
 ### General lookup search (no login):
