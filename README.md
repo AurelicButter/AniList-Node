@@ -5,6 +5,7 @@ A simple, lightweight Node.js wrapper for the AniList API.
 Install with: `npm install anilist-node --dev` for the following:
 1. Searches that need a user login (ie: Checking for favourites)
 2. Uses such as editing a user's list
+
 AND not having a client and token with AniList
 
 If that doesn't apply (ie: general searches, user lookups), you may install with `npm install anilist-node`

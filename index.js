@@ -7,22 +7,17 @@ const auth = require('./lib/authorization');
 
 module.exports = class AniList {
     constructor (accessKey) { 
-        if (accessKey) {
-            people.key = accessKey;
-            media.key = accessKey;
-            User.key = accessKey;
-        } else { var accessKey = null; }
+        Fetch.key = accessKey ? accessKey : null;
 
         this.user = User;        
         this.media = media;
         this.people = people;
         this.auth = auth;
-        this.accessKey = accessKey;
     };
 
     studio(id) {
         if (!id) { throw new Error("Studio id is not provided."); }
-        return Fetch.send(`query($id: Int) { Studio(id: $id) { id name media { edges { id } } siteUrl isFavourite } }`, { id: id }, this.accessKey);
+        return Fetch.send(`query($id: Int) { Studio(id: $id) { id name media { edges { id } } siteUrl isFavourite } }`, { id: id });
     };
 
     search(type, term, page, amount) {

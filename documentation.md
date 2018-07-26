@@ -1,18 +1,25 @@
 # List of functions
 `Anilist.search(type, term, page, amount)` | Search function
+`Anilist.auth(clientID, email, password)` | Token generator. All arguments are required.
 `Anilist.studio(id)` | Studio function
-`Anilist.media.anime(id)` | Anime function
-`Anilist.media.manga(id)` | Manga function
-`Anilist.people.staff(id)` | Staff function
-`Anilist.people.character(id)` | Character function
+
+## Media functions
+`Anilist.media.anime(id)` | Anime function. Fetches an anime by its id.
+`Anilist.media.manga(id)` | Manga function. Fetches a manga by its id.
+`Anilist.media.add(id)` |
+`Anlist.media.update(id)` |
+`Anilist.media.remove(id)` |
+
+## People functions
+`Anilist.people.staff(id)` | Staff function. Fetches a staff member by their id.
+`Anilist.people.character(id)` | Character function. Fetches a character by their id.
+
+## User Functions
 `Anilist.user.all(username|id)` | All user profile function
 `Anilist.user.stats(username|id)` | User stats function
 `Anilist.user.profile(username|id)` | User profile function
 
 # Media
-## Functions
-- `media.anime(id)` | Fetches an anime by its id
-- `media.manga(id)` | Fetches a manga by its id
 
 ## General
 - `media.id` | The id of the media
@@ -55,7 +62,7 @@
 - `anime.season` | Season that the anime started airing
 - `anime.duration` | General length of an episode
 - `anime.hashtag` | Twitter hashtag associated with the anime
-- `anime.trailer` | The trailer id of the anime 
+- `anime.trailer` | Returns the trailer URL if the trailer is a Youtube or Dailymotion video. Will default to the object if it's not.
 - `anime.studios` | An array of studio ids that produced the anime
 - `anime.source` | Source type that the media was adapted from
 - `anime.nextAiringEpisode` | The media's next episode airing schedule. Returns value of id
@@ -65,10 +72,7 @@
 ## Manga Unique
 - `manga.volumes` | Number of volumes
 
-# People 
-## Functions
-- `people.character(id)` | Fetches a character by their id
-- `people.staff(id)` | Fetches a staff member by their id
+# People
 
 ## General
 - `people.id` | Person's id
