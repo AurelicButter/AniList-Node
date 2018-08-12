@@ -19,9 +19,12 @@
   },
   "license": "MIT",
   "dependencies": {
-    "node-fetch": "^2.1.2"
+    "node-fetch": "^2.2.0"
   },
-  "devDependencies": {
-    "puppeteer": "^1.6.0"
-  }
+  "keywords": [
+    "anilist",
+    "api",
+    "anime",
+    "node.js"
+  ]
 }

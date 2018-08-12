@@ -1,19 +1,12 @@
 # Anilist-Node
 A simple, lightweight Node.js wrapper for the AniList API.
 
-## Installing
-Install with: `npm install anilist-node --dev` for the following:
-1. Searches that need a user login (ie: Checking for favourites)
-2. Uses such as editing a user's list
+## Using Anilist-node
+To install: `npm install anilist-node`
 
-AND not having a client and token with AniList
+For some features such as checking favourites, a token will be required. You only need to generate a token once in order to use. To start, head to [Anilist's Developer Page](https://anilist.co/settings/developer) and click "Create New Client". Note the client id. Then, copy paste this URL `https://anilist.co/api/v2/oauth/authorize?client_id={clientID}&response_type=token`, replacing the `{clientID}` with your client ID. It will ask you to log in and then provide you with the token to use.
 
-If that doesn't apply (ie: general searches, user lookups), you may install with `npm install anilist-node`
-
-### Getting your token
-You only need to generate a token once in order to use. To start, head to [Anilist's Developer Page](https://anilist.co/settings/developer) and click "Create New Client". Note the client id. Then use the auth function, providing client id, email, and password. The function will return the token. Store it securely. There is an example in the Example section on how to use the token. 
-
-If you wish to save space afterwards and know how to do so, you may uninstall puppeteer from the anilist-node directory.
+NOTE: Please store your token securely and privately! This gives access to __your__ AniList account. It is your responsibility to maintain your token.
 
 ## Example
 ### General lookup search (no login):
@@ -28,7 +21,7 @@ Anilist.media.anime(21708).then(data => {
 
 ### Lookup search (login):
 ```javascript
-const settings = require('./settings.json');
+const settings = require('./settings.json'); //Or wherever your store your token.
 const anilist = require('anilist-node');
 const Anilist = new anilist(settings.token /* This being your token */);
 

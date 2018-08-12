@@ -1,23 +1,20 @@
 # List of functions
-`Anilist.search(type, term, page, amount)` | Search function
-`Anilist.auth(clientID, email, password)` | Token generator. All arguments are required.
-`Anilist.studio(id)` | Studio function
+`Anilist.search(type, term, page, amount)` | Search function<br/>
+`Anilist.studio(id)` | Studio function<br/>
 
 ## Media functions
-`Anilist.media.anime(id)` | Anime function. Fetches an anime by its id.
-`Anilist.media.manga(id)` | Manga function. Fetches a manga by its id.
-`Anilist.media.add(id)` |
-`Anlist.media.update(id)` |
-`Anilist.media.remove(id)` |
+`Anilist.media.anime(id)` | Anime function. Fetches an anime by its id.<br/>
+`Anilist.media.manga(id)` | Manga function. Fetches a manga by its id.<br/>
 
 ## People functions
-`Anilist.people.staff(id)` | Staff function. Fetches a staff member by their id.
-`Anilist.people.character(id)` | Character function. Fetches a character by their id.
+`Anilist.people.staff(id)` | Staff function. Fetches a staff member by their id.<br/>
+`Anilist.people.character(id)` | Character function. Fetches a character by their id.<br/>
 
 ## User Functions
-`Anilist.user.all(username|id)` | All user profile function
-`Anilist.user.stats(username|id)` | User stats function
-`Anilist.user.profile(username|id)` | User profile function
+Usernames must be strings and ids must be numbers!<br/>
+`Anilist.user.all(username|id)` | All user profile function<br/>
+`Anilist.user.stats(username|id)` | User stats function<br/>
+`Anilist.user.profile(username|id)` | User profile function<br/>
 
 # Media
 

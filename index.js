@@ -3,7 +3,6 @@ const media = require('./lib/media');
 const people = require('./lib/people');
 const search = require('./search.json');
 const Fetch = require('./lib/fetcher');
-const auth = require('./lib/authorization');
 
 module.exports = class AniList {
     constructor (accessKey) { 
@@ -12,7 +11,6 @@ module.exports = class AniList {
         this.user = User;        
         this.media = media;
         this.people = people;
-        this.auth = auth;
     };
 
     studio(id) {
