@@ -1,22 +1,11 @@
-# List of functions
-`Anilist.search(type, term, page, amount)` | Search function<br/>
-`Anilist.studio(id)` | Studio function<br/>
-
-## Media functions
-`Anilist.media.anime(id)` | Anime function. Fetches an anime by its id.<br/>
-`Anilist.media.manga(id)` | Manga function. Fetches a manga by its id.<br/>
-
-## People functions
-`Anilist.people.staff(id)` | Staff function. Fetches a staff member by their id.<br/>
-`Anilist.people.character(id)` | Character function. Fetches a character by their id.<br/>
-
-## User Functions
-Usernames must be strings and ids must be numbers!<br/>
-`Anilist.user.all(username|id)` | All user profile function<br/>
-`Anilist.user.stats(username|id)` | User stats function<br/>
-`Anilist.user.profile(username|id)` | User profile function<br/>
+# How Data is Presented
+Upon using a function, the data it returns is given in an object. So within the documentation, seeing a `media.id` for example means that it's grabbing the id key of the object returned.
 
 # Media
+
+## Functions
+`Anilist.media.anime(id)` | Anime function. Fetches an anime by its id.<br/>
+`Anilist.media.manga(id)` | Manga function. Fetches a manga by its id.<br/>
 
 ## General
 - `media.id` | The id of the media
@@ -71,6 +60,10 @@ Usernames must be strings and ids must be numbers!<br/>
 
 # People
 
+## Functions
+`Anilist.people.staff(id)` | Staff function. Fetches a staff member by their id.<br/>
+`Anilist.people.character(id)` | Character function. Fetches a character by their id.<br/>
+
 ## General
 - `people.id` | Person's id
 - `people.name` | Person's name. Returns three values: first, last, native
@@ -106,11 +99,10 @@ Usernames must be strings and ids must be numbers!<br/>
 
 # User
 ## Functions
-Quick note: Usernames must be strings and ids must be integers.
-
-- `user.all(username|id)` | Calls a combined query of `user.profile()` and `user.stats()`
-- `user.profile(username|id)` | Fetches an AniList user by either their username or id.
-- `user.stats(username|id)` | Fetches the stats of an AniList user by either their username or id.
+Usernames must be strings and ids must be numbers!<br/>
+`Anilist.user.all(username|id)` | All user profile function<br/>
+`Anilist.user.stats(username|id)` | User stats function<br/>
+`Anilist.user.profile(username|id)` | User profile function<br/>
 
 ## Profile Unique
 - `profile.id` | User's id
