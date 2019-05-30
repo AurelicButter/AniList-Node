@@ -1,14 +1,16 @@
 const User = require('./lib/user'),
+    lists = require('./lib/lists'),
     media = require('./lib/media'),
     people = require('./lib/people'),
     search = require('./search.json'),
     Fetch = require('./lib/fetcher');
 
 module.exports = class AniList {
-    constructor (accessKey) { 
+    constructor (accessKey) {
         Fetch.key = accessKey ? accessKey : null;
 
-        this.user = User;        
+        this.user = User;
+        this.lists = lists;
         this.media = media;
         this.people = people;
     };
@@ -27,7 +29,7 @@ module.exports = class AniList {
             case "character": var query = search["char"]; break;
             case "staff": var query = search["staff"]; break;
             case "studio": var query = search["studio"]; break;
-            default: throw new Error("Type not supported."); 
+            default: throw new Error("Type not supported.");
         }
         return Fetch.send(`query ($id: Int, $page: Int, $perPage: Int, $search: String) {
         Page (page: $page, perPage: $perPage) { pageInfo { total currentPage lastPage hasNextPage perPage } ${query} } }`, { search: term, page: page, perPage: amount});

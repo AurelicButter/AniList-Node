@@ -117,7 +117,7 @@ Usernames must be strings and ids must be numbers!<br/>
 - `profile.siteUrl` | User's AniList URL
 - `profile.donatorTier` | Check if the user is a donator
 - `profile.moderatorStatus` | Check if the user is a moderator
-- `profile.updatedAt` | Timestamp of the last update of the user 
+- `profile.updatedAt` | Timestamp of the last update of the user
 
 ## Stats Unique
 - `stats.watchedTime` | Total amount of watch time on the user's anime list
@@ -137,6 +137,17 @@ Usernames must be strings and ids must be numbers!<br/>
 - `stats.favouredStudios` | List of the user's favourite studios. Gives three values per object: studio.name, amount, meanScore, timeWatched
 - `stats.favouredYears` | List of the user's favourite years. Gives three values per object: year, amount, meanScore
 - `stats.favouredFormats` | List of the user's favourite formats. Gives two values per object: format, amount
+
+# Lists
+Usernames must be strings and ids must be numbers!<br/>
+`Anilist.lists.manga(username|id)` | User manga lists function<br/>
+`Anilist.lists.anime(username|id)` | User anime lists function<br/>
+
+- `list.name` | The user's list name
+- `list.isCustomList` | Checks if the list is a custom one (not created by default by AniList)
+- `list.isSplitCompletedList` | Checks if the list is a split completed list ie. if the user chose to have each completed media format in a separate list (toggled in user's settings)
+- `list.status` | The user's list status ("CURRENT", "PLANNING", "COMPLETED", "PAUSED", "DROPPED", "REREADING", "REWATCHING")
+- `list.entries` | List of media entries in this list (refer to `Media` documentation)
 
 # Studio
 - `Anilist.studio(id)` | Get information on a studio by an id
