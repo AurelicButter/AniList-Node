@@ -117,7 +117,7 @@ Usernames must be strings and ids must be numbers!<br/>
 - `profile.siteUrl` | User's AniList URL
 - `profile.donatorTier` | Check if the user is a donator
 - `profile.moderatorStatus` | Check if the user is a moderator
-- `profile.updatedAt` | Timestamp of the last update of the user 
+- `profile.updatedAt` | Timestamp of the last update of the user
 
 ## Stats Unique
 - `stats.watchedTime` | Total amount of watch time on the user's anime list
@@ -137,6 +137,30 @@ Usernames must be strings and ids must be numbers!<br/>
 - `stats.favouredStudios` | List of the user's favourite studios. Gives three values per object: studio.name, amount, meanScore, timeWatched
 - `stats.favouredYears` | List of the user's favourite years. Gives three values per object: year, amount, meanScore
 - `stats.favouredFormats` | List of the user's favourite formats. Gives two values per object: format, amount
+
+# Lists
+Usernames must be strings and ids must be numbers!<br/>
+`Anilist.lists.manga(username|id)` | User manga lists function<br/>
+`Anilist.lists.anime(username|id)` | User anime lists function<br/>
+
+- `list.name` | The user's list name
+- `list.isCustomList` | Checks if the list is a custom one (not created by default by AniList)
+- `list.isSplitCompletedList` | Checks if the list is a split completed list ie. if the user chose to have each completed media format in a separate list (toggled in user's settings)
+- `list.status` | The user's list status ("CURRENT", "PLANNING", "COMPLETED", "PAUSED", "DROPPED", "REPEATING")
+- `list.entries` | List of entries in this list, containing the media and related informations
+    - `entry.media` | The media linked to that entry (refer to the `Media` paragraph for all properties)
+    - `entry.userId` | The user's id
+    - `entry.status` | The user's status ("CURRENT", "PLANNING", "COMPLETED", "PAUSED", "DROPPED", "REPEATING") for that media
+    - `entry.score` | The user's score for that media
+    - `entry.progress` | The user's progress for that media (episodes for anime, chapters for manga)
+    - `entry.progressVolumes` | Only if the media is a mange. The user's volume progress for that manga
+    - `entry.repeat` | The amount of times the user rewatched or read the media
+    - `entry.priority` | The user's priority for that media
+    - `entry.private` | Check if the entry should only be visible to authenticated user
+    - `entry.notes` | The user's note about that media
+    - `entry.hiddenFromStatusLists` | Check if the entry should be hidden from non-custom lists (ie. default lists)
+    - `entry.advancedScores` | The user's advanced scores for that media (Story, Characters, Visuals, Audio, Enjoyment, …)
+    - `entry.dates` | The dates related to that entry in ISO 8601 format. Gives four values per object: startedAt, completedAt, updatedAt and createdAt
 
 # Studio
 - `Anilist.studio(id)` | Get information on a studio by an id
