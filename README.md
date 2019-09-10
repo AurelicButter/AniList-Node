@@ -1,6 +1,6 @@
 # Anilist-Node
 <a href="https://www.npmjs.com/package/anilist-node"><img src="https://img.shields.io/npm/dt/anilist-node?label=Downloads&logo=NPM" alt="NPM Page" /></a>
-<a href="https://discord.gg/HQGkubh"><img src="https://discordapp.com/api/guilds/303253034551476225/widget.png" alt="Support Server" /></a>
+<a href="https://discord.gg/TJJ6KGd"><img src="https://discordapp.com/api/guilds/303253034551476225/widget.png" alt="Support Server" /></a>
 
 A simple, lightweight Node.js wrapper for the AniList API.
 
