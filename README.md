@@ -1,12 +1,15 @@
 # Anilist-Node
+<a href="https://www.npmjs.com/package/anilist-node"><img src="https://img.shields.io/npm/dt/anilist-node?label=Downloads&logo=NPM" alt="NPM Page" /></a>
+<a href="https://discord.gg/HQGkubh"><img src="https://discordapp.com/api/guilds/303253034551476225/widget.png" alt="Support Server" /></a>
+
 A simple, lightweight Node.js wrapper for the AniList API.
 
 ## Using Anilist-node
 To install: `npm install anilist-node`
 
-For some features such as checking favourites, a token will be required. You only need to generate a token once in order to use. To start, head to [Anilist's Developer Page](https://anilist.co/settings/developer) and click "Create New Client". Note the client id. Then, copy paste this URL `https://anilist.co/api/v2/oauth/authorize?client_id={clientID}&response_type=token`, replacing the `{clientID}` with your client ID. It will ask you to log in and then provide you with the token to use.
+You may need a token for some features (ie checking favourites). A token only needs to be generated once in order to use. To start, head to [Anilist's Developer Page](https://anilist.co/settings/developer) and click "Create New Client". Note the client id. Then, copy paste this URL `https://anilist.co/api/v2/oauth/authorize?client_id={clientID}&response_type=token`, replacing the `{clientID}` with your client ID. It will ask you to log in and then provide you with the token to use.
 
-NOTE: Please store your token securely and privately! This gives access to __your__ AniList account. It is your responsibility to maintain your token.
+>***NOTE: Please store your token securely and privately! This gives access to your AniList account. It is your responsibility to maintain your token.***
 
 ## Example
 ### General lookup search (no login):

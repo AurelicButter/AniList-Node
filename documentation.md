@@ -28,17 +28,17 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `media.averageScore` | A weighted average score of all the user's scores
 - `media.meanScore` | Mean score of all the user's scores
 - `media.synonyms` | Media's alternative titles
-- `media.trends` | Media's daily trend status. An array of objects that gives four values per object: averageScore, popularity, inProgress, episode
-- `media.staff` | An array of staff ids credited in the media
-- `media.characters` | An array of character ids of characters in the anime
-- `media.reviews` | A list of reviews for the media. Gives two values per object: id and summary
+- `media.trends` | Media's daily trend status. An array of objects that gives four values per object: date, trending, popularity, and inProgress
+- `media.staff` | An array of staff credited in the media. Gives three values per object: id, name (string given as "first last"), and native (Native form of their name)
+- `media.characters` | An array of objects with two values per object: id and name (name is a string given as "first last")
+- `media.reviews` | An array of objects. Gives four values per object: id, score, summary, and body (main text of the review)
 - `media.popularity` | The number of users with the media on their list
-- `media.trending` | The amount of related activity in the past hour
+- `media.trending` | The amount of related activity in the past week.
 - `media.rankings` | The ranking of the media in a particular time span and format compared to others. Returns one value: id
-- `media.relations` | All media ids that relate to the media
+- `media.relations` | All media that relate to the media. Gives five values: id, idMal, title (All four options), type, and format
 - `media.mediaListEntry` | [Requires login] User's media list entry. Gives a value of id. This is required for list edits.
 - `media.autoCreateForumThread` | Checks if the media gets a thread automatically for each release
-- `media.externalLinks` | External links associated with the media
+- `media.externalLinks` | An array of external links associated with the media
 - `media.updatedAt` | Timestamp of when the page was last updated
 - `media.siteUrl` | The media's Anilist page
 - `media.modNotes` | Mod notes for the media
@@ -49,10 +49,10 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `anime.duration` | General length of an episode
 - `anime.hashtag` | Twitter hashtag associated with the anime
 - `anime.trailer` | Returns the trailer URL if the trailer is a Youtube or Dailymotion video. Will default to the object if it's not.
-- `anime.studios` | An array of studio ids that produced the anime
+- `anime.studios` | An array of studios that produced the anime. An array of objects with two values per object: id and name.
 - `anime.source` | Source type that the media was adapted from
-- `anime.nextAiringEpisode` | The media's next episode airing schedule. Returns value of id
-- `anime.airingSchedule` | The media's entire airing schedule. Returns an array of ids
+- `anime.nextAiringEpisode` | The media's next episode airing schedule. Returns either null or an object with two values (timeUntilAiring and airingAt)
+- `anime.airingSchedule` | The media's airing schedule, ordered by episode number (ie: 1, 2, 3, etc...). Returns two time values per object: airingAt and timeUntilAiring. 
 - `anime.streamingEpisodes` | An array of episodes and where it can be streamed. Each episode has four values: title, thumbnail, url, and site
 
 ## Manga Unique
@@ -61,7 +61,8 @@ Upon using a function, the data it returns is given in an object. So within the 
 # People
 
 ## Functions
-`Anilist.people.staff(id)` | Staff function. Fetches a staff member by their id.<br/>
+Names must be strings and ids must be numbers.
+`Anilist.people.staff(name|id)` | Staff function. Fetches a staff member by their id or name.<br/>
 `Anilist.people.character(id)` | Character function. Fetches a character by their id.<br/>
 
 ## General
@@ -73,12 +74,12 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `people.siteUrl` | Person's AniList page
 
 ## Character Unique
-- `character.media` | All media that the character is in (Returns ids only)
+- `character.media` | All media that the character is in (Returns id, idMal, title (All four options), and format)
 
 ## Staff Unique
 - `staff.language` | Staff's language
-- `staff.staffMedia` | An array of ids of all media that the staff has been apart of
-- `staff.characters` | An array of ids of all characters that the staff has voiced
+- `staff.staffMedia` | An array of ids and titles of all media that the staff has been apart of (Up to the first 25 on the list.)
+- `staff.characters` | An array of ids and names of all characters that the staff has voiced (Up to the first 25 on the list.)
 
 # Search
 - `Anilist.search(type, term, page, amount)` | Searches the database for an anime or manga that resembles the term provided.
@@ -147,7 +148,7 @@ Usernames must be strings and ids must be numbers!<br/>
 - `list.isCustomList` | Checks if the list is a custom one (not created by default by AniList)
 - `list.isSplitCompletedList` | Checks if the list is a split completed list ie. if the user chose to have each completed media format in a separate list (toggled in user's settings)
 - `list.status` | The user's list status ("CURRENT", "PLANNING", "COMPLETED", "PAUSED", "DROPPED", "REPEATING")
-- `list.entries` | List of entries in this list, containing the media and related informations
+- `list.entries` | List of entries in this list, containing the media and related information
     - `entry.media` | The media linked to that entry (refer to the `Media` paragraph for all properties)
     - `entry.userId` | The user's id
     - `entry.status` | The user's status ("CURRENT", "PLANNING", "COMPLETED", "PAUSED", "DROPPED", "REPEATING") for that media

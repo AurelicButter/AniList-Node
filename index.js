@@ -2,7 +2,6 @@ const User = require('./lib/user'),
     lists = require('./lib/lists'),
     media = require('./lib/media'),
     people = require('./lib/people'),
-    search = require('./search.json'),
     Fetch = require('./lib/fetcher');
 
 module.exports = class AniList {
@@ -23,6 +22,16 @@ module.exports = class AniList {
     search(type, term, page, amount) {
         if (!type) { throw new Error("Type of search not defined!"); }
         else if (!term || !page || !amount) { throw new Error("Search term, page count, or amount per page was not provided!"); }
+        
+        var search = {
+            "anime": "media (id: $id, type: ANIME, search: $search) { id title { romaji english native userPreferred } }",
+            "manga": "media (id: $id, type: MANGA, search: $search) { id title { romaji english native userPreferred } }",
+            "char": "Character (id: $id, search: $search) { id name { first last native } }" ,
+            "staff": "Staff (id: $id, search: $search) { id name { first last native } }",
+            "studio": "Studio(id: $id, search: $search) { id name }"
+        }
+        type = type.toLowerCase(); //Correct terms for switch case.
+
         switch (type) {
             case "anime": var query = search["anime"]; break;
             case "manga": var query = search["manga"]; break;
