@@ -1,6 +1,6 @@
 {
   "name": "anilist-node",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A lightweight Node.js wrapper for the AniList API",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "author": {
     "name": "Frederick Katsura",
-    "email": "konirosen@protonmail.ch"
+    "email": "katsurinstudios@protonmail.ch"
   },
   "repository": {
     "type": "git",
