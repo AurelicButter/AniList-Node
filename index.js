@@ -27,8 +27,8 @@ module.exports = class AniList {
             "anime": "media (id: $id, type: ANIME, search: $search) { id title { romaji english native userPreferred } }",
             "manga": "media (id: $id, type: MANGA, search: $search) { id title { romaji english native userPreferred } }",
             "char": "characters (id: $id, search: $search) { id name { first last native } }" ,
-            "staff": "Staff (id: $id, search: $search) { id name { first last native } }",
-            "studio": "Studio(id: $id, search: $search) { id name }"
+            "staff": "staff (id: $id, search: $search) { id name { first last native } }",
+            "studio": "studios (id: $id, search: $search) { id name }"
         }
         type = type.toLowerCase(); //Correct terms for switch case.
 
