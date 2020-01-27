@@ -8,4 +8,7 @@ anilist.people.staff(95672).then(data => { console.log(data); });
 anilist.people.staff("Kaiji Yuki").then(data => { console.log(data); });
 
 //Finds a character via their Anilist ID
-AniList.people.character(88344).then(data => { console.log(data); });
+anilist.people.character(88344).then(data => { console.log(data); });
+
+//Finds a character via their name.
+anilist.people.character("Yuuta Gamon").then(data => { console.log(data); });

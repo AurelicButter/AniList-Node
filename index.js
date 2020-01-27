@@ -14,25 +14,44 @@ module.exports = class AniList {
         this.people = people;
     };
 
+    /**
+     * Grabs data on a studio
+     * @param {Number} id - The studio ID on AniList.
+     * @returns { Object } Returns a customized data object.
+     */
     studio(id) {
         if (!id) { throw new Error("Studio id is not provided."); }
+        if (typeof id !== "number") { throw new Error("Term provided is not a number!"); }
+
         return Fetch.send(`query($id: Int) { Studio(id: $id) { id name media { edges { id } } siteUrl isFavourite } }`, { id: id });
     };
 
-    search(type, term, page, amount) {
+    /**
+     * Searchs AniList based on a specific term.
+     * @param {String} type - Required. Either anime, manga, character, staff or studio. 
+     * @param {String} term - Required. The term to lookup.
+     * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
+     * @param {Number} amount - The amount of results per page. AniList will cap this at 25 and function will default to 5 if not provided.
+     */
+    search(type, term, page=1, amount=5) {
         if (!type) { throw new Error("Type of search not defined!"); }
-        else if (!term || !page || !amount) { throw new Error("Search term, page count, or amount per page was not provided!"); }
+        else if (!term) { throw new Error("Search term was not provided!"); }
+
+        //Validate all type conditions.
+        if (typeof type !== "string") { throw new Error("Type is not a string."); }
+        if (typeof term !== "string") { throw new Error("Term is not a string"); }
+        if (typeof page !== "number") { throw new Error("Page number is not a number"); }
+        if (typeof amount !== "number") { throw new Error("Amount is not a number"); }
         
         var search = {
-            "anime": "media (id: $id, type: ANIME, search: $search) { id title { romaji english native userPreferred } }",
-            "manga": "media (id: $id, type: MANGA, search: $search) { id title { romaji english native userPreferred } }",
-            "char": "characters (id: $id, search: $search) { id name { first last native } }" ,
-            "staff": "staff (id: $id, search: $search) { id name { first last native } }",
-            "studio": "studios (id: $id, search: $search) { id name }"
+            "anime": "media (type: ANIME, search: $search) { id title { romaji english native userPreferred } }",
+            "manga": "media (type: MANGA, search: $search) { id title { romaji english native userPreferred } }",
+            "char": "characters (search: $search) { id name { first last native } }" ,
+            "staff": "staff (search: $search) { id name { first last native } }",
+            "studio": "studios (search: $search) { id name }"
         }
-        type = type.toLowerCase(); //Correct terms for switch case.
 
-        switch (type) {
+        switch (type.toLowerCase()) {
             case "anime": var query = search["anime"]; break;
             case "manga": var query = search["manga"]; break;
             case "character": var query = search["char"]; break;
@@ -40,7 +59,8 @@ module.exports = class AniList {
             case "studio": var query = search["studio"]; break;
             default: throw new Error("Type not supported.");
         }
-        return Fetch.send(`query ($id: Int, $page: Int, $perPage: Int, $search: String) {
+		
+        return Fetch.send(`query ($page: Int, $perPage: Int, $search: String) {
         Page (page: $page, perPage: $perPage) { pageInfo { total currentPage lastPage hasNextPage perPage } ${query} } }`, { search: term, page: page, perPage: amount});
     };
 };
