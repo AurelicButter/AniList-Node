@@ -42,6 +42,9 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `media.updatedAt` | Timestamp of when the page was last updated
 - `media.siteUrl` | The media's Anilist page
 - `media.modNotes` | Mod notes for the media
+- `media.recommendations` | An array of recommendations
+- `media.recommendations.id` | The ID of the show recommended. 
+- `media.recommendations.title` | An object of the show's titles. Four values: romanji, english, native, and userPreferred.
 
 ## Anime Unique
 - `anime.episodes` | Number of episodes
@@ -57,13 +60,14 @@ Upon using a function, the data it returns is given in an object. So within the 
 
 ## Manga Unique
 - `manga.volumes` | Number of volumes
+- `manga.chapters` | Number of chapters
 
 # People
 
 ## Functions
 Names must be strings and ids must be numbers.
 `Anilist.people.staff(name|id)` | Staff function. Fetches a staff member by their id or name.<br/>
-`Anilist.people.character(id)` | Character function. Fetches a character by their id.<br/>
+`Anilist.people.character(name|id)` | Character function. Fetches a character by their id or name.<br/>
 
 ## General
 - `people.id` | Person's id
@@ -72,6 +76,7 @@ Names must be strings and ids must be numbers.
 - `people.descriptions` | Person's description
 - `people.isFavourite` | [Requires login] Check if person is favourited
 - `people.siteUrl` | Person's AniList page
+- `people.favourites` | Number of users that have favourited the person.
 
 ## Character Unique
 - `character.media` | All media that the character is in (Returns id, idMal, title (All four options), and format)
@@ -119,6 +124,8 @@ Usernames must be strings and ids must be numbers!<br/>
 - `profile.donatorTier` | Check if the user is a donator
 - `profile.moderatorStatus` | Check if the user is a moderator
 - `profile.updatedAt` | Timestamp of the last update of the user
+- `profile.isFollower` | [Requires login] Checks if the searched user is following the logged in user.
+- `profile.isBlocked` | [Requires login] Checks if the logged in user has blocked the searched user.
 
 ## Stats Unique
 - `stats.watchedTime` | Total amount of watch time on the user's anime list
