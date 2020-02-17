@@ -171,9 +171,11 @@ Usernames must be strings and ids must be numbers!<br/>
     - `entry.dates` | The dates related to that entry in ISO 8601 format. Gives four values per object: startedAt, completedAt, updatedAt and createdAt
 
 # Studio
-- `Anilist.studio(id)` | Get information on a studio by an id
+- `Anilist.studio(id|name)` | Get information on a studio by an id or its name
     - `studio.id` | The studio's id
     - `studio.name` | The studio's name
-    - `studio.media` | An array of ids of all of the media the studio has done.
+    - `studio.isAnimationStudio` | Boolean value of if the studio is an animation studio.
+    - `studio.favourites` | Number of people who have favourited the studio on AniList.
+    - `studio.media` | A list of all the media the studio has done (Up to the first 25 per AniList's limit). Returns two values per object: id and title
     - `studio.siteUrl` | Site url of the studio on Anilist
     - `studio.isFavourite` | Checks if the studio is favourited [Requires login]

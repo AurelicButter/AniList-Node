@@ -16,14 +16,18 @@ module.exports = class AniList {
 
     /**
      * Grabs data on a studio
-     * @param {Number} id - The studio ID on AniList.
+     * @param {String | Number} id - The studio ID or name on AniList.
      * @returns { Object } Returns a customized data object.
      */
     studio(id) {
         if (!id) { throw new Error("Studio id is not provided."); }
-        if (typeof id !== "number") { throw new Error("Term provided is not a number!"); }
 
-        return Fetch.send(`query($id: Int) { Studio(id: $id) { id name media { edges { id } } siteUrl isFavourite } }`, { id: id });
+        if (typeof id === "string") { var queryVars = [{ search: id }, "query ($search: String) { Studio (search: $search) { "]; }
+        else if (typeof id === "number") { var queryVars = [{ id: id }, "query ($id: Int) { Studio (id: $id) { "]; } 
+        else { throw new Error("Term does not match the required types!"); }
+
+        return Fetch.send(queryVars[1] + `id name isAnimationStudio siteUrl isFavourite favourites 
+            media { nodes { id title { romaji english native userPreferred } } } } }`, queryVars[0]);
     };
 
     /**
