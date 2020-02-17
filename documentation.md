@@ -71,7 +71,7 @@ Names must be strings and ids must be numbers.
 
 ## General
 - `people.id` | Person's id
-- `people.name` | Person's name. Returns three values: first, last, native
+- `people.name` | Person's name. Returns three values: english, native, and alternative (alternatives being nicknames and titles)
 - `people.image` | Person's cover image. Returns two values: large and medium
 - `people.descriptions` | Person's description
 - `people.isFavourite` | [Requires login] Check if person is favourited
@@ -84,7 +84,7 @@ Names must be strings and ids must be numbers.
 ## Staff Unique
 - `staff.language` | Staff's language
 - `staff.staffMedia` | An array of ids and titles of all media that the staff has been apart of (Up to the first 25 on the list.)
-- `staff.characters` | An array of ids and names of all characters that the staff has voiced (Up to the first 25 on the list.)
+- `staff.characters` | An array of ids and the english names of all characters that the staff has voiced (Up to the first 25 on the list.)
 
 # Search
 - `Anilist.search(type, term, page, amount)` | Searches the database for an anime or manga that resembles the term provided.

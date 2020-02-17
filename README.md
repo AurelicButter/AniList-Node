@@ -35,3 +35,8 @@ Anilist.media.anime(21708).then(data => {
 
 ## Documentation
 Please see [documentation.md](documentation.md) file for more information
+
+## License and Contact
+AniList-Node is licensed under the [MIT License](LICENSE).
+
+For issues and bugs, please use the issue tracker on this repository. For other needs, either contact me by email <a href=katsurinstudios@protonmail.ch>katsurinstudios@protonmail.ch</a> or in my [Discord server](https://discord.gg/TJJ6KGd) in the #anilist-node channel.
