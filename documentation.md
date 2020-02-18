@@ -11,7 +11,6 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `media.id` | The id of the media
 - `media.idMAL` | The MAL id of the media
 - `media.title` | Media title. Gives four values: romaji, English, native, userPreferred [Requires login for userPreferred]
-- `media.type` | Media type
 - `media.description` | Media description
 - `media.format` | Format of the media (ie: TV, OVA, Novel)
 - `media.status` | Current status of the media
@@ -29,8 +28,8 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `media.meanScore` | Mean score of all the user's scores
 - `media.synonyms` | Media's alternative titles
 - `media.trends` | Media's daily trend status. An array of objects that gives four values per object: date, trending, popularity, and inProgress
-- `media.staff` | An array of staff credited in the media. Gives three values per object: id, name (string given as "first last"), and native (Native form of their name)
-- `media.characters` | An array of objects with two values per object: id and name (name is a string given as "first last")
+- `media.staff` | An array of credited staff. Gives two values per object: id and their name (string given as "first last")
+- `media.characters` | An array of characters with two values per object: id and their name (string given as "first last")
 - `media.reviews` | An array of objects. Gives four values per object: id, score, summary, and body (main text of the review)
 - `media.popularity` | The number of users with the media on their list
 - `media.trending` | The amount of related activity in the past week.
@@ -45,10 +44,13 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `media.recommendations` | An array of recommendations
 - `media.recommendations.id` | The ID of the show recommended. 
 - `media.recommendations.title` | An object of the show's titles. Four values: romanji, english, native, and userPreferred.
+- `media.stats.scoreDistribution` | An array of how the users have rated the media. Each object contains a score and amount.
+- `media.stats.statusDistribution` | An array of the users status with the show. Each object contains a status and amount.
 
 ## Anime Unique
 - `anime.episodes` | Number of episodes
 - `anime.season` | Season that the anime started airing
+- `anime.seasonYear` | The season year that the anime started airing
 - `anime.duration` | General length of an episode
 - `anime.hashtag` | Twitter hashtag associated with the anime
 - `anime.trailer` | Returns the trailer URL if the trailer is a Youtube or Dailymotion video. Will default to the object if it's not.
