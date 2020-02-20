@@ -28,8 +28,8 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `media.meanScore` | Mean score of all the user's scores
 - `media.synonyms` | Media's alternative titles
 - `media.trends` | Media's daily trend status. An array of objects that gives four values per object: date, trending, popularity, and inProgress
-- `media.staff` | An array of credited staff. Gives two values per object: id and their name (string given as "first last")
-- `media.characters` | An array of characters with two values per object: id and their name (string given as "first last")
+- `media.staff` | An array of credited staff. Gives two values per object: id and their name (given as "first last")
+- `media.characters` | An array of characters with two values per object: id and their name (given as "first last")
 - `media.reviews` | An array of objects. Gives four values per object: id, score, summary, and body (main text of the review)
 - `media.popularity` | The number of users with the media on their list
 - `media.trending` | The amount of related activity in the past week.
@@ -120,7 +120,9 @@ Usernames must be strings and ids must be numbers!<br/>
 - `profile.bannerImage` | User's banner image
 - `profile.isFollowing` | [Requires login] Checks if the logged in user is following the user
 - `profile.options` | User's options. Returns four values: titleLanguage, displayAdultContent, airingNotifications, profileColor
-- `profile.mediaListOptions` | Undocumented. Returns five values: scoreFormat, rowOrder, useLegacyLists, sharedTheme, sharedThemeEnabled
+- `profile.mediaListOptions` | Undocumented. Returns five values: scoreFormat, rowOrder, useLegacyLists, animeList, mangaList
+- `profile.mediaListOptions.animeList` | User's anime list options. Returns five values: sectionOrder, splitCompletedSectionByFormat, customLists, advancedScoring, advancedScoringEnabled.
+- `profile.mediaListOptions.mangaList` | User's manga list options. Returns five values: sectionOrder, splitCompletedSectionByFormat, customLists, advancedScoring, advancedScoringEnabled.
 - `profile.unreadNotificationCount` | Amount of unreadNotifications the user has
 - `profile.siteUrl` | User's AniList URL
 - `profile.donatorTier` | Check if the user is a donator
@@ -128,25 +130,53 @@ Usernames must be strings and ids must be numbers!<br/>
 - `profile.updatedAt` | Timestamp of the last update of the user
 - `profile.isFollower` | [Requires login] Checks if the searched user is following the logged in user.
 - `profile.isBlocked` | [Requires login] Checks if the logged in user has blocked the searched user.
+- `profile.bans` | Record of user's bans.
 
-## Stats Unique
-- `stats.watchedTime` | Total amount of watch time on the user's anime list
-- `stats.chaptersRead` | Total amount of chapters read on the user's manga list
-- `stats.activityHistory` | The activity history of the user. Returns three values: date, amount, level
-- `stats.animeStatusDistribution` | Undocumented. Returns two values: status and amount
-- `stats.mangaStatusDistribution` | Undocumented. Returns two values: status and amount
-- `stats.animeScoreDistribution` | Undocumented. Returns two values: score and amount
-- `stats.mangaScoreDistribution` | Undocumented. Returns two values: score and amount
-- `stats.animeListScores` | Undocumented. Returns two values: meanScore and standardDeviation
-- `stats.mangaListScores` | Undocumented. Returns two values: meanScore and standardDeviation
-- `stats.favouredGenresOverview` | Undocumented. Returns four values: genre, amount, meanScore, timeWatched
-- `stats.favouredGenres` | List of the user's favourite genres. Gives four values per object: genre, amount, meanScore, timeWatched
-- `stats.favouredTags` | List of the user's favourite tags. Gives four values per object: tag.name, amount, meanScore, timeWatched
-- `stats.favouredActors` | List of the user's favourite actors. Gives three values per object: staff.id, amount, meanScore, timeWatched
-- `stats.favouredStaff` | List of the user's favourite staff. Gives three values per object: staff.id, amount, meanScore, timeWatched
-- `stats.favouredStudios` | List of the user's favourite studios. Gives three values per object: studio.name, amount, meanScore, timeWatched
-- `stats.favouredYears` | List of the user's favourite years. Gives three values per object: year, amount, meanScore
-- `stats.favouredFormats` | List of the user's favourite formats. Gives two values per object: format, amount
+### User's Favourites
+Fetched through `profile.favourites`
+
+- `favourites.anime` | An array of all user's favourite anime. Returns two values: id and title.
+- `favourites.manga` | An array of all user's favourite manga. Returns two values: id and title.
+- `favourites.characters` | An array of all user's favourite characters. Returns two values: id and name (given "first last")
+- `favourites.staff` | An array of all user's favourite staff. Returns two values: id and name (given "first last")
+- `favourites.studios` | An array of all user's favourite studios. Returns two values: id and name
+
+### User's Statistics
+Fetched through `profile.statistics`. Returns two objects: anime and manga.
+
+- `statistics.[type].meanScore` | Mean score of all entries with the type.
+- `statistics.[type].standardDeviation` | The standard deviation of all scores with all entries with the type.
+- `statistics.[type].count` | Total amount of entries with the type.
+
+#### Statistics Across Various Fields.
+All of these types will return an object with four keys: 
+
+    > count and meanScore are included across all fields
+    > watchedTime is included for all anime specific fields.
+    > chaptersRead is included for all manga specific fields.
+    > one additional key, specified in each description pertaining to the entry.
+
+> Note that any item will only appear in the list if the user has a count of two or more items
+
+- `statistics.[type].statuses` | A list of the user's statistics across various statuses. Unique key: status
+- `statistics.[type].formats` | A list of the user's statistics across various formats. Unique key: format
+- `statistics.[type].lengths` | A list of the user's statistics across various lengths. Unique key: length
+- `statistics.[type].releaseYears` | A list of the user's statistics across various release years. Unique key: releaseYear
+- `statistics.[type].startYears` | A list of the user's statistics across years where the user started the entry. Unique key: startYear
+- `statistics.[type].genres` | A list of the user's statistics across various genres. Unique key: genre
+- `statistics.[type].tags` | A list of the user's statistics across various tags. Unique key: tag (tag returns two values: id and name)
+- `statistics.[type].countries` | A list of the user's statistics across various countries. Unique key: country
+- `statistics.[type].staff` | A list of the user's statistics across various staff. Unique key: staff (staff returns two values: id and name)
+
+#### Anime Unique
+- `statistics.anime.watchedTime` | Total amount of watch time on the user's anime lists.
+- `statistics.anime.episodesWatched` | Total amount of episodes watched on the user's anime lists. 
+- `statistics.anime.voiceActors` | A list of the user's statistics across various voice actors. Unique key: voiceActor (voiceActor returns two values: id and name)
+- `statistics.anime.studios` | A list of the user's statistics across various studios. Unique key: studio (studio returns two values: id and name)
+
+#### Manga Unique
+- `statistics.manga.chaptersRead` | Total amount of chapters read on the user's manga lists.
+- `statistics.manga.volumesRead` | Total amount of volumes read of the user's manga lists.
 
 # Lists
 Usernames must be strings and ids must be numbers!<br/>
