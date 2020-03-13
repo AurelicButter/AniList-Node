@@ -13,6 +13,7 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `media.title` | Media title. Gives four values: romaji, English, native, userPreferred [Requires login for userPreferred]
 - `media.description` | Media description
 - `media.format` | Format of the media (ie: TV, OVA, Novel)
+- `media.favourites` | Number of favourites a media has.
 - `media.status` | Current status of the media
 - `media.startDate` | Official release date of the media
 - `media.endDate` | Official end date of the media
@@ -33,9 +34,10 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `media.reviews` | An array of objects. Gives four values per object: id, score, summary, and body (main text of the review)
 - `media.popularity` | The number of users with the media on their list
 - `media.trending` | The amount of related activity in the past week.
-- `media.rankings` | The ranking of the media in a particular time span and format compared to others. Returns one value: id
+- `media.rankings` | The ranking of the media in a particular time span and format compared to others. Returns multiple values of:
+    rank, type, context, year, and season.
 - `media.relations` | All media that relate to the media. Gives five values: id, idMal, title (All four options), type, and format
-- `media.mediaListEntry` | [Requires login] User's media list entry. Gives a value of id. This is required for list edits.
+- `media.mediaListEntry` | [Requires login] User's media list entry. Gives a value of id and status. This is required for list edits.
 - `media.autoCreateForumThread` | Checks if the media gets a thread automatically for each release
 - `media.externalLinks` | An array of external links associated with the media
 - `media.updatedAt` | Timestamp of when the page was last updated
