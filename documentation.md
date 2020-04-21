@@ -91,11 +91,11 @@ Names must be strings and ids must be numbers.
 - `staff.characters` | An array of ids and the english names of all characters that the staff has voiced (Up to the first 25 on the list.)
 
 # Search
-- `Anilist.search(type, term, page, amount)` | Searches the database for an anime or manga that resembles the term provided.
-    Accepted types: anime, manga, character, staff, studio
-    Term: Search input (ie: Occultic;Nine)
-    Page: Page number of the search
-    Amount: Amount of results on the page
+- `Anilist.search(type, term, page, amount)` | Searches the database for an anime or manga that resembles the term provided.<br>
+    Accepted types: anime, manga, character, staff, studio<br>
+    Term: Search input (ie: Occultic;Nine)<br>
+    Page: Page number of the search, defaults to 1.<br>
+    Amount: Amount of results on the page, defaults to 5.
     - `search.pageInfo` | Page object
         - `pageInfo.total` | Total amount of pages in search
         - `pageInfo.currentPage` | Current page of the search
@@ -110,9 +110,9 @@ Names must be strings and ids must be numbers.
 # User
 ## Functions
 Usernames must be strings and ids must be numbers!<br/>
-`Anilist.user.all(username|id)` | All user profile function<br/>
-`Anilist.user.stats(username|id)` | User stats function<br/>
-`Anilist.user.profile(username|id)` | User profile function<br/>
+`Anilist.user.all(username|id)` | All user profile function, grabs both statistics and profile items.<br/>
+`Anilist.user.stats(username|id)` | Grabs all statistics for the given user. Contains no profile unique items.<br/>
+`Anilist.user.profile(username|id)` | Grabs all profile unique data. Contains no statistics of the user.<br/>
 
 ## Profile Unique
 - `profile.id` | User's id
@@ -189,13 +189,29 @@ Usernames must be strings and ids must be numbers!<br/>
 - `list.isCustomList` | Checks if the list is a custom one (not created by default by AniList)
 - `list.isSplitCompletedList` | Checks if the list is a split completed list ie. if the user chose to have each completed media format in a separate list (toggled in user's settings)
 - `list.status` | The user's list status ("CURRENT", "PLANNING", "COMPLETED", "PAUSED", "DROPPED", "REPEATING")
-- `list.entries` | List of entries in this list, containing the media and related information
-    - `entry.media` | The media linked to that entry (refer to the `Media` paragraph for all properties)
-    - `entry.userId` | The user's id
+- `list.entries` | List of entries in this list
+    - `entry.media` | An object containing various media information for the entry.
+        - `media.id` | The id of the media
+        - `media.idMAL` | The MAL id of the media
+        - `media.title` | Media title. Gives four values: romaji, English, native, userPreferred [Requires login for userPreferred]
+        - `media.description` | Media description
+        - `media.format` | Format of the media (ie: TV, OVA, Novel)
+        - `media.tags` | Tags that describes the media. Gives a name and checks if it is a media spoiler for each tag
+        - `media.startDate` | Official release date of the media
+        - `media.endDate` | Official end date of the media
+        - `media.genres` | Media genres
+        - `media.isFavourite` | [Requires login] Checks if media is on the user's favourites list
+        - `media.isAdult` | Checks if media is for adult audiences (ie: Hentai)
+        - `media.synonyms` | Media's alternative titles
+        - `media.siteUrl` | The media's Anilist page
+        - `media.duration` | Anime only. General length of an episode
+        - `media.episodes` | Anime only. Number of episodes
+        - `media.volumes` | Manga only. Number of volumes
+        - `media.chapters` | Manga only. Number of chapters.
     - `entry.status` | The user's status ("CURRENT", "PLANNING", "COMPLETED", "PAUSED", "DROPPED", "REPEATING") for that media
     - `entry.score` | The user's score for that media
     - `entry.progress` | The user's progress for that media (episodes for anime, chapters for manga)
-    - `entry.progressVolumes` | Only if the media is a mange. The user's volume progress for that manga
+    - `entry.progressVolumes` | Manga media only. The user's volume progress for that manga
     - `entry.repeat` | The amount of times the user rewatched or read the media
     - `entry.priority` | The user's priority for that media
     - `entry.private` | Check if the entry should only be visible to authenticated user
