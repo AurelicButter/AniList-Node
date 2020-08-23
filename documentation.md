@@ -58,8 +58,8 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `anime.trailer` | Returns the trailer URL if the trailer is a Youtube or Dailymotion video. Will default to the object if it's not.
 - `anime.studios` | An array of studios that produced the anime. An array of objects with two values per object: id and name.
 - `anime.source` | Source type that the media was adapted from
-- `anime.nextAiringEpisode` | The media's next episode airing schedule. Returns either null or an object with two values (timeUntilAiring and airingAt)
-- `anime.airingSchedule` | The media's airing schedule, ordered by episode number (ie: 1, 2, 3, etc...). Returns two time values per object: airingAt and timeUntilAiring. 
+- `anime.nextAiringEpisode` | The media's next episode airing schedule. Returns either null or an object with three values (timeUntilAiring, airingAt, and episode)
+- `anime.airingSchedule` | The media's airing schedule, ordered by episode number (ie: 1, 2, 3, etc...). Returns three values per object: airingAt, timeUntilAiring, and episode. 
 - `anime.streamingEpisodes` | An array of episodes and where it can be streamed. Each episode has four values: title, thumbnail, url, and site
 
 ## Manga Unique
