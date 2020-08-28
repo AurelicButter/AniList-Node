@@ -50,8 +50,8 @@ module.exports = class AniList {
         var search = {
             "anime": "media (type: ANIME, search: $search) { id title { romaji english native userPreferred } }",
             "manga": "media (type: MANGA, search: $search) { id title { romaji english native userPreferred } }",
-            "char": "characters (search: $search) { id name { full native } }" ,
-            "staff": "staff (search: $search) { id name { full native } }",
+            "char": "characters (search: $search) { id name { english: full } }" ,
+            "staff": "staff (search: $search) { id name { english: full } }",
             "studio": "studios (search: $search) { id name }"
         }
 
