@@ -39,4 +39,4 @@ Please see [documentation.md](documentation.md) file for more information
 ## License and Contact
 AniList-Node is licensed under the [MIT License](LICENSE).
 
-For issues and bugs, please use the issue tracker on this repository. For other needs, either contact me by email [katsurinstudios@protonmail.ch](mailto:katsurinstudios@protonmail.ch) or in my [Discord server](https://discord.gg/TJJ6KGd) in the #anilist-node channel.
+For issues and bugs, please use the issue tracker on this repository. For other needs, either contact me by email [katsurinstudios@protonmail.ch](mailto:katsurinstudios@protonmail.ch) or in my [Discord server](https://discord.gg/qKfqsjW) in the #anilist-node channel.
