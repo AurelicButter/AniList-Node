@@ -1,17 +1,26 @@
-const User = require('./lib/user'),
-    lists = require('./lib/lists'),
-    media = require('./lib/media'),
-    people = require('./lib/people'),
-    Fetch = require('./lib/fetcher');
+const User = require("./lib/user"),
+    lists = require("./lib/lists"),
+    media = require("./lib/media"),
+    people = require("./lib/people"),
+    util = require("./lib/utilities");
 
 module.exports = class AniList {
+    /**
+     * @constructor
+     * @param {String} [accessKey] - The AniList API token. If no key is provided, 
+     *      the user will not be able to access private information such as 
+     *      the authorized user's profile (if set to private).
+     */
     constructor (accessKey) {
-        Fetch.key = accessKey ? accessKey : null;
+        if (!accessKey) { accessKey == null; }
 
-        this.user = User;
-        this.lists = lists;
-        this.media = media;
-        this.people = people;
+        // Import utilites for the classes.
+        this.__util = new util(accessKey);
+
+        this.user = new User(this.__util);
+        this.lists = new lists(this.__util);
+        this.media = new media(this.__util);
+        this.people = new people(this.__util);
     };
 
     /**
@@ -20,13 +29,9 @@ module.exports = class AniList {
      * @returns { Object } Returns a customized data object.
      */
     studio(id) {
-        if (!id) { throw new Error("Studio id is not provided."); }
+        var queryVars = this.__util.generateQueryHeaders("Studio", id);
 
-        if (typeof id === "string") { var queryVars = [{ search: id }, "query ($search: String) { Studio (search: $search) { "]; }
-        else if (typeof id === "number") { var queryVars = [{ id: id }, "query ($id: Int) { Studio (id: $id) { "]; } 
-        else { throw new Error("Term does not match the required types!"); }
-
-        return Fetch.send(queryVars[1] + `id name isAnimationStudio siteUrl isFavourite favourites 
+        return this.__util.send(queryVars[1] + `id name isAnimationStudio siteUrl isFavourite favourites 
             media { nodes { id title { romaji english native userPreferred } } } } }`, queryVars[0]);
     };
 
@@ -64,7 +69,7 @@ module.exports = class AniList {
             default: throw new Error("Type not supported.");
         }
 		
-        return Fetch.send(`query ($page: Int, $perPage: Int, $search: String) {
+        return this.__util.send(`query ($page: Int, $perPage: Int, $search: String) {
         Page (page: $page, perPage: $perPage) { pageInfo { total currentPage lastPage hasNextPage perPage } ${query} } }`, { search: term, page: page, perPage: amount});
     };
 };
