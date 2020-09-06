@@ -1,10 +1,10 @@
 {
   "name": "anilist-node",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "A lightweight Node.js wrapper for the AniList API",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/animeTest.js"
+    "test": "node tests/mediaTest.js"
   },
   "author": {
     "name": "Frederick Katsura",
@@ -19,7 +19,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "keywords": [
     "anilist",
