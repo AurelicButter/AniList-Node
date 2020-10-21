@@ -9,7 +9,7 @@ Upon using a function, the data it returns is given in an object. So within the 
 
 ## General
 - `media.id` | The id of the media
-- `media.idMAL` | The MAL id of the media
+- `media.idMal` | The MAL id of the media
 - `media.title` | Media title. Gives four values: romaji, English, native, userPreferred [Requires login for userPreferred]
 - `media.description` | Media description
 - `media.format` | Format of the media (ie: TV, OVA, Novel)
@@ -22,7 +22,8 @@ Upon using a function, the data it returns is given in an object. So within the 
 - `media.isFavourite` | [Requires login] Checks if media is on the user's favourites list
 - `media.isAdult` | Checks if media is for adult audiences (ie: Hentai)
 - `media.isLicensed` | Checks if the media is licensed
-- `media.coverImage` | Media's cover image on AniList. Gives two values: large and medium
+- `media.isLocked` | Checks if the media is locked. If it is locked, the entry cannot be added to any lists or favourites.
+- `media.coverImage` | Media's cover image on AniList. Gives four values: large, medium, small, and color.
 - `media.bannerImage` | Media's banner image on AniList
 - `media.tags` | Tags that describes the media. Gives a name and checks if it is a media spoiler for each tag
 - `media.averageScore` | A weighted average score of all the user's scores
