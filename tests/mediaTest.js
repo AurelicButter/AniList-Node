@@ -1,4 +1,4 @@
-const anilist = require('../index');
+const anilist = require('../lib/index');
 const AniList = new anilist();
 
 //Finds anime information. Should return information on Occultic;Nine.

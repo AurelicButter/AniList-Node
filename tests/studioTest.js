@@ -1,4 +1,4 @@
-const AnilistNode = require("../index.js");
+const AnilistNode = require("../lib/index.js");
 const anilist = new AnilistNode();
 
 //Find studio via their Anilist ID
