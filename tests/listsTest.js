@@ -1,4 +1,4 @@
-const anilist = require('../index');
+const anilist = require('../lib/index');
 const AniList = new anilist();
 
 let animeLists = AniList.lists.anime('salixor');

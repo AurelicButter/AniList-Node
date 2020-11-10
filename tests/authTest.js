@@ -1,4 +1,4 @@
-const AnilistNode = require("../index.js");
+const AnilistNode = require("../lib/index.js");
 const { token } = require("../token.json");
 const anilist = new AnilistNode(token);
 

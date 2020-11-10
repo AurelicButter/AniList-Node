@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Home - AniList-Node Documentation</title>
+    
+    <meta name="description" content="Documentation for the AniList-Node NPM package." />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/Butterstroke/AniList-Node" target="_blank" class="menu-item" id="website_link" >GitHub Repository</a></h2><h2><a href="https://www.npmjs.com/package/anilist-node" target="_blank" class="menu-item" id="website_link" >AniList-Node on NPM</a></h2><h2><a href="https://discord.gg/qKfqsjW" target="_blank" class="menu-item" id="website_link" >Support Server</a></h2><h3>Classes</h3><ul><li><a href="AniList.html">AniList</a><ul class='methods'><li data-type='method'><a href="AniList.html#search">search</a></li><li data-type='method'><a href="AniList.html#studio">studio</a></li></ul></li><li><a href="Lists.html">Lists</a><ul class='methods'><li data-type='method'><a href="Lists.html#anime">anime</a></li><li data-type='method'><a href="Lists.html#manga">manga</a></li></ul></li><li><a href="Media.html">Media</a><ul class='methods'><li data-type='method'><a href="Media.html#anime">anime</a></li><li data-type='method'><a href="Media.html#manga">manga</a></li></ul></li><li><a href="People.html">People</a><ul class='methods'><li data-type='method'><a href="People.html#character">character</a></li><li data-type='method'><a href="People.html#staff">staff</a></li></ul></li><li><a href="User.html">User</a><ul class='methods'><li data-type='method'><a href="User.html#all">all</a></li><li data-type='method'><a href="User.html#getRecentActivity">getRecentActivity</a></li><li data-type='method'><a href="User.html#profile">profile</a></li><li data-type='method'><a href="User.html#stats">stats</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#AiringEntry">AiringEntry</a></li><li><a href="global.html#AnimeEntry">AnimeEntry</a></li><li><a href="global.html#CharacterEntry">CharacterEntry</a></li><li><a href="global.html#ListActivity">ListActivity</a></li><li><a href="global.html#ListEntry">ListEntry</a></li><li><a href="global.html#MangaEntry">MangaEntry</a></li><li><a href="global.html#MediaRelation">MediaRelation</a></li><li><a href="global.html#MediaTitle">MediaTitle</a></li><li><a href="global.html#MessageActivity">MessageActivity</a></li><li><a href="global.html#PersonName">PersonName</a></li><li><a href="global.html#PersonRelation">PersonRelation</a></li><li><a href="global.html#SearchEntry">SearchEntry</a></li><li><a href="global.html#StaffEntry">StaffEntry</a></li><li><a href="global.html#StudioEntry">StudioEntry</a></li><li><a href="global.html#TextActivity">TextActivity</a></li><li><a href="global.html#UserList">UserList</a></li><li><a href="global.html#UserProfile">UserProfile</a></li><li><a href="global.html#UserRelation">UserRelation</a></li><li><a href="global.html#UserStats">UserStats</a></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+    <section class="package">
+        <h3> </h3>		
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <section class="readme usertext">
+        <article><h1>Anilist-Node</h1>
+<p><a href="https://www.npmjs.com/package/anilist-node"><img src="https://img.shields.io/npm/dt/anilist-node?label=Downloads&logo=NPM" alt="NPM Page" /></a>
+<a href="https://discord.gg/qKfqsjW"><img src="https://discordapp.com/api/guilds/303253034551476225/widget.png" alt="Support Server" /></a></p>
+<p>A simple, lightweight Node.js wrapper for the AniList API.</p>
+<h2>Using Anilist-node</h2>
+<p>To install: <code>npm install anilist-node</code></p>
+<p>You may need a token for some features (ie checking favourites). A token only needs to be generated once in order to use. To start, head to <a href="https://anilist.co/settings/developer">Anilist's Developer Page</a> and click &quot;Create New Client&quot;. Note the client id. Then, copy paste this URL <code>https://anilist.co/api/v2/oauth/authorize?client_id={clientID}&amp;response_type=token</code>, replacing the <code>{clientID}</code> with your client ID. It will ask you to log in and then provide you with the token to use.</p>
+<blockquote>
+<p><em><strong>NOTE: Please store your token securely and privately! This gives access to your AniList account. It is your responsibility to maintain your token.</strong></em></p>
+</blockquote>
+<h2>Example</h2>
+<h3>General lookup search (no login):</h3>
+<pre class="prettyprint source lang-javascript"><code>const anilist = require('anilist-node');
+const Anilist = new anilist();
+
+Anilist.media.anime(21708).then(data => {
+    console.log(data);
+});
+</code></pre>
+<h3>Lookup search (login):</h3>
+<pre class="prettyprint source lang-javascript"><code>const settings = require('./settings.json'); //Or wherever your store your token.
+const anilist = require('anilist-node');
+const Anilist = new anilist(settings.token /* This being your token */);
+
+Anilist.media.anime(21708).then(data => {
+    console.log(data);
+});
+</code></pre>
+<h2>Documentation</h2>
+<p>Documentation is provided in two locations. A static HTML site is avalible with the package under the docs directory. Or users can view the same site online here: <a href="https://www.katsurin.com/docs/anilist-node/index.html">katsurin.com/docs/anilist-node</a>.</p>
+<h2>License and Contact</h2>
+<p>AniList-Node is licensed under the <a href="LICENSE">MIT License</a>.</p>
+<p>For issues and bugs, please use the issue tracker on the <a href="https://github.com/Butterstroke/AniList-Node/issues">GitHub repository</a>. For other needs, either contact me by email <a href="mailto:katsurinstudios@protonmail.ch">katsurinstudios@protonmail.ch</a> or in my <a href="https://discord.gg/qKfqsjW">Discord server</a> in the #anilist-node channel.</p></article>
+    </section>
+
+
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Tue Nov 10 2020 15:42:11 GMT-0500 (Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>

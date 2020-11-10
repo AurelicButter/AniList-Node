@@ -34,9 +34,9 @@ Anilist.media.anime(21708).then(data => {
 ```
 
 ## Documentation
-Please see [documentation.md](documentation.md) file for more information
+Documentation is provided in two locations. A static HTML site is avalible with the package under the docs directory. Or users can view the same site online here: [katsurin.com/docs/anilist-node](https://www.katsurin.com/docs/anilist-node/index.html).
 
 ## License and Contact
 AniList-Node is licensed under the [MIT License](LICENSE).
 
-For issues and bugs, please use the issue tracker on this repository. For other needs, either contact me by email [katsurinstudios@protonmail.ch](mailto:katsurinstudios@protonmail.ch) or in my [Discord server](https://discord.gg/qKfqsjW) in the #anilist-node channel.
+For issues and bugs, please use the issue tracker on the [GitHub repository](https://github.com/Butterstroke/AniList-Node/issues). For other needs, either contact me by email [katsurinstudios@protonmail.ch](mailto:katsurinstudios@protonmail.ch) or in my [Discord server](https://discord.gg/qKfqsjW) in the #anilist-node channel.
