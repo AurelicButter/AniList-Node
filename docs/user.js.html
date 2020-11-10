@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>user.js - AniList-Node Documentation</title>
+    
+    <meta name="description" content="Documentation for the AniList-Node NPM package." />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/Butterstroke/AniList-Node" target="_blank" class="menu-item" id="website_link" >GitHub Repository</a></h2><h2><a href="https://www.npmjs.com/package/anilist-node" target="_blank" class="menu-item" id="website_link" >AniList-Node on NPM</a></h2><h2><a href="https://discord.gg/qKfqsjW" target="_blank" class="menu-item" id="website_link" >Support Server</a></h2><h3>Classes</h3><ul><li><a href="AniList.html">AniList</a><ul class='methods'><li data-type='method'><a href="AniList.html#search">search</a></li><li data-type='method'><a href="AniList.html#studio">studio</a></li></ul></li><li><a href="Lists.html">Lists</a><ul class='methods'><li data-type='method'><a href="Lists.html#anime">anime</a></li><li data-type='method'><a href="Lists.html#manga">manga</a></li></ul></li><li><a href="Media.html">Media</a><ul class='methods'><li data-type='method'><a href="Media.html#anime">anime</a></li><li data-type='method'><a href="Media.html#manga">manga</a></li></ul></li><li><a href="People.html">People</a><ul class='methods'><li data-type='method'><a href="People.html#character">character</a></li><li data-type='method'><a href="People.html#staff">staff</a></li></ul></li><li><a href="User.html">User</a><ul class='methods'><li data-type='method'><a href="User.html#all">all</a></li><li data-type='method'><a href="User.html#getRecentActivity">getRecentActivity</a></li><li data-type='method'><a href="User.html#profile">profile</a></li><li data-type='method'><a href="User.html#stats">stats</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#AiringEntry">AiringEntry</a></li><li><a href="global.html#AnimeEntry">AnimeEntry</a></li><li><a href="global.html#CharacterEntry">CharacterEntry</a></li><li><a href="global.html#ListActivity">ListActivity</a></li><li><a href="global.html#ListEntry">ListEntry</a></li><li><a href="global.html#MangaEntry">MangaEntry</a></li><li><a href="global.html#MediaRelation">MediaRelation</a></li><li><a href="global.html#MediaTitle">MediaTitle</a></li><li><a href="global.html#MessageActivity">MessageActivity</a></li><li><a href="global.html#PersonName">PersonName</a></li><li><a href="global.html#PersonRelation">PersonRelation</a></li><li><a href="global.html#SearchEntry">SearchEntry</a></li><li><a href="global.html#StaffEntry">StaffEntry</a></li><li><a href="global.html#StudioEntry">StudioEntry</a></li><li><a href="global.html#TextActivity">TextActivity</a></li><li><a href="global.html#UserList">UserList</a></li><li><a href="global.html#UserProfile">UserProfile</a></li><li><a href="global.html#UserRelation">UserRelation</a></li><li><a href="global.html#UserStats">UserStats</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">user.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//Queries for each specific function. Stored here to remove redunant queries.
+const profileQuery = `id name about avatar { large medium } bannerImage isFollowing isFollower isBlocked
+bans options { titleLanguage displayAdultContent airingNotifications profileColor }
+mediaListOptions { scoreFormat rowOrder 
+    animeList { sectionOrder splitCompletedSectionByFormat customLists advancedScoring advancedScoringEnabled }
+    mangaList { sectionOrder splitCompletedSectionByFormat customLists advancedScoring advancedScoringEnabled } } 
+favourites {
+    anime { nodes { id title { romaji english native userPreferred } type } }
+    manga { nodes { id title { romaji english native userPreferred } type } }
+    characters { nodes { id name { english: full } } }
+    staff { nodes { id name { english: full } } }
+    studios { nodes { id name } } }
+unreadNotificationCount siteUrl donatorTier moderatorStatus updatedAt`;
+
+const statsQuery = `statistics { anime {
+    meanScore standardDeviation count minutesWatched episodesWatched
+    statuses { count meanScore minutesWatched status }
+    formats { count meanScore minutesWatched format }
+    lengths { count meanScore minutesWatched length }
+    releaseYears { count meanScore minutesWatched releaseYear }
+    startYears { count meanScore minutesWatched startYear }
+    genres { count meanScore minutesWatched genre }
+    tags { count meanScore minutesWatched tag { id name } }
+    countries { count meanScore minutesWatched country }
+    voiceActors { count meanScore minutesWatched voiceActor { id name { english: full } } }
+    staff { count meanScore minutesWatched staff { id name { english: full } } }
+    studios { count meanScore minutesWatched studio { id name } } }
+manga {
+    meanScore standardDeviation count chaptersRead volumesRead
+    statuses { count meanScore chaptersRead status }
+    formats { count meanScore chaptersRead format }
+    lengths { count meanScore chaptersRead length }
+    releaseYears { count meanScore chaptersRead releaseYear }
+    startYears { count meanScore chaptersRead startYear }
+    genres { count meanScore chaptersRead genre }
+    tags { count meanScore chaptersRead tag { id name } }
+    countries { count meanScore chaptersRead country }
+    staff { count meanScore chaptersRead staff { id name { english: full } } } } }`;
+
+/**
+ * Access AniList's user data.
+ * @since 1.0.0
+ */
+class User {
+    /**
+     * @description This constructor is meant for internal use and is apart of initializing. You cannot access this
+     * through the AniList class and are not expect to.
+     * @param { Utilites } utilities - The AniList Utilities class.
+     * @hideconstructor
+     */
+    constructor(utilities) {
+        this.util = utilities;
+    };
+
+    /**
+     * Fetch a user's AniList basic profile.
+     * @param { Number | String } user - Required. Can either be the username or the AniList ID.
+     * @returns { UserProfile }
+     * @since 1.0.0
+     */
+    profile(user) {
+        var queryVars = this.util.generateQueryHeaders("User", user);
+        
+        return this.util.send(`${queryVars[1]}${profileQuery}}}`, queryVars[0]);
+    };
+
+    /**
+     * Fetch a user's AniList stats.
+     * @param { Number | String } user - Required. Can either be the username or the AniList ID.
+     * @returns { UserStats }
+     * @since 1.3.0
+     */
+    stats(user) {
+        var queryVars = this.util.generateQueryHeaders("User", user);
+        return this.util.send(`${queryVars[1]}${statsQuery}}}`, queryVars[0]);
+    };
+
+    /**
+     * Fetch a user's AniList profile, basic and stats.
+     * @param { Number | String } user - Required. Can either be the username or the AniList ID.
+     * @returns { Object } Returns all keys within {@link UserProfile} and {@link UserStats}. UserStats are found under the statistics key.
+     * @since 1.0.0
+     */
+    all(user) {
+        var queryVars = this.util.generateQueryHeaders("User", user);
+        return this.util.send(`${queryVars[1]}${profileQuery} ${statsQuery}}}`, queryVars[0]);
+    }
+
+    /**
+     * Fetch recent activity from a user.
+     * @param {Number} user - Required. Needs to be the user's AniList ID.
+     * @returns { Object[] } Returns the 25 most recent activities of the user. Contains any number of 
+     * {@link ListActivity}, {@link TextActivity}, {@link MessageActivity}. All of which are identifyable by the type key.
+     * 
+     * @since 1.6.0
+     */
+    getRecentActivity(user) {
+        if (typeof user !== "number") { throw new Error("Term does not match the required types!"); }
+
+        return this.util.send(`query ($page: Int, $perPage: Int, $user: Int) {
+            Page (page: $page, perPage: $perPage) { pageInfo { total currentPage lastPage hasNextPage perPage } 
+            activities(userId: $user, sort:ID_DESC) {
+                ... on ListActivity { id status type progress media { id title { romaji english native userPreferred } type  }
+                    createdAt likeCount replies { id text likeCount } }
+                ... on TextActivity { id userId type text createdAt likeCount replies { id text likeCount } }
+                ... on MessageActivity { id recipientId type message createdAt likeCount replies { id text likeCount } }
+            } } }`, { user: user, page: 1, perPage: 25 });
+    } 
+};
+
+module.exports = User;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Tue Nov 10 2020 15:42:11 GMT-0500 (Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>

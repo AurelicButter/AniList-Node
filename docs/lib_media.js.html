@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>lib/media.js - AniList-Node Documentation</title>
+    
+    <meta name="description" content="Documentation for the AniList-Node NPM package." />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/Butterstroke/AniList-Node" target="_blank" class="menu-item" id="website_link" >GitHub Repository</a></h2><h2><a href="https://www.npmjs.com/package/anilist-node" target="_blank" class="menu-item" id="website_link" >AniList-Node on NPM</a></h2><h2><a href="https://discord.gg/qKfqsjW" target="_blank" class="menu-item" id="website_link" >Support Server</a></h2><h3>Classes</h3><ul><li><a href="AniList.html">AniList</a><ul class='methods'><li data-type='method'><a href="AniList.html#search">search</a></li><li data-type='method'><a href="AniList.html#studio">studio</a></li></ul></li><li><a href="Lists.html">Lists</a><ul class='methods'><li data-type='method'><a href="Lists.html#anime">anime</a></li><li data-type='method'><a href="Lists.html#manga">manga</a></li></ul></li><li><a href="Media.html">Media</a><ul class='methods'><li data-type='method'><a href="Media.html#anime">anime</a></li><li data-type='method'><a href="Media.html#manga">manga</a></li></ul></li><li><a href="People.html">People</a><ul class='methods'><li data-type='method'><a href="People.html#character">character</a></li><li data-type='method'><a href="People.html#staff">staff</a></li></ul></li><li><a href="User.html">User</a><ul class='methods'><li data-type='method'><a href="User.html#all">all</a></li><li data-type='method'><a href="User.html#basicProfile">basicProfile</a></li><li data-type='method'><a href="User.html#getRecentActivity">getRecentActivity</a></li><li data-type='method'><a href="User.html#profile">profile</a></li><li data-type='method'><a href="User.html#stats">stats</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#AnimeEntry">AnimeEntry</a></li><li><a href="global.html#CharacterEntry">CharacterEntry</a></li><li><a href="global.html#MangaEntry">MangaEntry</a></li><li><a href="global.html#MediaRelationEntry">MediaRelationEntry</a></li><li><a href="global.html#MediaTitle">MediaTitle</a></li><li><a href="global.html#PersonName">PersonName</a></li><li><a href="global.html#SearchEntry">SearchEntry</a></li><li><a href="global.html#StaffEntry">StaffEntry</a></li><li><a href="global.html#StudioEntry">StudioEntry</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/media.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Access AniList's media data.
+ * @since 1.0.0
+ */
+class Media {
+    /**
+     * @description This constructor is meant for internal use and is apart of initializing. You cannot access this
+     * through the AniList class and are not expect to.
+     * @param { Utilites } utilities - The AniList Utilities class.
+     * @hideconstructor
+     */
+    constructor(utilities) {
+        this.util = utilities;
+    };
+
+    /**
+     * Fetch an anime entry by its AniList ID.
+     * @param { Number } id - Required. The ID tied to the AniList entry.
+     * @returns { Object } Returns a customized data object.
+     * @since 1.0.0
+     */
+    anime(id) {
+        if (!id) { throw new Error("Anime id is not provided!"); }
+        if (typeof id !== "number") { throw new Error("Term provided is not a number!"); }
+
+        return this.util.send(`query ($id: Int) { Media (id: $id, type: ANIME) { id idMal title { romaji english native userPreferred } 
+            format status episodes description startDate { year month day } endDate { year month day }
+            season seasonYear duration countryOfOrigin isLicensed source hashtag trailer { id site }
+            updatedAt coverImage { large:extraLarge medium:large small:medium color }
+            bannerImage genres synonyms averageScore meanScore favourites
+            popularity trending tags { name isMediaSpoiler } relations { nodes { id idMal title { english native romaji userPreferred } type format } } 
+            characters { nodes { id name { english: full } } } staff { nodes { id name { english: full } } } studios { nodes { id name isAnimationStudio } } 
+            isFavourite isAdult isLocked nextAiringEpisode { timeUntilAiring airingAt episode } airingSchedule { nodes { airingAt timeUntilAiring episode } }
+            trends { nodes { date trending popularity inProgress } } externalLinks { url }
+            streamingEpisodes { title thumbnail url site } rankings { rank type context year season } mediaListEntry { id status }
+            reviews { nodes { id score summary body } } siteUrl autoCreateForumThread modNotes 
+            stats { scoreDistribution { score amount } statusDistribution { status amount } }
+            isRecommendationBlocked recommendations { nodes { mediaRecommendation { id title { romaji english native userPreferred } } } } } }`, { id: id });
+    };
+
+    /**
+     * Fetch a manga entry by its AniList ID.
+     * @param { Number } id - Required. The ID tied to the AniList entry.
+     * @returns { Object } Returns a customized data object.
+     * @since 1.0.0
+     */
+    manga(id) {
+        if (!id) { throw new Error("Manga id is not provided!"); }
+        if (typeof id !== "number") { throw new Error("Term provided is not a number!"); }
+
+        return this.util.send(`query ($id: Int) { Media (id: $id, type: MANGA) { id idMal title { romaji english native userPreferred }
+            description format status startDate { year month day } endDate { year month day } chapters volumes countryOfOrigin isLicensed updatedAt
+            coverImage { large:extraLarge medium:large small:medium color } bannerImage genres synonyms averageScore meanScore siteUrl autoCreateForumThread modNotes
+            popularity trending tags { name isMediaSpoiler } relations { nodes { id idMal title { english native romaji userPreferred } type format } }
+            characters { nodes { id name { english: full } } } staff { nodes { id name { english: full } } } isFavourite isAdult isLocked
+            trends { nodes { date trending popularity inProgress } } externalLinks { url } rankings { rank type context year season } 
+            mediaListEntry { id status } reviews { nodes { id score summary body } } 
+            stats { scoreDistribution { score amount } statusDistribution { status amount } } favourites
+            isRecommendationBlocked recommendations { nodes { mediaRecommendation { id title { romaji english native userPreferred } } } } } }`, { id: id });
+    };
+};
+
+module.exports = Media;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Wed Oct 21 2020 20:06:49 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>
