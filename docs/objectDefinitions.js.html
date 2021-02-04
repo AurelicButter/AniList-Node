@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>objectDefinitions.js - AniList-Node Documentation</title>
+    
+    <meta name="description" content="Documentation for the AniList-Node NPM package." />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/Butterstroke/AniList-Node" target="_blank" class="menu-item" id="website_link" >GitHub Repository</a></h2><h2><a href="https://www.npmjs.com/package/anilist-node" target="_blank" class="menu-item" id="website_link" >AniList-Node on NPM</a></h2><h2><a href="https://discord.gg/qKfqsjW" target="_blank" class="menu-item" id="website_link" >Support Server</a></h2><h3>Classes</h3><ul><li><a href="AniList.html">AniList</a><ul class='methods'><li data-type='method'><a href="AniList.html#search">search</a></li><li data-type='method'><a href="AniList.html#studio">studio</a></li></ul></li><li><a href="Lists.html">Lists</a><ul class='methods'><li data-type='method'><a href="Lists.html#anime">anime</a></li><li data-type='method'><a href="Lists.html#manga">manga</a></li></ul></li><li><a href="Media.html">Media</a><ul class='methods'><li data-type='method'><a href="Media.html#anime">anime</a></li><li data-type='method'><a href="Media.html#manga">manga</a></li></ul></li><li><a href="People.html">People</a><ul class='methods'><li data-type='method'><a href="People.html#character">character</a></li><li data-type='method'><a href="People.html#staff">staff</a></li></ul></li><li><a href="User.html">User</a><ul class='methods'><li data-type='method'><a href="User.html#all">all</a></li><li data-type='method'><a href="User.html#basicProfile">basicProfile</a></li><li data-type='method'><a href="User.html#getRecentActivity">getRecentActivity</a></li><li data-type='method'><a href="User.html#profile">profile</a></li><li data-type='method'><a href="User.html#stats">stats</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#AiringEntry">AiringEntry</a></li><li><a href="global.html#AnimeEntry">AnimeEntry</a></li><li><a href="global.html#CharacterEntry">CharacterEntry</a></li><li><a href="global.html#MangaEntry">MangaEntry</a></li><li><a href="global.html#MediaRelationEntry">MediaRelationEntry</a></li><li><a href="global.html#MediaTitle">MediaTitle</a></li><li><a href="global.html#PersonName">PersonName</a></li><li><a href="global.html#SearchEntry">SearchEntry</a></li><li><a href="global.html#StaffEntry">StaffEntry</a></li><li><a href="global.html#StudioEntry">StudioEntry</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">objectDefinitions.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @typedef { Object } MediaTitle
+ * @property { String } english - The offical English licensed title
+ * @property { String } native - The Japanese title in Japanese
+ * @property { String } romaji - The Japanese romanized title
+ * @property { String } userPreferred - The title as it would be displayed to the user
+ */
+
+/**
+ * @typedef { Object } PersonName
+ * @property { String } english - The person's first and last name in English
+ * @property { String } native - The person's name in Japanese
+ * @property { String[] } alternative - Any nicknames or titles the person goes by.
+ */
+
+/**
+ * @typedef { Object } SearchEntry
+ * @property { Object } pageInfo - Information about the search result page
+ * @property { Number } pageInfo.total - The total amount of pages in the search
+ * @property { Number } pageInfo.currentPage - The current page of the search result
+ * @property { Number } pageInfo.lastPage - Last page of the searched term
+ * @property { Boolean } pageInfo.hasNextPage - Check if there is another page 
+ * @property { Number } pageInfo.perPage - Result count per page.
+ * @property { Object[] } media - Search results
+ * @property { Number } media.id - The ID of the media
+ * @property { MediaTitle } media.title - The media's title (Used for anime and manga searches only)
+ * @property { PersonName } media.name - The media's name (Used for character and staff searches only)
+ */
+
+/**
+ * @typedef { Object } StaffEntry
+ * @property { Number } id - The person's ID on AniList
+ * @property { PersonName } name - The person's name 
+ * @property { Object } image - The person's cover image.
+ * @property { String } description - The person's description
+ * @property { Boolean } isFavourite - [Requires Login] Check if the person is favourited
+ * @property { String } siteUrl - The person's AniList page
+ * @property { Number } favourites - The number of users that have favourited the person
+ * @property { String } language - The staff's language
+ * @property { MediaRelationEntry[] } staffMedia - An array of ids and titles of all media that the staff has been apart of
+ * @property { Object[] } characters - An array of ids and the english names of all characters that the staff has voiced
+ */
+
+/**
+ * @typedef { Object } CharacterEntry
+ * @property { Number } id - The person's ID on AniList
+ * @property { PersonName } name - The person's name 
+ * @property { Object } image - The person's cover image.
+ * @property { String } description - The person's description
+ * @property { Boolean } isFavourite - [Requires Login] Check if the person is favourited
+ * @property { String } siteUrl - The person's AniList page
+ * @property { Number } favourites - The number of users that have favourited the person
+ * @property { MediaRelationEntry[] } media - All media that the character is in
+ */
+
+/**
+ * @typedef { Object } MediaRelationEntry
+ * @property { Number } id - The media's AniList ID
+ * @property { MediaTitle } title - The media's titles
+ * @property { String } format - The format of the media.
+ */
+
+/**
+ * @typedef { Object } StudioEntry
+ * @property { Number } id - The studio's ID
+ * @property { String } name - The studio's name
+ * @property { Boolean } isAnimationStudio - Check if the studio is an animation studio
+ * @property { Number } favourites - Number of users who have favourited it.
+ * @property { Object[] } media - A list of all the media the studio has done (Up to the first 25 per AniList's limit).
+ * @property { Number } media.id - The media's ID
+ * @property { MediaTitle } media.title - The media's titles
+ * @property { String } siteUrl - The studio's site URL
+ * @property { Boolean } isFavourite - [Requires Login] Check if the studio is favourited by the user.
+ */
+
+/**
+ * @typedef { Object } AiringEntry
+ * @property { Number } airingAt - The timestamp that the episode is airing at
+ * @property { Number } timeUntilAiring - The amount of seconds until the episode airs
+ * @property { Number } episode - The episode number to air.
+ */
+
+/**
+ * @typedef { Object } AnimeEntry
+ * @property { AiringEntry[] } airingSchedule - The media's airing schedule, ordered by episode number (ie: 1, 2, 3, etc...).
+ * @property { Boolean } autoCreateForumThread - Checks if the media gets a thread automatically with each release
+ * @property { Number } averageScore - A weighted average score of the media.
+ * @property { String } bannerImage - The media's banner image
+ * @property { Object[] } characters - An array of characters with two values per object: id and their full name
+ * @property { String } countryOfOrigin - The country origin of the media
+ * @property { Object[] } coverImage - The media's cover image
+ * @property { String } description - The medias description
+ * @property { Number } duration - General length of an episode
+ * @property { Date } endDate - Official end date of the media
+ * @property { Number } episodes - Number of episodes
+ * @property { String[] } externalLinks - A list of external links associated with the media
+ * @property { Number } favourites - Number of users who have favourited it.
+ * @property { String } format - The format of the anime. (ie: TV, OVA, etc...)
+ * @property { Object[] } genres - The media's genres
+ * @property { String } hashtag - Twitter hashtag associated with the anime
+ * @property { Number } id - The anime's AniList ID
+ * @property { Number } idMal - The anime's MyAnimeList ID
+ * @property { Boolean } isAdult - Check if the media is for adult audiences (ie: Hentai)
+ * @property { Boolean } isFavourite - [Requires Login] Check if the media is favourited
+ * @property { Boolean } isLicensed - Check if the media is licensed
+ * @property { Number } meanScore - Mean score of the media
+ * @property { Object } mediaListEntry - [Requires Login] User's media list entry; required for list edits. 
+ * @property { Number } mediaListEntry.id - Id of the media on a user's media list
+ * @property { String } mediaListEntry.status - Status of the media on the user's media list.
+ * @property { String } modNotes - Mod notes for the media
+ * @property { AiringEntry[] | null } nextAiringEpisode - The media's next episode airing schedule. Returns either an AiringEntry object or null depending if there is an episode to air.
+ * @property { Number } popularity - Number of users with the media on their list
+ * @property { Object[] } rankings - Media rankings in a particular category compared to others. Returns multiple values of: rank, type, context, year, and season.
+ * @property { Object[] } recommendations - Recommendations for the media. Contains an id and the show's titles
+ * @property { MediaRelationEntry[] } relations - All media that relate to the media.
+ * @property { Object[] } reviews - An array of objects. Gives four values per object: id, score, summary, and body (main text of the review)
+ * @property { String } season - Season that the anime started airing
+ * @property { Number } seasonYear - The season year that the anime started airing
+ * @property { String } siteUrl - The media's Anilist page
+ * @property { String } source - Source type that the media was adapted from
+ * @property { Object[] } staff - An array of credited staff. Gives two values per object: id and their full name
+ * @property { Date } startDate - Official release date of the media
+ * @property { Object } stats - Statistics on the media
+ * @property { Object[] } stats.scoreDistribution - An array of how the users have rated the media. Each object contains a score and amount.
+ * @property { Object[] } stats.statusDistribution - An array of the users status with the show. Each object contains a status and amount.
+ * @property { String } status - The current status of the media
+ * @property { Object[] } streamingEpisodes - An ordered array of episodes and where it can be streamed.
+ * @property { String } streamingEpisodes.title - The title of the episode
+ * @property { String } streamingEpisodes.thumbnail - The thumbnail image for the episode
+ * @property { String } streamingEpisodes.url - The URL of the episode
+ * @property { String } streamingEpisodes.site - The name of the site where the episode is provided.
+ * @property { Object[] } studios - An array of studios that produced the anime.
+ * @property { Number } studios.id - The studio's id
+ * @property { String } studios.name - The studio's name
+ * @property { Boolean } studios.isAnimationStudio - Check if the studio is the animation studio for the anime.
+ * @property { String[] } synonyms - The media's alternative titles
+ * @property { Object[] } tags - Tags that describes the media
+ * @property { MediaTitle } title - The manga's titles
+ * @property { String | Object | null } trailer - Returns the trailer URL if the trailer is a Youtube or Dailymotion video. Will return an object if it is a video outside of YouTube and Dailymotion or null if no trailer is found. 
+ * @property { Number } trending - Number of related activity in the past week.
+ * @property { Object[] } trends - Media's daily trend status. An array of objects that gives four values per object: date, trending, popularity, and inProgress
+ * @property { Number } updatedAt - Timestamp of when the page was last updated
+ */
+
+/**
+ * @typedef { Object } MangaEntry
+ * @property { Boolean } autoCreateForumThread - Checks if the media gets a thread automatically with each release
+ * @property { Number } averageScore - A weighted average score of the media.
+ * @property { String } bannerImage - The media's banner image
+ * @property { Number } chapters - Number of chapters
+ * @property { Object[] } characters - An array of characters with two values per object: id and their full name
+ * @property { String } countryOfOrigin - The country origin of the media
+ * @property { Object[] } coverImage - The media's cover image
+ * @property { String } description - The manga's description
+ * @property { Date } endDate - Official end date of the media
+ * @property { String[] } externalLinks - A list of external links associated with the media
+ * @property { Number } favourites - Number of users who have favourited it.
+ * @property { String } format - The format of the manga. (ie: Manga, Novel, etc...)
+ * @property { Object[] } genres - The media's genres
+ * @property { Number } id - The manga's AniList ID
+ * @property { Number } idMal - The manga's MyAnimeList ID
+ * @property { Boolean } isAdult - Check if the media is for adult audiences (ie: Hentai)
+ * @property { Boolean } isFavourite - [Requires Login] Check if the media is favourited
+ * @property { Boolean } isLicensed - Check if the media is licensed
+ * @property { Number } meanScore - Mean score of the media
+ * @property { Object } mediaListEntry - [Requires Login] User's media list entry; required for list edits. 
+ * @property { Number } mediaListEntry.id - Id of the media on a user's media list
+ * @property { String } mediaListEntry.status - Status of the media on the user's media list.
+ * @property { String } modNotes - Mod notes for the media
+ * @property { Number } popularity - Number of users with the media on their list
+ * @property { Object[] } rankings - Media rankings in a particular category compared to others. Returns multiple values of: rank, type, context, year, and season.
+ * @property { Object[] } recommendations - Recommendations for the media. Contains an id and the show's titles
+ * @property { MediaRelationEntry[] } relations - All media that relate to the media.
+ * @property { Object[] } reviews - An array of objects. Gives four values per object: id, score, summary, and body (main text of the review)
+ * @property { String } siteUrl - The media's Anilist page
+ * @property { Object[] } staff - An array of credited staff. Gives two values per object: id and their full name
+ * @property { Date } startDate - Official release date of the media
+ * @property { Object } stats - Statistics on the media
+ * @property { Object[] } stats.scoreDistribution - An array of how the users have rated the media. Each object contains a score and amount.
+ * @property { Object[] } stats.statusDistribution - An array of the users status with the show. Each object contains a status and amount.
+ * @property { String } status - The current status of the media
+ * @property { String[] } synonyms - The media's alternative titles
+ * @property { Object[] } tags - Tags that describes the media
+ * @property { MediaTitle } title - The manga's titles
+ * @property { Number } trending - Number of related activity in the past week.
+ * @property { Object[] } trends - Media's daily trend status. An array of objects that gives four values per object: date, trending, popularity, and inProgress
+ * @property { Number } updatedAt - Timestamp of when the page was last updated
+ * @property { Number } volumes - Number of volumes
+ */</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Wed Oct 21 2020 23:07:57 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>
