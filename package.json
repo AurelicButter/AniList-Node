@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "test": "node tests/mediaTest.js",
-    "docs": "jsdoc -c docs/docConfig.json"
+    "docs": "node utilities/clearDocs.js && jsdoc -c utilities/docConfig.json"
   },
   "author": {
     "name": "Frederick Katsura",
