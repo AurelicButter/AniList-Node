@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>search.js - AniList-Node Documentation</title>
+    
+    <meta name="description" content="Documentation for the AniList-Node NPM package." />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/Butterstroke/AniList-Node" target="_blank" class="menu-item" id="website_link" >GitHub Repository</a></h2><h2><a href="https://www.npmjs.com/package/anilist-node" target="_blank" class="menu-item" id="website_link" >AniList-Node on NPM</a></h2><h2><a href="https://discord.gg/qKfqsjW" target="_blank" class="menu-item" id="website_link" >Support Server</a></h2><h3>Classes</h3><ul><li><a href="AniList.html">AniList</a><ul class='methods'><li data-type='method'><a href="AniList.html#search">search</a></li><li data-type='method'><a href="AniList.html#studio">studio</a></li></ul></li><li><a href="AniList.Activity.html">Activity</a><ul class='methods'><li data-type='method'><a href="AniList.Activity.html#get">get</a></li><li data-type='method'><a href="AniList.Activity.html#getUserActivity">getUserActivity</a></li></ul></li><li><a href="Anilist.Lists.html">Lists</a><ul class='methods'><li data-type='method'><a href="Anilist.Lists.html#anime">anime</a></li><li data-type='method'><a href="Anilist.Lists.html#manga">manga</a></li></ul></li><li><a href="AniList.Media.html">Media</a><ul class='methods'><li data-type='method'><a href="AniList.Media.html#anime">anime</a></li><li data-type='method'><a href="AniList.Media.html#manga">manga</a></li></ul></li><li><a href="AniList.People.html">People</a><ul class='methods'><li data-type='method'><a href="AniList.People.html#character">character</a></li><li data-type='method'><a href="AniList.People.html#staff">staff</a></li></ul></li><li><a href="AniList.Search.html">Search</a><ul class='methods'><li data-type='method'><a href="AniList.Search.html#activity">activity</a></li><li data-type='method'><a href="AniList.Search.html#anime">anime</a></li><li data-type='method'><a href="AniList.Search.html#character">character</a></li><li data-type='method'><a href="AniList.Search.html#manga">manga</a></li><li data-type='method'><a href="AniList.Search.html#staff">staff</a></li><li data-type='method'><a href="AniList.Search.html#studio">studio</a></li><li data-type='method'><a href="AniList.Search.html#user">user</a></li></ul></li><li><a href="AniList.User.html">User</a><ul class='methods'><li data-type='method'><a href="AniList.User.html#all">all</a></li><li data-type='method'><a href="AniList.User.html#getRecentActivity">getRecentActivity</a></li><li data-type='method'><a href="AniList.User.html#profile">profile</a></li><li data-type='method'><a href="AniList.User.html#stats">stats</a></li></ul></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-Filtering.html">Filtering</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActivityEntry">ActivityEntry</a></li><li><a href="global.html#ActivityFilterTypes">ActivityFilterTypes</a></li><li><a href="global.html#ActivitySort">ActivitySort</a></li><li><a href="global.html#ActivityType">ActivityType</a></li><li><a href="global.html#AiringEntry">AiringEntry</a></li><li><a href="global.html#AnimeEntry">AnimeEntry</a></li><li><a href="global.html#CharacterEntry">CharacterEntry</a></li><li><a href="global.html#CountryCode">CountryCode</a></li><li><a href="global.html#FuzzyDateInt">FuzzyDateInt</a></li><li><a href="global.html#ListActivity">ListActivity</a></li><li><a href="global.html#ListEntry">ListEntry</a></li><li><a href="global.html#MangaEntry">MangaEntry</a></li><li><a href="global.html#MediaFilterTypes">MediaFilterTypes</a></li><li><a href="global.html#MediaFormat">MediaFormat</a></li><li><a href="global.html#MediaRelation">MediaRelation</a></li><li><a href="global.html#MediaSeason">MediaSeason</a></li><li><a href="global.html#MediaSort">MediaSort</a></li><li><a href="global.html#MediaSource">MediaSource</a></li><li><a href="global.html#MediaStatus">MediaStatus</a></li><li><a href="global.html#MediaTitle">MediaTitle</a></li><li><a href="global.html#MediaType">MediaType</a></li><li><a href="global.html#MessageActivity">MessageActivity</a></li><li><a href="global.html#PersonName">PersonName</a></li><li><a href="global.html#PersonRelation">PersonRelation</a></li><li><a href="global.html#SearchEntry">SearchEntry</a></li><li><a href="global.html#StaffEntry">StaffEntry</a></li><li><a href="global.html#StudioEntry">StudioEntry</a></li><li><a href="global.html#TextActivity">TextActivity</a></li><li><a href="global.html#UserList">UserList</a></li><li><a href="global.html#UserProfile">UserProfile</a></li><li><a href="global.html#UserRelation">UserRelation</a></li><li><a href="global.html#UserStats">UserStats</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">search.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const filterBuilder = require("./utils/filters");
+
+/**
+ * Search for items on AniList
+ * @since 1.7.0
+ * @memberof AniList
+ */
+class Search {
+    /**
+     * @description This constructor is meant for internal use and is apart of initializing. You cannot access this
+     * through the AniList class and are not expect to.
+     * @param { Utilites } utilities - The AniList Utilities class.
+     * @hideconstructor
+     */
+    constructor(utilities) {
+        this.util = utilities;
+    }
+
+    /**
+     * Search for a specific character
+     * @param {String} term - Required. The term to lookup. (ie: "Myne" or "Chise Hatori")
+     * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
+     * @param {Number} amount - The amount of results per page. AniList will cap this at 25 and function will default to 5 if not provided.
+     * @return { SearchEntry }
+     * @since 1.7.0
+     */
+    character(term, page=1, amount=5) {
+        if (!term) { throw new Error("Search term was not provided!"); }
+
+        //Validate all type conditions.
+        if (typeof term !== "string") { throw new Error("Term is not a string"); }
+        if (typeof page !== "number") { throw new Error("Page number is not a number"); }
+        if (typeof amount !== "number") { throw new Error("Amount is not a number"); }
+
+        return this.util.send(`query ($page: Int, $perPage: Int, $search: String) {
+            Page (page: $page, perPage: $perPage) { pageInfo { total currentPage lastPage hasNextPage perPage } 
+            characters (search: $search) { id name { english: full } } } }`, { search: term, page: page, perPage: amount });
+    }
+
+    /**
+     * Search for a specific studio
+     * @param {String} term - Required. The term to lookup. (ie: "White Fox")
+     * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
+     * @param {Number} amount - The amount of results per page. AniList will cap this at 25 and function will default to 5 if not provided.
+     * @return { SearchEntry }
+     * @since 1.7.0
+     */
+    studio(term, page=1, amount=5) {
+        if (!term) { throw new Error("Search term was not provided!"); }
+
+        //Validate all type conditions.
+        if (typeof term !== "string") { throw new Error("Term is not a string"); }
+        if (typeof page !== "number") { throw new Error("Page number is not a number"); }
+        if (typeof amount !== "number") { throw new Error("Amount is not a number"); }
+
+        return this.util.send(`query ($page: Int, $perPage: Int, $search: String) {
+            Page (page: $page, perPage: $perPage) { pageInfo { total currentPage lastPage hasNextPage perPage } 
+            studios (search: $search) { id name } } }`, { search: term, page: page, perPage: amount });
+    }
+
+    /**
+     * Search for a specific staff member
+     * @param {String} term - Required. The term to lookup. (ie: "Yuka Iguchi")
+     * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
+     * @param {Number} amount - The amount of results per page. AniList will cap this at 25 and function will default to 5 if not provided.
+     * @return { SearchEntry }
+     * @since 1.7.0
+     */
+    staff(term, page=1, amount=5) {
+        if (!term) { throw new Error("Search term was not provided!"); }
+
+        //Validate all type conditions.
+        if (typeof term !== "string") { throw new Error("Term is not a string"); }
+        if (typeof page !== "number") { throw new Error("Page number is not a number"); }
+        if (typeof amount !== "number") { throw new Error("Amount is not a number"); }
+
+        return this.util.send(`query ($page: Int, $perPage: Int, $search: String) {
+            Page (page: $page, perPage: $perPage) { pageInfo { total currentPage lastPage hasNextPage perPage } 
+            staff (search: $search) { id name { english: full } } } }`, { search: term, page: page, perPage: amount });
+    }
+
+    /**
+     * Search for a specific user
+     * @param {String} term - Required. The term to lookup. (ie: "Butterstroke")
+     * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
+     * @param {Number} amount - The amount of results per page. AniList will cap this at 25 and function will default to 5 if not provided.
+     * @return { SearchEntry }
+     * @since 1.7.0
+     */
+    user(term, page=1, amount=5) {
+        if (!term) { throw new Error("Search term was not provided!"); }
+
+        //Validate all type conditions.
+        if (typeof term !== "string") { throw new Error("Term is not a string"); }
+        if (typeof page !== "number") { throw new Error("Page number is not a number"); }
+        if (typeof amount !== "number") { throw new Error("Amount is not a number"); }
+
+        return this.util.send(`query ($page: Int, $perPage: Int, $search: String) {
+            Page (page: $page, perPage: $perPage) { pageInfo { total currentPage lastPage hasNextPage perPage } 
+            users (search: $search) { id name } } }`, { search: term, page: page, perPage: amount });
+    }
+
+    /**
+     * Search for a specific anime
+     * @param {String} term - The term to lookup. (ie: "Log Horizon"). For no term, input a null value
+     * @param {Object} filter - A key-value paired object to filter search data.
+     * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
+     * @param {Number} amount - The amount of results per page. AniList will cap this at 25 and function will default to 5 if not provided.
+     * @return { SearchEntry }
+     * @since 1.7.0
+     */
+    anime(term=null, filter=null, page=1, amount=5) {
+        if (term &amp;&amp; typeof term !== "string") { throw new Error("Search term is not a string"); }
+        if (typeof page !== "number") { throw new Error("Page number is not a number"); }
+        if (typeof amount !== "number") { throw new Error("Amount is not a number"); }
+
+        let query = filterBuilder("anime", filter);
+
+        query += "id title { romaji english native userPreferred } } } }";
+        return this.util.send(query, { search: term, page: page, perPage: amount });
+    }
+
+    /**
+     * Search for a specific manga
+     * @param {String} term - The term to lookup. (ie: "Mahoutsukai no Yome"). For no term, input a null value.
+     * @param {Object} filter - A key-value paired object to filter search data.
+     * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
+     * @param {Number} amount - The amount of results per page. AniList will cap this at 25 and function will default to 5 if not provided.
+     * @return { SearchEntry }
+     * @since 1.7.0
+     */
+    manga(term=null, filter=null, page=1, amount=5) {
+        if (term &amp;&amp; typeof term !== "string") { throw new Error("Search term is not a string"); }
+        if (typeof page !== "number") { throw new Error("Page number is not a number"); }
+        if (typeof amount !== "number") { throw new Error("Amount is not a number"); }
+
+        let query = filterBuilder("manga", filter);
+
+        query += "id title { romaji english native userPreferred } } } }";
+        return this.util.send(query, { search: term, page: page, perPage: amount });
+    }
+
+    /**
+     * Search for a specific activity
+     * @param {Number} activityID - The activityID to lookup. (ie: 152876349). For no term, input a null value.
+     * @param {Object} filter - A key-value paired object to filter search data.
+     * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
+     * @param {Number} amount - The amount of results per page. AniList will cap this at 25 and function will default to 5 if not provided.
+     * @return { ActivityEntry }
+     * @since 1.7.0
+     */
+    activity(activityID=null, filter=null, page=1, amount=5) {
+        if (activityID &amp;&amp; typeof activityID !== "string") { throw new Error("activityID is not a number."); }
+        if (typeof page !== "number") { throw new Error("Page number is not a number"); }
+        if (typeof amount !== "number") { throw new Error("Amount is not a number"); }
+            
+        let query = filterBuilder("activity", filter);
+    
+        query += `... on ListActivity { id type createdAt likeCount }
+        ... on TextActivity { id type createdAt likeCount }
+        ... on MessageActivity { id type createdAt likeCount }}}}`;
+
+        return this.util.send(query, { id: activityID, page: page, perPage: amount });
+    }
+};
+
+module.exports = Search;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Sun Feb 28 2021 21:35:02 GMT-0400 (Atlantic Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>

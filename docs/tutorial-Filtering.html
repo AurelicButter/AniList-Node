@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>index.js - AniList-Node Documentation</title>
+    <title>Tutorial: Filtering - AniList-Node Documentation</title>
     
     <meta name="description" content="Documentation for the AniList-Node NPM package." />
     
@@ -37,135 +37,87 @@
 
 <div id="main">
     
-    <h1 class="page-title">index.js</h1>
+    <h1 class="page-title">Tutorial: Filtering</h1>
     
 
-    
-
-
-
-    
     <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>const activity = require("./activity"),
-    lists = require("./lists"),
-    media = require("./media"),
-    people = require("./people"),
-    searchEntry = require("./search"),
-    User = require("./user"),
-    util = require("./utilities");
 
-/**
- * The main class for AniList-Node
- * @since 1.0.0
- */
-class AniList {
-    /**
-     * @constructor
-     * @param {String} [accessKey] - The AniList API token. If no key is provided, 
-     *      the user will not be able to access private information such as 
-     *      the authorized user's profile (if set to private).
-     */
-    constructor (accessKey) {
-        if (!accessKey) { accessKey = null; }
+<header>
+    
 
-        // Import utilites for the classes.
-        this.__util = new util(accessKey);
+    <h2>Filtering</h2>
+</header>
 
-        /**
-         * @augments User
-         * @see {@Link AniList.User}
-         */
-        this.user = new User(this.__util);
+<article>
+    <h1>Filtering Searches</h1>
+<h2>Getting Started</h2>
+<p>Filtering is a feature avalible with the search class added in v1.7.0. It allows users to filter their query results to show different entries such as showing animes with light novel sources or mangas that aired before 1981.</p>
+<p>Currently (as of 1.7.0) only <a href="AniList.Search.html#anime">AniList.searchEntry.anime</a>, <a href="AniList.Search.html#manga">AniList.searchEntry.manga</a>, and <a href="AniList.Search.html#activity">AniList.searchEntry.activity</a> allow for filtering.</p>
+<pre class="prettyprint source lang-JavaScript"><code>const anilistnode = require(&quot;../lib/index&quot;);
+const Anilist = new anilistnode();
 
-        /**
-         * @augments lists
-         * @see {@Link AniList.Lists}
-         */
-        this.lists = new lists(this.__util);
+// Old search method will not filter
+Anilist.search(&quot;anime&quot;, &quot;Occultic;Nine&quot;, 1, 10).then((data) => { 
+    console.log(data); 
+});
 
-        /**
-         * @augments media
-         * @see {@Link AniList.Media}
-         */
-        this.media = new media(this.__util);
-
-        /**
-         * @augments people
-         * @see {@Link AniList.People}
-         */
-        this.people = new people(this.__util);
-
-        /**
-         * @augments Activity
-         * @see {@Link AniList.Activity}
-         */
-        this.activity = new activity(this.__util);
-
-        /**
-         * @augments Search
-         * @see {@Link AniList.Search}
-         */
-        this.searchEntry = new searchEntry(this.__util);
-    };
-
-    /**
-     * Grabs data on a studio
-     * @param {String | Number} studio - The studio ID or name on AniList.
-     * @return { StudioEntry } 
-     * @since 1.0.0
-     */
-    studio(studio) {
-        var queryVars = this.__util.generateQueryHeaders("Studio", studio);
-
-        return this.__util.send(queryVars[1] + `id name isAnimationStudio siteUrl isFavourite favourites 
-            media { nodes { id title { romaji english native userPreferred } } } } }`, queryVars[0]);
-    };
-
-    /**
-     * Searchs AniList based on a specific term.
-     * @param {String} type - Required. Either anime, manga, character, staff, studio, or user. 
-     * @param {String} term - Required. The term to lookup. (ie: "Honzuki no Gekokujou" or "Butterstroke")
-     * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
-     * @param {Number} amount - The amount of results per page. AniList will cap this at 25 and function will default to 5 if not provided.
-     * @return { SearchEntry }
-     * @since 1.0.0
-     * @deprecated Please use {@link AniList.Search} class via `AniList.searchEntry` for updated searching. {@link AniList.Search} will replace
-     * this function in the next major update (v2.0.0).
-     */
-    search(type, term, page=1, amount=5) {
-        if (!type) { throw new Error("Type of search not defined!"); }
-        else if (!term) { throw new Error("Search term was not provided!"); }
-
-        //Validate all type conditions.
-        if (typeof type !== "string") { throw new Error("Type is not a string."); }
-        if (typeof term !== "string") { throw new Error("Term is not a string"); }
-        if (typeof page !== "number") { throw new Error("Page number is not a number"); }
-        if (typeof amount !== "number") { throw new Error("Amount is not a number"); }
-        
-        var search = {
-            "anime": "media (type: ANIME, search: $search) { id title { romaji english native userPreferred } }",
-            "manga": "media (type: MANGA, search: $search) { id title { romaji english native userPreferred } }",
-            "char": "characters (search: $search) { id name { english: full } }" ,
-            "staff": "staff (search: $search) { id name { english: full } }",
-            "studio": "studios (search: $search) { id name }",
-            "user": "users (search: $search) { id name }"
-        };
-
-        var query = search[type.toLowerCase()];
-        if (!query) { throw new Error("Type not supported."); }
-		
-        return this.__util.send(`query ($page: Int, $perPage: Int, $search: String) {
-        Page (page: $page, perPage: $perPage) { pageInfo { total currentPage lastPage hasNextPage perPage } ${query} } }`, { search: term, page: page, perPage: amount });
-    };
+// Instead use the new Search class
+Anilist.searchEntry.anime(&quot;Occultic;Nine&quot;, myFilter, 1, 10).then((data) => {
+    console.log(data);
+});
+</code></pre>
+<h2>How to Use</h2>
+<p>Filters are designed to be an object filled with simple key-value pairs. No filter should have any objects or complex data types within them. But, filters can have one or many different pairs to filter the queries with.</p>
+<pre class="prettyprint source lang-JavaScript"><code>let myMediaFilter = {
+    episodes_greater: 25
 };
 
-module.exports = AniList;</code></pre>
-        </article>
-    </section>
+let myActivtyFilter = {
+    hasReplies: true,
+    type_not: &quot;MEDIA_LIST&quot;,
+    userId: 1
+};
+</code></pre>
+<pre class="prettyprint source lang-JavaScript"><code>// Example of a correct filter and use within the method.
 
+let myFilter = {
+    isAdult: true,
+    source_in: [&quot;ORIGINAL&quot;, &quot;LIGHT_NOVEL&quot;]
+};
 
+Anilist.searchEntry.anime(null, myFilter).then(data => {
+    // Data will return any entry that is adult which has
+    // either an original or light novel source for the story.
+    console.log(data);
+});
+</code></pre>
+<p>AniList-Node also validates your filters before sending the request. Filter keys are case-sensitive and values require the correct type. If the filter is build incorrectly, the method will throw an error.</p>
+<pre class="prettyprint source lang-JavaScript"><code>// The key is mistyped
+// This will throw an error message of &quot;Filter key not recognized. Bad key: idMalnot.&quot;
+let myFilter = {
+    idMalnot: 8425 
+};
 
+// Likewise, if the key doesn't exist...
+// This will throw an error message of &quot;Filter key not recognized. Bad key: myCoolKey.&quot;
+let myFilter = {
+    myCoolKey: 8425 
+};
+
+// Value types will also be validated. Here, the type is not correct
+// This will throw an error message of &quot;Value true type does not match filter type in key idMal!&quot;
+let myFilter = {
+    idMal: true
+};
+</code></pre>
+<p>For finding what keys and possible value types are needed refer to the following:</p>
+<ul>
+<li>Activity Filters: <a href="global.html#ActivityFilterTypes">ActivityFilterTypes</a></li>
+<li>Media Filters: <a href="global.html#MediaFilterTypes">MediaFilterTypes</a></li>
+</ul>
+</article>
+
+</section>
 
     
     
