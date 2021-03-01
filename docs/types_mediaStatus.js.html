@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>People - AniList-Node Documentation</title>
+    <title>types/mediaStatus.js - AniList-Node Documentation</title>
     
     <meta name="description" content="Documentation for the AniList-Node NPM package." />
     
@@ -37,378 +37,34 @@
 
 <div id="main">
     
-    <h1 class="page-title">People</h1>
+    <h1 class="page-title">types/mediaStatus.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
-    
-        <h2>
-            <span class="ancestors"><a href="AniList.html">AniList</a>.</span>
-        
-        People
-        </h2>
-        
-            <div class="class-description usertext">Access AniList's characters and staff data.</div>
-        
-    
-</header>
-
-<article>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="character"><span class="type-signature"></span>character<span class="signature">(id)</span><span class="type-signature"> &rarr; {<a href="global.html#CharacterEntry">CharacterEntry</a>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="people.js.html">people.js</a>, <a href="people.js.html#line23">line 23</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Fetch a character entry by its AniList ID.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-|
-
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Required. The ID tied to the AniList entry.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="global.html#CharacterEntry">CharacterEntry</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="staff"><span class="type-signature"></span>staff<span class="signature">(id)</span><span class="type-signature"> &rarr; {<a href="global.html#StaffEntry">StaffEntry</a>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="people.js.html">people.js</a>, <a href="people.js.html#line37">line 37</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Fetch a staff entry by its AniList ID or their name.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-|
-
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Required. The ID can either be the AniList ID or the staff's name.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="global.html#StaffEntry">StaffEntry</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-    
-
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * An enum for media statuses
+ * @enum {String}
+ * @readonly
+ */
+const MediaStatus = {
+    FINISHED: "FINISHED",
+    RELEASING: "RELEASING",
+    NOT_YET_RELEASED: "NOT_YET_RELEASED",
+    CANCELLED: "CANCELLED",
+    HIATUS: "HIATUS"
+};
 
-    
-</article>
+Object.freeze(MediaStatus);
 
-</section>
+module.exports = MediaStatus;</code></pre>
+        </article>
+    </section>
 
 
 

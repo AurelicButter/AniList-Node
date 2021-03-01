@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>People - AniList-Node Documentation</title>
+    <title>Tutorial: Filtering - AniList-Node Documentation</title>
     
     <meta name="description" content="Documentation for the AniList-Node NPM package." />
     
@@ -37,381 +37,87 @@
 
 <div id="main">
     
-    <h1 class="page-title">People</h1>
+    <h1 class="page-title">Tutorial: Filtering</h1>
     
 
-    
-
-
-
-
-<section>
+    <section>
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="AniList.html">AniList</a>.</span>
-        
-        People
-        </h2>
-        
-            <div class="class-description usertext">Access AniList's characters and staff data.</div>
-        
-    
+
+    <h2>Filtering</h2>
 </header>
 
 <article>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="character"><span class="type-signature"></span>character<span class="signature">(id)</span><span class="type-signature"> &rarr; {<a href="global.html#CharacterEntry">CharacterEntry</a>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="people.js.html">people.js</a>, <a href="people.js.html#line23">line 23</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Fetch a character entry by its AniList ID.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-|
-
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Required. The ID tied to the AniList entry.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="global.html#CharacterEntry">CharacterEntry</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="staff"><span class="type-signature"></span>staff<span class="signature">(id)</span><span class="type-signature"> &rarr; {<a href="global.html#StaffEntry">StaffEntry</a>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="people.js.html">people.js</a>, <a href="people.js.html#line37">line 37</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Fetch a staff entry by its AniList ID or their name.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-|
-
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Required. The ID can either be the AniList ID or the staff's name.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="global.html#StaffEntry">StaffEntry</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-    
-
-    
-
-    
+    <h1>Filtering Searches</h1>
+<h2>Getting Started</h2>
+<p>Filtering is a feature avalible with the search class added in v1.7.0. It allows users to filter their query results to show different entries such as showing animes with light novel sources or mangas that aired before 1981.</p>
+<p>Currently (as of 1.7.0) only <a href="AniList.Search.html#anime">AniList.searchEntry.anime</a>, <a href="AniList.Search.html#manga">AniList.searchEntry.manga</a>, and <a href="AniList.Search.html#activity">AniList.searchEntry.activity</a> allow for filtering.</p>
+<pre class="prettyprint source lang-JavaScript"><code>const anilistnode = require(&quot;../lib/index&quot;);
+const Anilist = new anilistnode();
+
+// Old search method will not filter
+Anilist.search(&quot;anime&quot;, &quot;Occultic;Nine&quot;, 1, 10).then((data) => { 
+    console.log(data); 
+});
+
+// Instead use the new Search class
+Anilist.searchEntry.anime(&quot;Occultic;Nine&quot;, myFilter, 1, 10).then((data) => {
+    console.log(data);
+});
+</code></pre>
+<h2>How to Use</h2>
+<p>Filters are designed to be an object filled with simple key-value pairs. No filter should have any objects or complex data types within them. But, filters can have one or many different pairs to filter the queries with.</p>
+<pre class="prettyprint source lang-JavaScript"><code>let myMediaFilter = {
+    episodes_greater: 25
+};
+
+let myActivtyFilter = {
+    hasReplies: true,
+    type_not: &quot;MEDIA_LIST&quot;,
+    userId: 1
+};
+</code></pre>
+<pre class="prettyprint source lang-JavaScript"><code>// Example of a correct filter and use within the method.
+
+let myFilter = {
+    isAdult: true,
+    source_in: [&quot;ORIGINAL&quot;, &quot;LIGHT_NOVEL&quot;]
+};
+
+Anilist.searchEntry.anime(null, myFilter).then(data => {
+    // Data will return any entry that is adult which has
+    // either an original or light novel source for the story.
+    console.log(data);
+});
+</code></pre>
+<p>AniList-Node also validates your filters before sending the request. Filter keys are case-sensitive and values require the correct type. If the filter is build incorrectly, the method will throw an error.</p>
+<pre class="prettyprint source lang-JavaScript"><code>// The key is mistyped
+// This will throw an error message of &quot;Filter key not recognized. Bad key: idMalnot.&quot;
+let myFilter = {
+    idMalnot: 8425 
+};
+
+// Likewise, if the key doesn't exist...
+// This will throw an error message of &quot;Filter key not recognized. Bad key: myCoolKey.&quot;
+let myFilter = {
+    myCoolKey: 8425 
+};
+
+// Value types will also be validated. Here, the type is not correct
+// This will throw an error message of &quot;Value true type does not match filter type in key idMal!&quot;
+let myFilter = {
+    idMal: true
+};
+</code></pre>
+<p>For finding what keys and possible value types are needed refer to the following:</p>
+<ul>
+<li>Activity Filters: <a href="global.html#ActivityFilterTypes">ActivityFilterTypes</a></li>
+<li>Media Filters: <a href="global.html#MediaFilterTypes">MediaFilterTypes</a></li>
+</ul>
 </article>
 
 </section>
-
-
-
 
     
     
