@@ -3,6 +3,14 @@
   "version": "1.7.0",
   "description": "A lightweight Node.js wrapper for the AniList API",
   "main": "./lib/index.js",
+  "types": "./lib/types/index.d.ts",
+  "typesVersions": {
+    ">=4.2": {
+      "*": [
+        "ts4.2/*"
+      ]
+    }
+  },
   "scripts": {
     "test": "node tests/mediaTest.js",
     "docs": "node utilities/clearDocs.js && jsdoc -u tutorials -c utilities/docConfig.json",
@@ -31,7 +39,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "typescript": "^4.2.4"
   },
   "keywords": [
     "anilist",
