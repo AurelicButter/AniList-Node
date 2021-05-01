@@ -1,4 +1,4 @@
-// Type definitions for AniList-Node 1.7.0
+// Type definitions for AniList-Node
 // Project: https://github.com/Butterstroke/AniList-Node
 // Definitions by: Diego Aquino <https://github.com/typlox>
 
@@ -56,6 +56,13 @@ declare class Anilist {
 	 * @memberof AniList
 	 */
 	searchEntry: Search;
+
+	/**
+	 * Access AniList's recommendations
+	 * @since 1.8.0
+	 * @memberof AniList
+	 */
+	recommendation: Recommendation;
 
 	/**
 	 * @constructor
@@ -288,6 +295,25 @@ declare class Search {
 	activity(activityID?: number, filter?: ActivityFilterTypes, page?: number, amount?: number): Promise<ActivityEntry[]>;
 }
 
+declare class Recommendation {
+
+	/**
+     * Get AniList recommendations for a media.
+     * @param { Number } mediaID The AniList media id
+     * @returns { RecommendationList }
+     * @since 1.8.0
+     */
+	getList(mediaID: Number): Promise<RecommendationList>;
+
+	/**
+     * Get an AniList recommendation via its ID
+     * @param { Number } recommendID The AniList recommendation ID
+     * @returns { SingleRecommendation }
+     * @since 1.8.0
+     */
+	 get(recommendID: Number): Promise<SingleRecommendation>;
+}
+
 declare type MediaType = 'ANIME' | 'MANGA';
 
 declare type MediaFormat = 'TV' | 'TV_SHORT' | 'MOVIE' | 'SPECIAL' | 'OVA' | 'ONA' | 'MUSIC' | 'MANGA' | 'NOVEL' | 'ONE_SHOT';
@@ -303,6 +329,8 @@ declare type MediaSort = 'ID' | 'ID_DESC' | 'TITLE_ROMAJI' | 'TITLE_ROMAJI_DESC'
 declare type ActivitySort = 'ID' | 'ID_DESC';
 
 declare type ActivityType = 'TEXT' | 'ANIME_LIST' | 'MANGA_LIST' | 'MESSAGE' | 'MEDIA_LIST';
+
+declare type RecommendationRating = "NO_RATING" | "RATE_UP" | "RATE_DOWN";
 
 declare interface FuzzyDate {
 	year: number,
@@ -889,6 +917,23 @@ declare interface ActivityFilterTypes {
 	createdAt_greater?: number,
 	createdAt_lesser?: number,
 	sort?: ActivitySort[]
+}
+
+declare interface RecommendationList {
+	media: MediaRelation,
+	recommendations: RecommendationEntry[]
+}
+
+declare interface RecommendationEntry {
+	id: Number,
+	rating: Number,
+	userRating: RecommendationRating,
+	user: UserRelation,
+	mediaRecommendation: MediaRelation
+}
+
+declare interface SingleRecommendation extends RecommendationEntry {
+	media: MediaRelation
 }
 
 export default Anilist;
