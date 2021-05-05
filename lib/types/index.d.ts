@@ -129,6 +129,14 @@ declare class User {
 	 * @since 1.6.0
 	 */
 	getRecentActivity(user: number): Promise<Array<ListActivity|TextActivity|MessageActivity>>;
+
+	/**
+     * Fetch profile information on the currently authorized user.
+     * @returns { UserProfile }
+     * 
+     * @since 1.8.0
+     */
+	getAuthorized(): Promise<UserProfile>;
 }
 
 declare class Lists {
