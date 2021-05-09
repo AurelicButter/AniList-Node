@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>types/activitySort.js - AniList-Node Documentation</title>
+		<title>Recommendation - AniList-Node Documentation</title>
 
 		<meta name="description" content="Documentation for the AniList-Node NPM package." />
 
@@ -160,24 +160,186 @@
 		</nav>
 
 		<div id="main">
-			<h1 class="page-title">types/activitySort.js</h1>
+			<h1 class="page-title">Recommendation</h1>
 
 			<section>
+				<header>
+					<h2>
+						<span class="ancestors"><a href="AniList.html">AniList</a>.</span>
+
+						Recommendation
+					</h2>
+
+					<div class="class-description usertext">Access recommendations on AniList</div>
+				</header>
+
 				<article>
-					<pre class="prettyprint source linenums"><code>/**
- * An enum for activity sorting
- * @enum {String}
- * @readonly
- */
+					<h3 class="subsection-title">Methods</h3>
 
-const ActivitySort = {
-    ID: "ID",
-    ID_DESC: "ID_DESC"
-};
+					<h4 class="name" id="get">
+						<span class="type-signature"></span>get<span class="signature">(recommendID)</span
+						><span class="type-signature">
+							&rarr; {<a href="global.html#SingleRecommendation">SingleRecommendation</a>}</span
+						>
+					</h4>
 
-Object.freeze(ActivitySort);
+					<dl class="details">
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="recommendation.js.html">recommendation.js</a>,
+									<a href="recommendation.js.html#line45">line 45</a>
+								</li>
+							</ul>
+						</dd>
 
-module.exports = ActivitySort;</code></pre>
+						<dt class="tag-since">Since:</dt>
+						<dd class="tag-since">
+							<ul class="dummy">
+								<li>1.8.0</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<div class="description usertext">Get an AniList recommendation via its ID</div>
+
+					<h5>Parameters:</h5>
+
+					<table class="params">
+						<thead>
+							<tr>
+								<th>Name</th>
+
+								<th>Type</th>
+
+								<th class="last">Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="name"><code>recommendID</code></td>
+
+								<td class="type">
+									<span class="param-type">Number</span>
+								</td>
+
+								<td class="description last">The AniList recommendation ID</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5>Returns:</h5>
+
+					<dl class="param-type">
+						<dt>Type</dt>
+						<dd>
+							<span class="param-type"
+								><a href="global.html#SingleRecommendation">SingleRecommendation</a></span
+							>
+						</dd>
+					</dl>
+
+					<h4 class="name" id="getList">
+						<span class="type-signature"></span>getList<span class="signature"
+							>(mediaID, page, perPage)</span
+						><span class="type-signature">
+							&rarr; {<a href="global.html#RecommendationList">RecommendationList</a>}</span
+						>
+					</h4>
+
+					<dl class="details">
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="recommendation.js.html">recommendation.js</a>,
+									<a href="recommendation.js.html#line25">line 25</a>
+								</li>
+							</ul>
+						</dd>
+
+						<dt class="tag-since">Since:</dt>
+						<dd class="tag-since">
+							<ul class="dummy">
+								<li>1.8.0</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<div class="description usertext">Get AniList recommendations for a media.</div>
+
+					<h5>Parameters:</h5>
+
+					<table class="params">
+						<thead>
+							<tr>
+								<th>Name</th>
+
+								<th>Type</th>
+
+								<th>Default</th>
+
+								<th class="last">Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="name"><code>mediaID</code></td>
+
+								<td class="type">
+									<span class="param-type">Number</span>
+								</td>
+
+								<td class="default"></td>
+
+								<td class="description last">The AniList media ID</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>page</code></td>
+
+								<td class="type">
+									<span class="param-type">Number</span>
+								</td>
+
+								<td class="default">
+									<code>1</code>
+								</td>
+
+								<td class="description last">Target a specific page number for recommended.</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>perPage</code></td>
+
+								<td class="type">
+									<span class="param-type">Number</span>
+								</td>
+
+								<td class="default">
+									<code>25</code>
+								</td>
+
+								<td class="description last">
+									Limits the page amount to a specific number. 25 is max as per AniList limits.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5>Returns:</h5>
+
+					<dl class="param-type">
+						<dt>Type</dt>
+						<dd>
+							<span class="param-type"
+								><a href="global.html#RecommendationList">RecommendationList</a></span
+							>
+						</dd>
+					</dl>
 				</article>
 			</section>
 		</div>
@@ -186,7 +348,7 @@ module.exports = ActivitySort;</code></pre>
 
 		<footer>
 			Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Sun May 09 2021
-			16:15:06 GMT-0300 (Atlantic Daylight Time) using the
+			16:15:07 GMT-0300 (Atlantic Daylight Time) using the
 			<a href="https://github.com/clenemt/docdash">docdash</a> theme.
 		</footer>
 

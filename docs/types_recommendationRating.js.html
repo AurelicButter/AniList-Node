@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>types/activitySort.js - AniList-Node Documentation</title>
+		<title>types/recommendationRating.js - AniList-Node Documentation</title>
 
 		<meta name="description" content="Documentation for the AniList-Node NPM package." />
 
@@ -160,24 +160,25 @@
 		</nav>
 
 		<div id="main">
-			<h1 class="page-title">types/activitySort.js</h1>
+			<h1 class="page-title">types/recommendationRating.js</h1>
 
 			<section>
 				<article>
 					<pre class="prettyprint source linenums"><code>/**
- * An enum for activity sorting
+ * An enum for recommendation ratings
  * @enum {String}
  * @readonly
  */
 
-const ActivitySort = {
-    ID: "ID",
-    ID_DESC: "ID_DESC"
+ const RecommendationRating = {
+    NO_RATING: "NO_RATING",
+    RATE_UP: "RATE_UP",
+    RATE_DOWN: "RATE_DOWN"
 };
 
-Object.freeze(ActivitySort);
+Object.freeze(RecommendationRating);
 
-module.exports = ActivitySort;</code></pre>
+module.exports = RecommendationRating;</code></pre>
 				</article>
 			</section>
 		</div>
