@@ -369,7 +369,7 @@ declare interface UserRelation {
 declare interface MediaTitle {
     english: string,
     native: string,
-    romanji: string,
+    romaji: string,
     userPreferred: string
 }
 
