@@ -356,9 +356,7 @@ declare interface ImagesSize {
 
 declare interface PersonRelation {
     id: number,
-    name: {
-        english: string
-    }
+    name: string
 }
 
 declare interface UserRelation {
