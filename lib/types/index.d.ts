@@ -356,9 +356,7 @@ declare interface ImagesSize {
 
 declare interface PersonRelation {
     id: number,
-    name: {
-        english: string
-    }
+    name: string
 }
 
 declare interface UserRelation {
@@ -369,7 +367,7 @@ declare interface UserRelation {
 declare interface MediaTitle {
     english: string,
     native: string,
-    romanji: string,
+    romaji: string,
     userPreferred: string
 }
 
