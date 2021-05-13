@@ -188,7 +188,7 @@
  * @property { Number } pageInfo.total - The total amount of pages in the search
  * @property { Number } pageInfo.currentPage - The current page of the search result
  * @property { Number } pageInfo.lastPage - Last page of the searched term
- * @property { Boolean } pageInfo.hasNextPage - Check if there is another page 
+ * @property { Boolean } pageInfo.hasNextPage - Check if there is another page
  * @property { Number } pageInfo.perPage - Result count per page.
  * @property { Object[] } media - Search results
  * @property { Number } media.id - The ID of the media
@@ -203,7 +203,7 @@
  * @property { Number } pageInfo.total - The total amount of pages in the search
  * @property { Number } pageInfo.currentPage - The current page of the search result
  * @property { Number } pageInfo.lastPage - Last page of the searched term
- * @property { Boolean } pageInfo.hasNextPage - Check if there is another page 
+ * @property { Boolean } pageInfo.hasNextPage - Check if there is another page
  * @property { Number } pageInfo.perPage - Result count per page.
  * @property { Object[] } activities - Search results
  * @property { Number } id - The ID of the activity
@@ -216,7 +216,7 @@
  * @typedef { Object } StaffEntry
  * @enum
  * @property { Number } id - The person's ID on AniList
- * @property { PersonName } name - The person's name 
+ * @property { PersonName } name - The person's name
  * @property { Object } image - The person's cover image.
  * @property { String } description - The person's description
  * @property { Boolean } isFavourite - [Requires Login] Check if the person is favourited
@@ -231,7 +231,7 @@
  * @typedef { Object } CharacterEntry
  * @enum
  * @property { Number } id - The person's ID on AniList
- * @property { PersonName } name - The person's name 
+ * @property { PersonName } name - The person's name
  * @property { Object } image - The person's cover image.
  * @property { String } description - The person's description
  * @property { Boolean } isFavourite - [Requires Login] Check if the person is favourited
@@ -252,7 +252,7 @@
  * @typedef { Object } PersonRelation
  * @enum
  * @property { Number } id - The person's AniList ID
- * @property { String } name.english - The person's name in English
+ * @property { String } name - The person's name in English
  */
 
 /**
@@ -284,9 +284,7 @@
  * @property { Boolean } autoCreateForumThread - Checks if the media gets a thread automatically with each release
  * @property { Number } averageScore - A weighted average score of the media.
  * @property { String } bannerImage - The media's banner image
- * @property { Object[] } characters - An array of characters
- * @property { Number } characters.id - The character's AniList ID
- * @property { String } characters.name.english - The character's name in English.
+ * @property { PersonRelation[] } characters - An array of characters
  * @property { String } countryOfOrigin - The country origin of the media
  * @property { Object[] } coverImage - The media's cover image
  * @property { String } coverImage.large - The large sized cover image
@@ -308,7 +306,7 @@
  * @property { Boolean } isFavourite - [Requires Login] Check if the media is favourited
  * @property { Boolean } isLicensed - Check if the media is licensed
  * @property { Number } meanScore - Mean score of the media
- * @property { Object } mediaListEntry - [Requires Login] User's media list entry; required for list edits. 
+ * @property { Object } mediaListEntry - [Requires Login] User's media list entry; required for list edits.
  * @property { Number } mediaListEntry.id - Id of the media on a user's media list
  * @property { String } mediaListEntry.status - Status of the media on the user's media list.
  * @property { String } modNotes - Mod notes for the media
@@ -331,9 +329,7 @@
  * @property { Number } seasonYear - The season year that the anime started airing
  * @property { String } siteUrl - The media's Anilist page
  * @property { String } source - Source type that the media was adapted from
- * @property { Object[] } staff - An array of credited staff
- * @property { Number } staff.id - The staff's AniList ID
- * @property { String } staff.name.english - The staff's name in English.
+ * @property { PersonRelation[] } staff - An array of credited staff
  * @property { Date } startDate - Official release date of the media
  * @property { Object } stats - Statistics on the media
  * @property { Object[] } stats.scoreDistribution - An array of how the users have rated the media. Each object contains a score and amount.
@@ -353,7 +349,7 @@
  * @property { String } tags.name - The name of the tag
  * @property { Boolean } tags.isMediaSpoiler - Checks if the tag is a spoiler for the media.
  * @property { MediaTitle } title - The manga's titles
- * @property { String | Object | null } trailer - Returns the trailer URL if the trailer is a Youtube or Dailymotion video. Will return an object if it is a video outside of YouTube and Dailymotion or null if no trailer is found. 
+ * @property { String | Object | null } trailer - Returns the trailer URL if the trailer is a Youtube or Dailymotion video. Will return an object if it is a video outside of YouTube and Dailymotion or null if no trailer is found.
  * @property { Number } trending - Number of related activity in the past week.
  * @property { Object[] } trends - An array of the media's daily trend status
  * @property { Number } trends.date - The timestamp of the day the data was recorded
@@ -370,9 +366,7 @@
  * @property { Number } averageScore - A weighted average score of the media.
  * @property { String } bannerImage - The media's banner image
  * @property { Number } chapters - Number of chapters
- * @property { Object[] } characters - An array of characters
- * @property { Number } characters.id - The character's AniList ID
- * @property { String } characters.name.english - The character's name in English.
+ * @property { PersonRelation[] } characters - An array of characters
  * @property { String } countryOfOrigin - The country origin of the media
  * @property { Object[] } coverImage - The media's cover image
  * @property { String } coverImage.large - The large sized cover image
@@ -391,7 +385,7 @@
  * @property { Boolean } isFavourite - [Requires Login] Check if the media is favourited
  * @property { Boolean } isLicensed - Check if the media is licensed
  * @property { Number } meanScore - Mean score of the media
- * @property { Object } mediaListEntry - [Requires Login] User's media list entry; required for list edits. 
+ * @property { Object } mediaListEntry - [Requires Login] User's media list entry; required for list edits.
  * @property { Number } mediaListEntry.id - Id of the media on a user's media list
  * @property { String } mediaListEntry.status - Status of the media on the user's media list.
  * @property { String } modNotes - Mod notes for the media
@@ -410,9 +404,7 @@
  * @property { String } reviews.summary - The summary of the review.
  * @property { String } reviews.body - The review content.
  * @property { String } siteUrl - The media's Anilist page
- * @property { Object[] } staff - An array of credited staff
- * @property { Number } staff.id - The staff's AniList ID
- * @property { String } staff.name.english - The staff's name in English.
+ * @property { PersonRelation[] } staff - An array of credited staff
  * @property { Date } startDate - Official release date of the media
  * @property { Object } stats - Statistics on the media
  * @property { Object[] } stats.scoreDistribution - An array of how the users have rated the media. Each object contains a score and amount.
@@ -468,7 +460,7 @@
  * @property { String[] } mediaListOptions.animeList.customLists - The names of the user's custom lists
  * @property { String[] } mediaListOptions.animeList.advancedScoring - The names of the user's advanced scoring sections
  * @property { Boolean } mediaListOptions.animeList.advancedScoringEnabled - Check if advanced scoring is enabled for the user's lists
- * @property { Object } mediaListOptions.mangaList - Settings pertaining to the user's manga list. 
+ * @property { Object } mediaListOptions.mangaList - Settings pertaining to the user's manga list.
  * @property { String[] } mediaListOptions.mangaList.sectionOrder - The order each list should be displayed in.
  * @property { Boolean } mediaListOptions.mangaList.splitCompletedSectionByFormat - Check if completed sections should be separate by format.
  * @property { String[] } mediaListOptions.mangaList.customLists - The names of the user's custom lists
@@ -651,7 +643,7 @@
  * @property { Number } progressVolumes - The user's volume progress for that media (Manga only)
  * @property { Number } repeat - The amount of times the user rewatched or read the media
  * @property { Number } priority - The user's priority status for that media
- * @property { Boolean } private - [Requires Login] Check if the entry should only be visible to the authenticated user. 
+ * @property { Boolean } private - [Requires Login] Check if the entry should only be visible to the authenticated user.
  * @property { String } notes - The user's notes
  * @property { Boolean } hiddenFromStatusLists - Checks if the entry should be hidden from non-custom lists
  * @property { Object } advancedScores - The user's advanced scores for that media (Story, Characters, Visuals, Audio, Enjoyment, …)
@@ -710,8 +702,8 @@
 
 /**
  * @typedef {Number} FuzzyDateInt
- * @example 
- * 6 Jan 2021 = 20210106 
+ * @example
+ * 6 Jan 2021 = 20210106
  * April 2016 = 20160400
  * 1969 = 19690000
  * @description 8 digit integer (YYYYMMDD). Unknown dates are represented by 0.
@@ -809,7 +801,7 @@
  * @property {Boolean} hasRepliesOrTypeText Filter by which acitivities have replies or text
  * @property {Number} createdAt The time at which the activity was created
  * @property {Number} id_not Exclude an activity with the given ID
- * @property {Number[]} id_in Include any activities with the given IDs 
+ * @property {Number[]} id_in Include any activities with the given IDs
  * @property {Number[]} id_not_in Excludes any activities with the given IDs
  * @property {Number} userId_not Exclude any activity with the given userID
  * @property {Number[]} userId_in Includes any activity with the given userIDs
@@ -854,7 +846,8 @@
  * @property {UserRelation} user The first user to recommend
  * @property {MediaRelation} mediaRecommendation The media being recommended.
  * @property {MediaRelation} media The given media
- */</code></pre>
+ */
+</code></pre>
 				</article>
 			</section>
 		</div>
@@ -862,8 +855,8 @@
 		<br class="clear" />
 
 		<footer>
-			Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Sun May 09 2021
-			16:15:06 GMT-0300 (Atlantic Daylight Time) using the
+			Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Thu May 13 2021
+			15:49:44 GMT-0300 (Atlantic Daylight Time) using the
 			<a href="https://github.com/clenemt/docdash">docdash</a> theme.
 		</footer>
 

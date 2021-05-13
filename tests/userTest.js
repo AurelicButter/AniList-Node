@@ -3,7 +3,7 @@ const { token } = require("../token.json");
 const anilist = new AnilistNode(token);
 
 // Fetch a user's profile
-//anilist.user.profile("Butterstroke").then(data => console.log(data));
+anilist.user.profile("Butterstroke").then((data) => console.log(data));
 
 // Fetch the currently authorized user.
 anilist.user.getAuthorized().then((data) => console.log(data));
