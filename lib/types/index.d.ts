@@ -81,7 +81,7 @@ declare class Anilist {
     studio(studio: number | string): Promise<StudioEntry>;
 
     /**
-     * Searchs AniList based on a specific term.
+     * Searches AniList based on a specific term.
      * @param {String} type - Required. Either anime, manga, character, staff, studio, or user.
      * @param {String} term - Required. The term to lookup. (ie: "Honzuki no Gekokujou" or "Butterstroke")
      * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
@@ -125,7 +125,7 @@ declare class User {
      * Fetch recent activity from a user.
      * @param {Number} user - Required. Needs to be the user's AniList ID.
      * @returns { Object[] } Returns the 25 most recent activities of the user. Contains any number of
-     * {@link ListActivity}, {@link TextActivity}, {@link MessageActivity}. All of which are identifyable by the type key.
+     * {@link ListActivity}, {@link TextActivity}, {@link MessageActivity}. All of which are identifiable by the type key.
      *
      * @since 1.6.0
      */
@@ -210,7 +210,7 @@ declare class Activity {
      * Get a specific AniList activity by its ID.
      * @param {Number} activityID The AniList activity ID
      * @returns { ListActivity | TextActivity | MessageActivity } Returns the activity information. Activity will either appear as:
-     * {@link ListActivity}, {@link TextActivity}, {@link MessageActivity}. All of which are identifyable by the type key.
+     * {@link ListActivity}, {@link TextActivity}, {@link MessageActivity}. All of which are identifiable by the type key.
      * @since 1.7.0
      */
     get(activityID: number): Promise<ListActivity|TextActivity|MessageActivity>;
@@ -221,7 +221,7 @@ declare class Activity {
      * @param {Number} page - The page number to display
      * @param {Number} perPage - How many entries to display on one page. (Max is 25 per AniList limit)
      * @returns { Object[] } Returns a list of user activities based on the page & perPage values Contains any number of
-     * {@link ListActivity}, {@link TextActivity}, {@link MessageActivity}. All of which are identifyable by the type key.
+     * {@link ListActivity}, {@link TextActivity}, {@link MessageActivity}. All of which are identifiable by the type key.
      *
      * @since 1.7.0
      */
@@ -603,7 +603,7 @@ declare interface UserSetting {
     scoreFormat: string,
     rowOrder: string,
     animeList: UserMediaList,
-    mamngaList: UserMediaList
+    mangaList: UserMediaList
 }
 
 declare interface UserFavourites {
@@ -619,7 +619,7 @@ declare interface UserProfile extends UserRelation {
     avatar: Media,
     bannerImage: string,
     isFollowing: boolean,
-    isBlcoekd: boolean,
+    isBlocked: boolean,
     isFollower: boolean,
     bans: string,
     options: UserOptions,
@@ -818,7 +818,7 @@ declare interface UserList {
     isCustomList: boolean,
     isSplitCompletedList: boolean,
     status: string,
-    enries: ListEntry[]
+    entries: ListEntry[]
 }
 declare interface BaseActivity {
     id: number,
