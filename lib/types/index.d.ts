@@ -627,6 +627,7 @@ declare interface UserProfile extends UserRelation {
     favourites: UserFavourites,
     siteUrl: string,
     donatorTier: number,
+    donatorBadge: string,
     moderatorStatus: string,
     updatedAt: number
 }
