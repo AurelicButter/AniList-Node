@@ -347,7 +347,7 @@ declare interface FuzzyDate {
     day: number
 }
 
-declare interface ImagesSize {
+declare interface CoverImage {
     large: string,
     medium: string,
     small: string,
@@ -427,7 +427,7 @@ declare interface ActivityEntry extends PageInfo {
 declare interface StaffEntry {
     id: number,
     name: PersonName,
-    image: Media,
+    image: ImageSize,
     description: string,
     isFavourite?: boolean,
     siteUrl: string,
@@ -440,7 +440,7 @@ declare interface StaffEntry {
 declare interface CharacterEntry {
     id: number,
     name: PersonName,
-    image: Media,
+    image: ImageSize,
     description: string,
     isFavourite?: boolean,
     siteUrl: string,
@@ -533,7 +533,7 @@ declare interface MediaEntry {
         thumbnail: string
     } | null,
     updatedAt: number,
-    coverImage: ImagesSize,
+    coverImage: CoverImage,
     bannerImage: string,
     genres: string[],
     synonyms: string[],
@@ -579,7 +579,7 @@ declare interface MangaEntry extends MediaEntry {
     volumes: number
 }
 
-declare interface Media {
+declare interface ImageSize {
     large: string,
     medium: string
 }
@@ -616,7 +616,7 @@ declare interface UserFavourites {
 
 declare interface UserProfile extends UserRelation {
     about: string,
-    avatar: Media,
+    avatar: ImageSize,
     bannerImage: string,
     isFollowing: boolean,
     isBlcoekd: boolean,
