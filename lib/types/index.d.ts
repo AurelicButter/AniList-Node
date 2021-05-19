@@ -323,61 +323,61 @@ declare class Recommendation {
     get(recommendID: Number): Promise<SingleRecommendation>;
 }
 
-declare type MediaType = 'ANIME' | 'MANGA';
+export declare type MediaType = 'ANIME' | 'MANGA';
 
-declare type MediaFormat = 'TV' | 'TV_SHORT' | 'MOVIE' | 'SPECIAL' | 'OVA' | 'ONA' | 'MUSIC' | 'MANGA' | 'NOVEL' | 'ONE_SHOT';
+export declare type MediaFormat = 'TV' | 'TV_SHORT' | 'MOVIE' | 'SPECIAL' | 'OVA' | 'ONA' | 'MUSIC' | 'MANGA' | 'NOVEL' | 'ONE_SHOT';
 
-declare type MediaStatus = 'FINISHED' | 'RELEASING' | 'NOT_YET_RELEASED' | 'CANCELLED' | 'HIATUS';
+export declare type MediaStatus = 'FINISHED' | 'RELEASING' | 'NOT_YET_RELEASED' | 'CANCELLED' | 'HIATUS';
 
-declare type MediaSeason = 'WINTER' | 'SPRING' | 'SUMMER' | 'FALL';
+export declare type MediaSeason = 'WINTER' | 'SPRING' | 'SUMMER' | 'FALL';
 
-declare type MediaSource = 'ORIGINAL' | 'MANGA' | 'LIGHT_NOVEL' | 'VISUAL_NOVEL' | 'VIDEO_GAME' | 'OTHER' | 'NOVEL' | 'DOUJINSHI' | 'ANIME';
+export declare type MediaSource = 'ORIGINAL' | 'MANGA' | 'LIGHT_NOVEL' | 'VISUAL_NOVEL' | 'VIDEO_GAME' | 'OTHER' | 'NOVEL' | 'DOUJINSHI' | 'ANIME';
 
-declare type MediaSort = 'ID' | 'ID_DESC' | 'TITLE_ROMAJI' | 'TITLE_ROMAJI_DESC' | 'TITLE_ENGLISH' | 'TITLE_ENGLISH_DESC' | 'TITLE_NATIVE' | 'TITLE_NATIVE_DESC' | 'TYPE' | 'TYPE_DESC' | 'FORMAT' | 'FORMAT_DESC' | 'START_DATE' | 'START_DATE_DESC' | 'END_DATE' | 'END_DATE_DESC' | 'SCORE' | 'SCORE_DESC' | 'POPULARITY' | 'POPULARITY_DESC' | 'TRENDING' | 'TRENDING_DESC' | 'EPISODES' | 'EPISODES_DESC' | 'DURATION' | 'DURATION_DESC' | 'STATUS' | 'STATUS_DESC' | 'CHAPTERS' | 'CHAPTERS_DESC' | 'VOLUMES' | 'VOLUMES_DESC' | 'UPDATED_AT' | 'UPDATED_AT_DESC' | 'SEARCH_MATCH' | 'FAVOURITES' | 'FAVOURITES_DESC';
+export declare type MediaSort = 'ID' | 'ID_DESC' | 'TITLE_ROMAJI' | 'TITLE_ROMAJI_DESC' | 'TITLE_ENGLISH' | 'TITLE_ENGLISH_DESC' | 'TITLE_NATIVE' | 'TITLE_NATIVE_DESC' | 'TYPE' | 'TYPE_DESC' | 'FORMAT' | 'FORMAT_DESC' | 'START_DATE' | 'START_DATE_DESC' | 'END_DATE' | 'END_DATE_DESC' | 'SCORE' | 'SCORE_DESC' | 'POPULARITY' | 'POPULARITY_DESC' | 'TRENDING' | 'TRENDING_DESC' | 'EPISODES' | 'EPISODES_DESC' | 'DURATION' | 'DURATION_DESC' | 'STATUS' | 'STATUS_DESC' | 'CHAPTERS' | 'CHAPTERS_DESC' | 'VOLUMES' | 'VOLUMES_DESC' | 'UPDATED_AT' | 'UPDATED_AT_DESC' | 'SEARCH_MATCH' | 'FAVOURITES' | 'FAVOURITES_DESC';
 
-declare type ActivitySort = 'ID' | 'ID_DESC';
+export declare type ActivitySort = 'ID' | 'ID_DESC';
 
-declare type ActivityType = 'TEXT' | 'ANIME_LIST' | 'MANGA_LIST' | 'MESSAGE' | 'MEDIA_LIST';
+export declare type ActivityType = 'TEXT' | 'ANIME_LIST' | 'MANGA_LIST' | 'MESSAGE' | 'MEDIA_LIST';
 
-declare type RecommendationRating = "NO_RATING" | "RATE_UP" | "RATE_DOWN";
+export declare type RecommendationRating = "NO_RATING" | "RATE_UP" | "RATE_DOWN";
 
-declare interface FuzzyDate {
+export declare interface FuzzyDate {
     year: number,
     month: number,
     day: number
 }
 
-declare interface CoverImage {
+export declare interface CoverImage {
     large: string,
     medium: string,
     small: string,
     color: string
 }
 
-declare interface PersonRelation {
+export declare interface PersonRelation {
     id: number,
     name: string
 }
 
-declare interface UserRelation {
+export declare interface UserRelation {
     id: number,
     name: string
 }
 
-declare interface MediaTitle {
+export declare interface MediaTitle {
     english: string,
     native: string,
     romaji: string,
     userPreferred: string
 }
 
-declare interface PersonName {
+export declare interface PersonName {
     english: string,
     native: string,
     alternative: string
 }
 
-declare interface PageInfo {
+export declare interface PageInfo {
     pageInfo: {
         total: number,
         currentPage: number,
@@ -387,36 +387,36 @@ declare interface PageInfo {
     }
 }
 
-declare interface MediaRelation {
+export declare interface MediaRelation {
     id: number,
     title: MediaTitle,
     type?: MediaType
 }
 
-declare interface MediaSearchEntry extends PageInfo {
+export declare interface MediaSearchEntry extends PageInfo {
     media: [{
         id: number,
         title: MediaTitle
     }]
 }
 
-declare interface CharacterSearchEntry extends PageInfo {
+export declare interface CharacterSearchEntry extends PageInfo {
     characters: PersonRelation[]
 }
 
-declare interface StaffSearchEntry extends PageInfo {
+export declare interface StaffSearchEntry extends PageInfo {
     staff: PersonRelation[]
 }
 
-declare interface StudioSearchEntry extends PageInfo {
+export declare interface StudioSearchEntry extends PageInfo {
     studios: UserRelation[]
 }
 
-declare interface UserSearchEntry extends PageInfo {
+export declare interface UserSearchEntry extends PageInfo {
     users: UserRelation[]
 }
 
-declare interface ActivityEntry extends PageInfo {
+export declare interface ActivityEntry extends PageInfo {
     activities: Array<ListActivity|TextActivity|MessageActivity>,
     id: number,
     type: string,
@@ -424,7 +424,7 @@ declare interface ActivityEntry extends PageInfo {
     likeCount: number
 }
 
-declare interface StaffEntry {
+export declare interface StaffEntry {
     id: number,
     name: PersonName,
     image: ImageSize,
@@ -437,7 +437,7 @@ declare interface StaffEntry {
     characters: PersonRelation[]
 }
 
-declare interface CharacterEntry {
+export declare interface CharacterEntry {
     id: number,
     name: PersonName,
     image: ImageSize,
@@ -448,36 +448,36 @@ declare interface CharacterEntry {
     media: MediaRelation[]
 }
 
-declare interface StudioRelation extends UserRelation {
+export declare interface StudioRelation extends UserRelation {
     isAnimationStudio: boolean
 }
 
-declare interface StudioEntry extends StudioRelation {
+export declare interface StudioEntry extends StudioRelation {
     favourites: number,
     media: MediaRelation[],
     siteUrl: string,
     isFavourite?: boolean
 }
 
-declare interface AiringEntry {
+export declare interface AiringEntry {
     airingAt: number,
     timeUntilAiring: number,
     episode: number
 }
 
-declare interface Tags {
+export declare interface Tags {
     name: string,
     isMediaSpoiler: boolean
 }
 
-declare interface StreamingEpisode {
+export declare interface StreamingEpisode {
     title: string,
     thumbnail: string,
     url: string,
     site: string
 }
 
-declare interface Ranking {
+export declare interface Ranking {
     rank: number,
     type: 'RATED'| 'POPULAR',
     context: string,
@@ -485,19 +485,19 @@ declare interface Ranking {
     season: MediaSeason
 }
 
-declare interface MediaListEntry {
+export declare interface MediaListEntry {
     id: number,
     status: string
 }
 
-declare interface Review {
+export declare interface Review {
     id: number,
     score: number,
     summary: string,
     body: string
 }
 
-declare interface Stats {
+export declare interface Stats {
     scoreDistribution: [{
         score: number,
         amount: number
@@ -508,14 +508,14 @@ declare interface Stats {
     }]
 }
 
-declare interface Trends {
+export declare interface Trends {
     date: number,
     trending: number,
     popularity: number,
     inProgress: number
 }
 
-declare interface MediaEntry {
+export declare interface MediaEntry {
     id: number,
     idMal: number,
     title: MediaTitle,
@@ -566,7 +566,7 @@ declare interface MediaEntry {
     recommendations: MediaRelation[]
 }
 
-declare interface AnimeEntry extends MediaEntry {
+export declare interface AnimeEntry extends MediaEntry {
     episodes: number,
     season: MediaSeason,
     seasonYear: number,
@@ -574,24 +574,24 @@ declare interface AnimeEntry extends MediaEntry {
     source: MediaSource,
 }
 
-declare interface MangaEntry extends MediaEntry {
+export declare interface MangaEntry extends MediaEntry {
     chapters: number
     volumes: number
 }
 
-declare interface ImageSize {
+export declare interface ImageSize {
     large: string,
     medium: string
 }
 
-declare interface UserOptions {
+export declare interface UserOptions {
     titleLanguage: string,
     displayAdultContent: boolean,
     airingNotifications: boolean,
     profileColor: string
 }
 
-declare interface UserMediaList {
+export declare interface UserMediaList {
     sectionOrder: string[],
     splitCompletedSectionByFormat: boolean,
     customLists: string[],
@@ -599,14 +599,14 @@ declare interface UserMediaList {
     advancedScoringEnabled: boolean
 }
 
-declare interface UserSetting {
+export declare interface UserSetting {
     scoreFormat: string,
     rowOrder: string,
     animeList: UserMediaList,
     mamngaList: UserMediaList
 }
 
-declare interface UserFavourites {
+export declare interface UserFavourites {
     anime: MediaRelation[],
     manga: MediaRelation[],
     character: PersonRelation[],
@@ -614,7 +614,7 @@ declare interface UserFavourites {
     studios: UserRelation[]
 }
 
-declare interface UserProfile extends UserRelation {
+export declare interface UserProfile extends UserRelation {
     about: string,
     avatar: ImageSize,
     bannerImage: string,
@@ -631,110 +631,110 @@ declare interface UserProfile extends UserRelation {
     updatedAt: number
 }
 
-declare interface UserStatsProfile extends UserProfile{
+export declare interface UserStatsProfile extends UserProfile{
     statistics: UserStats;
 }
 
-declare interface AnimeUserEntry {
+export declare interface AnimeUserEntry {
     count: number,
     meanScore: number,
     watchedTime: number
 }
 
-declare interface MangaUserEntry {
+export declare interface MangaUserEntry {
     count: number,
     meanScore: number,
     chaptersRead: number
 }
 
-declare interface AnimeUserStatuses extends AnimeUserEntry {
+export declare interface AnimeUserStatuses extends AnimeUserEntry {
     status: string
 }
 
-declare interface MangaUserStatuses extends MangaUserEntry {
+export declare interface MangaUserStatuses extends MangaUserEntry {
     status: string
 }
 
-declare interface AnimeUserFormats extends AnimeUserEntry {
+export declare interface AnimeUserFormats extends AnimeUserEntry {
     format: string
 }
 
-declare interface MangaUserFormats extends MangaUserEntry {
+export declare interface MangaUserFormats extends MangaUserEntry {
     format: string
 }
 
-declare interface AnimeUserLengths extends AnimeUserEntry {
+export declare interface AnimeUserLengths extends AnimeUserEntry {
     length: string
 }
 
-declare interface MangaUserLengths extends MangaUserEntry {
+export declare interface MangaUserLengths extends MangaUserEntry {
     length: string
 }
 
-declare interface AnimeUserReleaseYears  extends AnimeUserEntry {
+export declare interface AnimeUserReleaseYears  extends AnimeUserEntry {
     releaseYear: string
 }
 
-declare interface MangaUserReleaseYears  extends MangaUserEntry {
+export declare interface MangaUserReleaseYears  extends MangaUserEntry {
     releaseYear: string
 }
 
-declare interface AnimeUserStartYears extends AnimeUserEntry {
+export declare interface AnimeUserStartYears extends AnimeUserEntry {
     startYear: string
 }
 
-declare interface MangaUserStartYears extends MangaUserEntry {
+export declare interface MangaUserStartYears extends MangaUserEntry {
     startYear: string
 }
 
-declare interface AnimeUserGenres extends AnimeUserEntry {
+export declare interface AnimeUserGenres extends AnimeUserEntry {
     genre: string
 }
 
-declare interface MangaUserGenres extends MangaUserEntry {
+export declare interface MangaUserGenres extends MangaUserEntry {
     genre: string
 }
 
-declare interface AnimeUserTags extends AnimeUserEntry {
+export declare interface AnimeUserTags extends AnimeUserEntry {
     tag: UserRelation
 }
 
-declare interface MangaUserTags extends MangaUserEntry {
+export declare interface MangaUserTags extends MangaUserEntry {
     tag: UserRelation
 }
 
-declare interface AnimeUserCountries extends AnimeUserEntry {
+export declare interface AnimeUserCountries extends AnimeUserEntry {
     country: string
 }
 
-declare interface MangaUserCountries extends MangaUserEntry {
+export declare interface MangaUserCountries extends MangaUserEntry {
     country: string
 }
 
-declare interface AnimeUserVoiceActors extends AnimeUserEntry {
+export declare interface AnimeUserVoiceActors extends AnimeUserEntry {
     voiceActor: PersonRelation
 }
 
-declare interface AnimeUserStaff extends AnimeUserEntry {
+export declare interface AnimeUserStaff extends AnimeUserEntry {
     staff: PersonRelation
 }
 
-declare interface MangaUserStaff extends MangaUserEntry {
+export declare interface MangaUserStaff extends MangaUserEntry {
     staff: PersonRelation
 }
 
-declare interface AnimeUserStudios extends AnimeUserEntry {
+export declare interface AnimeUserStudios extends AnimeUserEntry {
     studio: UserRelation
 }
 
-declare interface UserStatsEntry {
+export declare interface UserStatsEntry {
     meanScore: number,
     standardDeviation: number,
     count: number
 }
 
 
-declare interface UserStatsAnime extends UserStatsEntry{
+export declare interface UserStatsAnime extends UserStatsEntry{
     minutesWatched: number,
     episodesWatched: number,
     statuses: AnimeUserStatuses,
@@ -750,7 +750,7 @@ declare interface UserStatsAnime extends UserStatsEntry{
     studios: AnimeUserStudios,
 }
 
-declare interface UserStatsManga extends UserStatsEntry {
+export declare interface UserStatsManga extends UserStatsEntry {
     chaptersRead: number,
     volumesRead: number,
     statuses: MangaUserStatuses,
@@ -764,12 +764,12 @@ declare interface UserStatsManga extends UserStatsEntry {
     staff: MangaUserStaff,
 }
 
-declare interface UserStats {
+export declare interface UserStats {
     anime: UserStatsAnime,
     manga: UserStatsManga
 }
 
-declare interface ListEntry {
+export declare interface ListEntry {
     media: {
         id: number,
         idMal: number,
@@ -813,14 +813,14 @@ declare interface ListEntry {
     }
 }
 
-declare interface UserList {
+export declare interface UserList {
     name: string,
     isCustomList: boolean,
     isSplitCompletedList: boolean,
     status: string,
     enries: ListEntry[]
 }
-declare interface BaseActivity {
+export declare interface BaseActivity {
     id: number,
     type: string,
     progress: number,
@@ -833,21 +833,21 @@ declare interface BaseActivity {
     }
 }
 
-declare interface ListActivity extends BaseActivity {
+export declare interface ListActivity extends BaseActivity {
     status: string
 }
 
-declare interface TextActivity extends BaseActivity {
+export declare interface TextActivity extends BaseActivity {
     userId: number,
     text: string,
 }
 
-declare interface MessageActivity extends BaseActivity {
+export declare interface MessageActivity extends BaseActivity {
     recipientId: number,
     message: string
 }
 
-declare interface MediaFilterTypes {
+export declare interface MediaFilterTypes {
     id?: number,
     idMal?: number,
     startDate?: FuzzyDate,
@@ -916,7 +916,7 @@ declare interface MediaFilterTypes {
     sort?: MediaSort[]
 }
 
-declare interface ActivityFilterTypes {
+export declare interface ActivityFilterTypes {
     id?: number,
     userId?: number,
     messengerId?: number,
@@ -946,12 +946,12 @@ declare interface ActivityFilterTypes {
     sort?: ActivitySort[]
 }
 
-declare interface RecommendationList {
+export declare interface RecommendationList {
     media: MediaRelation,
     recommendations: RecommendationEntry[]
 }
 
-declare interface RecommendationEntry {
+export declare interface RecommendationEntry {
     id: Number,
     rating: Number,
     userRating: RecommendationRating,
@@ -959,7 +959,7 @@ declare interface RecommendationEntry {
     mediaRecommendation: MediaRelation
 }
 
-declare interface SingleRecommendation extends RecommendationEntry {
+export declare interface SingleRecommendation extends RecommendationEntry {
     media: MediaRelation
 }
 
