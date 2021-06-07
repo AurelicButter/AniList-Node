@@ -429,7 +429,7 @@ export declare interface StaffEntry {
     name: PersonName,
     image: ImageSize,
     description: string,
-    isFavourite?: boolean,
+    isFavourite: boolean,
     siteUrl: string,
     favourites: number,
     language: string,
@@ -442,7 +442,7 @@ export declare interface CharacterEntry {
     name: PersonName,
     image: ImageSize,
     description: string,
-    isFavourite?: boolean,
+    isFavourite: boolean,
     siteUrl: string,
     favourites: number,
     media: MediaRelation[]
@@ -456,7 +456,7 @@ export declare interface StudioEntry extends StudioRelation {
     favourites: number,
     media: MediaRelation[],
     siteUrl: string,
-    isFavourite?: boolean
+    isFavourite: boolean
 }
 
 export declare interface AiringEntry {
