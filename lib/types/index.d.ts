@@ -774,7 +774,7 @@ export declare interface ListEntry {
     media: {
         id: number,
         idMal: number,
-        mediaTitle: MediaTitle,
+        title: MediaTitle,
         description: string,
         format: string,
         tags: Tags[],
