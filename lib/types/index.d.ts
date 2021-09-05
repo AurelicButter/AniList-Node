@@ -333,13 +333,19 @@ export declare type MediaSeason = 'WINTER' | 'SPRING' | 'SUMMER' | 'FALL';
 
 export declare type MediaSource = 'ORIGINAL' | 'MANGA' | 'LIGHT_NOVEL' | 'VISUAL_NOVEL' | 'VIDEO_GAME' | 'OTHER' | 'NOVEL' | 'DOUJINSHI' | 'ANIME';
 
-export declare type MediaSort = 'ID' | 'ID_DESC' | 'TITLE_ROMAJI' | 'TITLE_ROMAJI_DESC' | 'TITLE_ENGLISH' | 'TITLE_ENGLISH_DESC' | 'TITLE_NATIVE' | 'TITLE_NATIVE_DESC' | 'TYPE' | 'TYPE_DESC' | 'FORMAT' | 'FORMAT_DESC' | 'START_DATE' | 'START_DATE_DESC' | 'END_DATE' | 'END_DATE_DESC' | 'SCORE' | 'SCORE_DESC' | 'POPULARITY' | 'POPULARITY_DESC' | 'TRENDING' | 'TRENDING_DESC' | 'EPISODES' | 'EPISODES_DESC' | 'DURATION' | 'DURATION_DESC' | 'STATUS' | 'STATUS_DESC' | 'CHAPTERS' | 'CHAPTERS_DESC' | 'VOLUMES' | 'VOLUMES_DESC' | 'UPDATED_AT' | 'UPDATED_AT_DESC' | 'SEARCH_MATCH' | 'FAVOURITES' | 'FAVOURITES_DESC';
+export declare type MediaSort = 'ID' | 'ID_DESC' | 'TITLE_ROMAJI' | 'TITLE_ROMAJI_DESC' | 'TITLE_ENGLISH' | 'TITLE_ENGLISH_DESC' | 'TITLE_NATIVE' | 
+    'TITLE_NATIVE_DESC' | 'TYPE' | 'TYPE_DESC' | 'FORMAT' | 'FORMAT_DESC' | 'START_DATE' | 'START_DATE_DESC' | 'END_DATE' | 'END_DATE_DESC' | 
+    'SCORE' | 'SCORE_DESC' | 'POPULARITY' | 'POPULARITY_DESC' | 'TRENDING' | 'TRENDING_DESC' | 'EPISODES' | 'EPISODES_DESC' | 'DURATION' | 'DURATION_DESC' | 
+    'STATUS' | 'STATUS_DESC' | 'CHAPTERS' | 'CHAPTERS_DESC' | 'VOLUMES' | 'VOLUMES_DESC' | 'UPDATED_AT' | 'UPDATED_AT_DESC' | 'SEARCH_MATCH' | 'FAVOURITES' | 'FAVOURITES_DESC';
 
 export declare type ActivitySort = 'ID' | 'ID_DESC';
 
 export declare type ActivityType = 'TEXT' | 'ANIME_LIST' | 'MANGA_LIST' | 'MESSAGE' | 'MEDIA_LIST';
 
 export declare type RecommendationRating = "NO_RATING" | "RATE_UP" | "RATE_DOWN";
+
+export declare type ModRole = "ADMIN" | "LEAD_DEVELOPER" | "DEVELOPER" | "LEAD_COMMUNITY" | "COMMUNITY" | "DISCORD_COMMUNITY" | "LEAD_ANIME_DATA" | 
+    "ANIME_DATA" | "LEAD_MANGA_DATA" | "MANGA_DATA" | "LEAD_SOCIAL_MEDIA" | "SOCIAL_MEDIA" | "RETIRED";
 
 export declare interface FuzzyDate {
     year: number,
@@ -628,7 +634,7 @@ export declare interface UserProfile extends UserRelation {
     siteUrl: string,
     donatorTier: number,
     donatorBadge: string,
-    moderatorStatus: string,
+    moderatorRoles: ModRole[],
     updatedAt: number
 }
 

@@ -51,4 +51,4 @@ const data = await anilist.people.character(126156);
 console.log(data);
 ```
 
-All of the methods to fetch data are the same way so please refer to the documentation on what methods are avaible and what data is returned in the objects.
+All of the methods to fetch data are the same way so please refer to the documentation on what methods are available and what data is returned in the objects.
