@@ -1,5 +1,6 @@
 # Anilist-Node
-<a href="https://www.npmjs.com/package/anilist-node"><img src="https://img.shields.io/npm/dt/anilist-node?label=Downloads&logo=NPM" alt="NPM Page" /></a>
+<a href="https://www.npmjs.com/package/anilist-node"><img src="https://img.shields.io/npm/dt/anilist-node?label=Downloads&logo=NPM" alt="Total Downloads (NPM Link)" /></a>
+<a href="https://www.npmjs.com/package/anilist-node"><img src="https://img.shields.io/npm/dm/anilist-node?label=Monthly&logo=NPM" alt="Monthly Downloads (NPM Link)"/></a>
 <a href="https://discord.gg/qKfqsjW"><img src="https://discordapp.com/api/guilds/303253034551476225/widget.png" alt="Support Server" /></a>
 
 A simple, lightweight Node.js wrapper for the AniList API.
@@ -35,6 +36,10 @@ Anilist.media.anime(21708).then(data => {
 
 ## Documentation
 Documentation is provided in two locations. A static HTML site is avalible with the package under the docs directory. Or users can view the same site online here: [katsurin.com/docs/anilist-node](https://www.katsurin.com/docs/anilist-node/index.html).
+
+## Contributing
+
+Please refer to the [Contributing Guide](https://github.com/Butterstroke/AniList-Node/tree/master/.github/CONTRIBUTING.md) for more information. 
 
 ## License and Contact
 AniList-Node is licensed under the [MIT License](LICENSE).
