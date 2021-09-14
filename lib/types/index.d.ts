@@ -92,7 +92,7 @@ declare class Anilist {
      * this function in the next major update (v2.0.0).
      */
     search(type: 'anime' | 'manga' | 'character' | 'staff' | 'studio' | 'user', term: string, page?: number, amount?: number)
-        : Promise<MediaSearchEntry|CharacterSearchEntry|StaffSearchEntry|StudioSearchEntry|UserSearchEntry>;
+        : Promise<MediaSearchEntry | CharacterSearchEntry | StaffSearchEntry | StudioSearchEntry | UserSearchEntry>;
 }
 
 declare class User {
@@ -129,7 +129,7 @@ declare class User {
      *
      * @since 1.6.0
      */
-    getRecentActivity(user: number): Promise<Array<ListActivity|TextActivity|MessageActivity>>;
+    getRecentActivity(user: number): Promise<Array<ListActivity | TextActivity | MessageActivity>>;
 
     /**
      * Fetch profile information on the currently authorized user.
@@ -138,6 +138,15 @@ declare class User {
      * @since 1.8.0
      */
     getAuthorized(): Promise<UserProfile>;
+
+    /**
+	 * [Requires Login] Update user settings
+	 * @param {UserOptions} options 
+	 * @returns {UserProfileOptions}
+	 * 
+	 * @since 1.10.0
+	 */
+	update(options: UserOptions): UserProfileOptions;
 }
 
 declare class Lists {
@@ -213,7 +222,7 @@ declare class Activity {
      * {@link ListActivity}, {@link TextActivity}, {@link MessageActivity}. All of which are identifiable by the type key.
      * @since 1.7.0
      */
-    get(activityID: number): Promise<ListActivity|TextActivity|MessageActivity>;
+    get(activityID: number): Promise<ListActivity | TextActivity | MessageActivity>;
 
     /**
      * Fetch activities from a user.
@@ -225,7 +234,7 @@ declare class Activity {
      *
      * @since 1.7.0
      */
-    getUserActivity(user: number, page?: number, perPage?: number): Promise<Array<ListActivity|TextActivity|MessageActivity>>;
+    getUserActivity(user: number, page?: number, perPage?: number): Promise<Array<ListActivity | TextActivity | MessageActivity>>;
 }
 
 declare class Search {
@@ -333,9 +342,9 @@ export declare type MediaSeason = 'WINTER' | 'SPRING' | 'SUMMER' | 'FALL';
 
 export declare type MediaSource = 'ORIGINAL' | 'MANGA' | 'LIGHT_NOVEL' | 'VISUAL_NOVEL' | 'VIDEO_GAME' | 'OTHER' | 'NOVEL' | 'DOUJINSHI' | 'ANIME';
 
-export declare type MediaSort = 'ID' | 'ID_DESC' | 'TITLE_ROMAJI' | 'TITLE_ROMAJI_DESC' | 'TITLE_ENGLISH' | 'TITLE_ENGLISH_DESC' | 'TITLE_NATIVE' | 
-    'TITLE_NATIVE_DESC' | 'TYPE' | 'TYPE_DESC' | 'FORMAT' | 'FORMAT_DESC' | 'START_DATE' | 'START_DATE_DESC' | 'END_DATE' | 'END_DATE_DESC' | 
-    'SCORE' | 'SCORE_DESC' | 'POPULARITY' | 'POPULARITY_DESC' | 'TRENDING' | 'TRENDING_DESC' | 'EPISODES' | 'EPISODES_DESC' | 'DURATION' | 'DURATION_DESC' | 
+export declare type MediaSort = 'ID' | 'ID_DESC' | 'TITLE_ROMAJI' | 'TITLE_ROMAJI_DESC' | 'TITLE_ENGLISH' | 'TITLE_ENGLISH_DESC' | 'TITLE_NATIVE' |
+    'TITLE_NATIVE_DESC' | 'TYPE' | 'TYPE_DESC' | 'FORMAT' | 'FORMAT_DESC' | 'START_DATE' | 'START_DATE_DESC' | 'END_DATE' | 'END_DATE_DESC' |
+    'SCORE' | 'SCORE_DESC' | 'POPULARITY' | 'POPULARITY_DESC' | 'TRENDING' | 'TRENDING_DESC' | 'EPISODES' | 'EPISODES_DESC' | 'DURATION' | 'DURATION_DESC' |
     'STATUS' | 'STATUS_DESC' | 'CHAPTERS' | 'CHAPTERS_DESC' | 'VOLUMES' | 'VOLUMES_DESC' | 'UPDATED_AT' | 'UPDATED_AT_DESC' | 'SEARCH_MATCH' | 'FAVOURITES' | 'FAVOURITES_DESC';
 
 export declare type ActivitySort = 'ID' | 'ID_DESC';
@@ -344,8 +353,18 @@ export declare type ActivityType = 'TEXT' | 'ANIME_LIST' | 'MANGA_LIST' | 'MESSA
 
 export declare type RecommendationRating = "NO_RATING" | "RATE_UP" | "RATE_DOWN";
 
-export declare type ModRole = "ADMIN" | "LEAD_DEVELOPER" | "DEVELOPER" | "LEAD_COMMUNITY" | "COMMUNITY" | "DISCORD_COMMUNITY" | "LEAD_ANIME_DATA" | 
+export declare type ModRole = "ADMIN" | "LEAD_DEVELOPER" | "DEVELOPER" | "LEAD_COMMUNITY" | "COMMUNITY" | "DISCORD_COMMUNITY" | "LEAD_ANIME_DATA" |
     "ANIME_DATA" | "LEAD_MANGA_DATA" | "MANGA_DATA" | "LEAD_SOCIAL_MEDIA" | "SOCIAL_MEDIA" | "RETIRED";
+
+export declare type UserTitleLanguage = "ROMAJI" | "ENGLISH" | "NATIVE" | "ROMAJI_STYLISED" | "ENGLISH_STYLISED" | "NATIVE_STYLISED";
+
+export declare type UserStaffNameLanguage = "ROMAJI" | "NATIVE" | "ROMAJI_WESTERN";
+
+export declare type ScoreFormat = "POINT_100" | "POINT_10_DECIMAL" | "POINT_10" | "POINT_5" | "POINT_3";
+
+export declare type NotificationType = "ACTIVITY_MESSAGE" | "ACTIVITY_REPLY" | "FOLLOWING" | "ACTIVITY_MENTION" | "THREAD_COMMENT_MENTION" | "THREAD_SUBSCRIBED" |
+    "THREAD_COMMENT_REPLY" | "AIRING" | "ACTIVITY_LIKE" | "ACTIVITY_REPLY_LIKE" | "THREAD_LIKE" | "THREAD_COMMENT_LIKE" | "ACTIVITY_REPLY_SUBSCRIBED" |
+    "RELATED_MEDIA_ADDITION" | "MEDIA_DATA_CHANGE" | "MEDIA_MERGE" | "MEDIA_DELETION";
 
 export declare interface FuzzyDate {
     year: number,
@@ -423,7 +442,7 @@ export declare interface UserSearchEntry extends PageInfo {
 }
 
 export declare interface ActivityEntry extends PageInfo {
-    activities: Array<ListActivity|TextActivity|MessageActivity>,
+    activities: Array<ListActivity | TextActivity | MessageActivity>,
     id: number,
     type: string,
     createdAt: number,
@@ -485,7 +504,7 @@ export declare interface StreamingEpisode {
 
 export declare interface Ranking {
     rank: number,
-    type: 'RATED'| 'POPULAR',
+    type: 'RATED' | 'POPULAR',
     context: string,
     year: number,
     season: MediaSeason
@@ -594,7 +613,42 @@ export declare interface UserOptions {
     titleLanguage: string,
     displayAdultContent: boolean,
     airingNotifications: boolean,
-    profileColor: string
+    profileColor: string,
+    activityMergeTime: Number,
+    staffNameLanguage: UserStaffNameLanguage,
+    notificationOptions: NotificationOptions[]
+}
+
+export declare interface UserOptionsWithTime extends UserOptions {
+    timezone: string
+}
+
+export declare interface UserOptionsInput {
+    about: string,
+    titleLanguage: UserTitleLanguage,
+    displayAdultContent: boolean,
+    airingNotifications: boolean,
+    profileColor: string,
+    activityMergeTime: Number,
+    staffNameLanguage: UserStaffNameLanguage,
+    notificationOptions: NotificationOptions[],
+    timezone: string,
+    scoreFormat: ScoreFormat,
+    rowOrder: string,
+    animeListOptions: MediaListOptionsInput,
+    mangaListOptions: MediaListOptionsInput
+}
+
+export declare interface UserProfileOptions extends UserOptions {
+    about: string,
+    options: UserOptionsWithTime,
+    mediaListOptions: MediaListSettings,
+    donatorBadge: string
+}
+
+export declare interface NotificationOptions {
+    type: NotificationType,
+    enabled: boolean
 }
 
 export declare interface UserMediaList {
@@ -605,7 +659,7 @@ export declare interface UserMediaList {
     advancedScoringEnabled: boolean
 }
 
-export declare interface UserSetting {
+export declare interface MediaListSettings {
     scoreFormat: string,
     rowOrder: string,
     animeList: UserMediaList,
@@ -629,7 +683,7 @@ export declare interface UserProfile extends UserRelation {
     isFollower: boolean,
     bans: string,
     options: UserOptions,
-    mediaListOptions: UserSetting,
+    mediaListOptions: MediaListSettings,
     favourites: UserFavourites,
     siteUrl: string,
     donatorTier: number,
@@ -638,7 +692,7 @@ export declare interface UserProfile extends UserRelation {
     updatedAt: number
 }
 
-export declare interface UserStatsProfile extends UserProfile{
+export declare interface UserStatsProfile extends UserProfile {
     statistics: UserStats;
 }
 
@@ -678,11 +732,11 @@ export declare interface MangaUserLengths extends MangaUserEntry {
     length: string
 }
 
-export declare interface AnimeUserReleaseYears  extends AnimeUserEntry {
+export declare interface AnimeUserReleaseYears extends AnimeUserEntry {
     releaseYear: string
 }
 
-export declare interface MangaUserReleaseYears  extends MangaUserEntry {
+export declare interface MangaUserReleaseYears extends MangaUserEntry {
     releaseYear: string
 }
 
@@ -741,34 +795,34 @@ export declare interface UserStatsEntry {
 }
 
 
-export declare interface UserStatsAnime extends UserStatsEntry{
+export declare interface UserStatsAnime extends UserStatsEntry {
     minutesWatched: number,
     episodesWatched: number,
-    statuses: AnimeUserStatuses,
-    formats: AnimeUserFormats,
-    lengths: AnimeUserLengths,
-    releaseYears: AnimeUserReleaseYears,
-    startYears: AnimeUserStartYears,
-    genres: AnimeUserGenres,
-    tags: AnimeUserTags,
-    countries: AnimeUserCountries,
-    voiceActors: AnimeUserVoiceActors,
-    staff: AnimeUserStaff,
-    studios: AnimeUserStudios,
+    statuses: AnimeUserStatuses[],
+    formats: AnimeUserFormats[],
+    lengths: AnimeUserLengths[],
+    releaseYears: AnimeUserReleaseYears[],
+    startYears: AnimeUserStartYears[],
+    genres: AnimeUserGenres[],
+    tags: AnimeUserTags[],
+    countries: AnimeUserCountries[],
+    voiceActors: AnimeUserVoiceActors[],
+    staff: AnimeUserStaff[],
+    studios: AnimeUserStudios[],
 }
 
 export declare interface UserStatsManga extends UserStatsEntry {
     chaptersRead: number,
     volumesRead: number,
-    statuses: MangaUserStatuses,
-    formats: MangaUserFormats,
-    lengths: MangaUserLengths,
-    releaseYears: MangaUserReleaseYears,
-    startYears: MangaUserStartYears,
-    genres: MangaUserGenres,
-    tags: MangaUserTags,
-    countries: MangaUserCountries,
-    staff: MangaUserStaff,
+    statuses: MangaUserStatuses[],
+    formats: MangaUserFormats[],
+    lengths: MangaUserLengths[],
+    releaseYears: MangaUserReleaseYears[],
+    startYears: MangaUserStartYears[],
+    genres: MangaUserGenres[],
+    tags: MangaUserTags[],
+    countries: MangaUserCountries[],
+    staff: MangaUserStaff[],
 }
 
 export declare interface UserStats {
@@ -791,15 +845,15 @@ export declare interface ListEntry {
         isAdult: boolean,
         synonyms: string[],
         siteUrl: string,
-        duration: number,
-        episodes: number,
-        volumes: number,
-        chapters: number
+        duration?: number,
+        episodes?: number,
+        volumes?: number,
+        chapters?: number
     },
     status: MediaStatus,
     score: number,
     progress: number,
-    progressVolumes: number,
+    progressVolumes?: number,
     repeat: number,
     priority: number,
     private: boolean,
