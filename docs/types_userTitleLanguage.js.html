@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>people.js - AniList-Node Documentation</title>
+		<title>types/userTitleLanguage.js - AniList-Node Documentation</title>
 
 		<meta name="description" content="Documentation for the AniList-Node NPM package." />
 
@@ -172,57 +172,53 @@
 		</nav>
 
 		<div id="main">
-			<h1 class="page-title">people.js</h1>
+			<h1 class="page-title">types/userTitleLanguage.js</h1>
 
 			<section>
 				<article>
 					<pre class="prettyprint source linenums"><code>/**
- * Access AniList's characters and staff data.
- * @since 1.0.0
- * @memberof AniList
+ * An enum for user title settings
+ * @enum {String}
+ * @readonly
  */
-class People {
-    /**
-     * @description This constructor is meant for internal use and is apart of initializing. You cannot access this
-     * through the AniList class and are not expect to.
-     * @param { Utilities } utilities - The AniList Utilities class.
-     * @hideconstructor
-     */
-    constructor(utilities) {
-        this.util = utilities;
-    }
 
-    /**
-     * Fetch a character entry by its AniList ID.
-     * @param { Number|String } id - Required. The ID tied to the AniList entry.
-     * @returns { CharacterEntry }
-     * @since 1.0.0
-     */
-    character(id) {
-        var queryVars = this.util.generateQueryHeaders("Character", id);
-
-        return this.util.send(queryVars[1] + `id name { english: full native alternative } image { large medium } 
-        description isFavourite favourites siteUrl 
-        media { nodes { id title { romaji english native userPreferred } type } } } }`, queryVars[0]);
-    };
-
-    /**
-     * Fetch a staff entry by its AniList ID or their name.
-     * @param { Number|String } id - Required. The ID can either be the AniList ID or the staff's name.
-     * @returns { StaffEntry }
-     * @since 1.0.0
-     */
-    staff(id) {
-        var queryVars = this.util.generateQueryHeaders("Staff", id);
-
-        return this.util.send(queryVars[1] + `id name { english: full native alternative } language image { large medium }
-            description isFavourite siteUrl favourites
-            staffMedia { nodes { id title { romaji english native userPreferred } type } }
-            characters { nodes { id name { english: full } } } } }`, queryVars[0]);
-    };
+const UserTitleLanguage = {
+	/**
+	 * @member {String}
+	 * @description Media name in romanized Japanese
+	 */
+	ROMAJI: "ROMAJI",
+	/**
+	 * @member {String}
+	 * @description Official media name in English
+	 */
+	ENGLISH: "ENGLISH",
+	/**
+	 * @member {String}
+	 * @description Official title in Japanese
+	 */
+	NATIVE: "NATIVE",
+	/**
+	 * @member {String}
+	 * @description The romanization of the native language title, stylised by media creator
+	 */
+	ROMAJI_STYLISED: "ROMAJI_STYLISED",
+	/**
+	 * @member {String}
+	 * @description The official english title, stylised by media creator
+	 */
+	ENGLISH_STYLISED: "ENGLISH_STYLISED",
+	/**
+	 * @member {String}
+	 * @description Official title in it's native language, stylised by media creator
+	 */
+	NATIVE_STYLISED: "NATIVE_STYLISED"
 };
 
-module.exports = People;</code></pre>
+Object.freeze(UserTitleLanguage);
+
+module.exports = UserTitleLanguage;
+</code></pre>
 				</article>
 			</section>
 		</div>

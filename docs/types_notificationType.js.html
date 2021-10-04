@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>people.js - AniList-Node Documentation</title>
+		<title>types/notificationType.js - AniList-Node Documentation</title>
 
 		<meta name="description" content="Documentation for the AniList-Node NPM package." />
 
@@ -172,57 +172,108 @@
 		</nav>
 
 		<div id="main">
-			<h1 class="page-title">people.js</h1>
+			<h1 class="page-title">types/notificationType.js</h1>
 
 			<section>
 				<article>
 					<pre class="prettyprint source linenums"><code>/**
- * Access AniList's characters and staff data.
- * @since 1.0.0
- * @memberof AniList
+ * An enum for notification types
+ * @enum {String}
+ * @readonly
  */
-class People {
-    /**
-     * @description This constructor is meant for internal use and is apart of initializing. You cannot access this
-     * through the AniList class and are not expect to.
-     * @param { Utilities } utilities - The AniList Utilities class.
-     * @hideconstructor
-     */
-    constructor(utilities) {
-        this.util = utilities;
-    }
 
-    /**
-     * Fetch a character entry by its AniList ID.
-     * @param { Number|String } id - Required. The ID tied to the AniList entry.
-     * @returns { CharacterEntry }
-     * @since 1.0.0
-     */
-    character(id) {
-        var queryVars = this.util.generateQueryHeaders("Character", id);
-
-        return this.util.send(queryVars[1] + `id name { english: full native alternative } image { large medium } 
-        description isFavourite favourites siteUrl 
-        media { nodes { id title { romaji english native userPreferred } type } } } }`, queryVars[0]);
-    };
-
-    /**
-     * Fetch a staff entry by its AniList ID or their name.
-     * @param { Number|String } id - Required. The ID can either be the AniList ID or the staff's name.
-     * @returns { StaffEntry }
-     * @since 1.0.0
-     */
-    staff(id) {
-        var queryVars = this.util.generateQueryHeaders("Staff", id);
-
-        return this.util.send(queryVars[1] + `id name { english: full native alternative } language image { large medium }
-            description isFavourite siteUrl favourites
-            staffMedia { nodes { id title { romaji english native userPreferred } type } }
-            characters { nodes { id name { english: full } } } } }`, queryVars[0]);
-    };
+const NotificationType = {
+	/**
+	 * @member {String}
+	 * @description Recieved a message
+	 */
+	ACTIVITY_MESSAGE: "ACTIVITY_MESSAGE",
+	/**
+	 * @member {String}
+	 * @description Replied to user's activity
+	 */
+	ACTIVITY_REPLY: "ACTIVITY_REPLY",
+	/**
+	 * @member {String}
+	 * @description Another user has followed
+	 */
+	FOLLOWING: "FOLLOWING",
+	/**
+	 * @member {String}
+	 * @description A user has mentioned you in their activity
+	 */
+	ACTIVITY_MENTION: "ACTIVITY_MENTION",
+	/**
+	 * @member {String}
+	 * @description A user has mentioned you in a forum comment
+	 */
+	THREAD_COMMENT_MENTION: "THREAD_COMMENT_MENTION",
+	/**
+	 * @member {String}
+	 * @description A user has commented in one of your subscribed forum threads
+	 */
+	THREAD_SUBSCRIBED: "THREAD_SUBSCRIBED",
+	/**
+	 * @member {String}
+	 * @description A user has replied to your forum comment
+	 */
+	THREAD_COMMENT_REPLY: "THREAD_COMMENT_REPLY",
+	/**
+	 * @member {String}
+	 * @description An anime you are currently watching has aired
+	 */
+	AIRING: "AIRING",
+	/**
+	 * @member {String}
+	 * @description A user has liked your activity
+	 */
+	ACTIVITY_LIKE: "ACTIVITY_LIKE",
+	/**
+	 * @member {String}
+	 * @description A user has liked your activity reply
+	 */
+	ACTIVITY_REPLY_LIKE: "ACTIVITY_REPLY_LIKE",
+	/**
+	 * @member {String}
+	 * @description A user has liked your forum thread
+	 */
+	THREAD_LIKE: "THREAD_LIKE",
+	/**
+	 * @member {String}
+	 * @description A user has liked your forum comment
+	 */
+	THREAD_COMMENT_LIKE: "THREAD_COMMENT_LIKE",
+	/**
+	 * @member {String}
+	 * @description A user has replied to activity you have also replied to
+	 */
+	ACTIVITY_REPLY_SUBSCRIBED: "ACTIVITY_REPLY_SUBSCRIBED",
+	/**
+	 * @member {String}
+	 * @description A new anime or manga has been added to the site where its related media is on the user's list
+	 */
+	RELATED_MEDIA_ADDITION: "RELATED_MEDIA_ADDITION",
+	/**
+	 * @member {String}
+	 * @description An anime or manga has had a data change that affects how a user may track it in their lists
+	 */
+	MEDIA_DATA_CHANGE: "MEDIA_DATA_CHANGE",
+	/**
+	 * @member {String}
+	 * @description Anime or manga entries on the user's list have been merged into a single entry
+	 */
+	MEDIA_MERGE: "MEDIA_MERGE",
+	/**
+	 * @member {String}
+	 * @description An anime or manga on the user's list has been deleted from the site
+	 */
+	MEDIA_DELETION: "MEDIA_DELETION"
 };
 
-module.exports = People;</code></pre>
+Object.freeze(NotificationType);
+
+module.exports = NotificationType;
+</code></pre>
 				</article>
 			</section>
 		</div>
