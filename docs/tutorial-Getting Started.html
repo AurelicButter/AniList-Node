@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>people.js - AniList-Node Documentation</title>
+		<title>Tutorial: Getting Started - AniList-Node Documentation</title>
 
 		<meta name="description" content="Documentation for the AniList-Node NPM package." />
 
@@ -172,57 +172,90 @@
 		</nav>
 
 		<div id="main">
-			<h1 class="page-title">people.js</h1>
+			<h1 class="page-title">Tutorial: Getting Started</h1>
 
 			<section>
+				<header>
+					<h2>Getting Started</h2>
+				</header>
+
 				<article>
-					<pre class="prettyprint source linenums"><code>/**
- * Access AniList's characters and staff data.
- * @since 1.0.0
- * @memberof AniList
- */
-class People {
-    /**
-     * @description This constructor is meant for internal use and is apart of initializing. You cannot access this
-     * through the AniList class and are not expect to.
-     * @param { Utilities } utilities - The AniList Utilities class.
-     * @hideconstructor
-     */
-    constructor(utilities) {
-        this.util = utilities;
-    }
+					<h2>How to Import</h2>
+					<p>
+						AniList-Node is a class based, asyncronous package, meaning the main class needed to be
+						constructed and all of its methods are async.
+					</p>
+					<p>For JavaScript, a simple require line and new class is perfect for the job.</p>
+					<pre
+						class="prettyprint source lang-JavaScript"
+					><code>const AniList = require(&quot;anilist-node&quot;);
 
-    /**
-     * Fetch a character entry by its AniList ID.
-     * @param { Number|String } id - Required. The ID tied to the AniList entry.
-     * @returns { CharacterEntry }
-     * @since 1.0.0
-     */
-    character(id) {
-        var queryVars = this.util.generateQueryHeaders("Character", id);
+const anilist = new AniList();
+</code></pre>
+					<p>
+						However with TypeScript installs, the class is exported under the name AniList and therefore
+						should be imported as directed below.
+					</p>
+					<pre class="prettyprint source lang-TypeScript"><code>import AniList from &quot;anilist-node&quot;;
 
-        return this.util.send(queryVars[1] + `id name { english: full native alternative } image { large medium } 
-        description isFavourite favourites siteUrl 
-        media { nodes { id title { romaji english native userPreferred } type } } } }`, queryVars[0]);
-    };
+const anilist = new AniList();
+</code></pre>
+					<h2>Authorization</h2>
+					<p>
+						For a few features such as checking favourites, a token needs to be added to AniList-Node during
+						the class initialization.
+					</p>
+					<p>
+						For those without a token, head to
+						<a href="https://anilist.co/settings/developer">Anilist's Developer Page</a> and click
+						&quot;Create New Client&quot;. Note the client id. Then, copy paste this URL
+						<code
+							>https://anilist.co/api/v2/oauth/authorize?client_id={clientID}&amp;response_type=token</code
+						>, replacing the <code>{clientID}</code> with your client ID. It will ask you to log in and then
+						provide you with the token to use. You will not need to generate a token more than once.
+					</p>
+					<blockquote>
+						<p>
+							<em
+								><strong
+									>NOTE: Please store your token securely and privately! This gives access to your
+									AniList account. It is your responsibility to maintain your token.</strong
+								></em
+							>
+						</p>
+					</blockquote>
+					<p>Once the token is accquired, then it can be added to the class as follows.</p>
+					<pre
+						class="prettyprint source lang-JavaScript"
+					><code>const settings = require('./settings.json'); //Or wherever your store your token.
+const anilist = require('anilist-node');
+const Anilist = new anilist(settings.token /* This being your token */);
+</code></pre>
+					<h2>How to Use</h2>
+					<p>Every class, method, and property is found within the AniList class.</p>
+					<p>
+						So if the program wanted to get the character information of
+						<a href="https://anilist.co/character/126156">Myne</a> from
+						<a href="https://anilist.co/manga/87383">Ascendance of a Bookworm</a>, it would need to get data
+						from the character method within the <a href="AniList.People.html">people</a> class.
+					</p>
+					<pre
+						class="prettyprint source lang-JavaScript"
+					><code>const AniList = require(&quot;anilist-node&quot;);
 
-    /**
-     * Fetch a staff entry by its AniList ID or their name.
-     * @param { Number|String } id - Required. The ID can either be the AniList ID or the staff's name.
-     * @returns { StaffEntry }
-     * @since 1.0.0
-     */
-    staff(id) {
-        var queryVars = this.util.generateQueryHeaders("Staff", id);
+const anilist = new AniList();
 
-        return this.util.send(queryVars[1] + `id name { english: full native alternative } language image { large medium }
-            description isFavourite siteUrl favourites
-            staffMedia { nodes { id title { romaji english native userPreferred } type } }
-            characters { nodes { id name { english: full } } } } }`, queryVars[0]);
-    };
-};
+// You can either use then...
+anilist.people.character(126156).then(data => { console.log(data); });
 
-module.exports = People;</code></pre>
+// Or await it!
+const data = await anilist.people.character(126156);
+console.log(data);
+</code></pre>
+					<p>
+						All of the methods to fetch data are the same way so please refer to the documentation on what
+						methods are available and what data is returned in the objects.
+					</p>
 				</article>
 			</section>
 		</div>
