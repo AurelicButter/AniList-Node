@@ -178,7 +178,6 @@
  * @since 1.0.0
  */
 class AniList {
-<<<<<<< HEAD
 	/**
 	 * @constructor
 	 * @param {String} [accessKey] - The AniList API token. If no key is provided,
@@ -198,19 +197,6 @@ class AniList {
 
 		// Import utilities for the classes.
 		this.__util = new util(accessKey, options);
-=======
-    /**
-     * @constructor
-     * @param {String} [accessKey] - The AniList API token. If no key is provided, 
-     *      the user will not be able to access private information such as 
-     *      the authorized user's profile (if set to private).
-     */
-    constructor (accessKey) {
-        if (!accessKey) { accessKey = null; }
-
-        // Import utilities for the classes.
-        this.__util = new util(accessKey);
->>>>>>> parent of 690c714 (Rerun npm run docs)
 
         /**
          * @augments User
@@ -264,19 +250,9 @@ class AniList {
     studio(studio) {
         const queryVars = this.__util.generateQueryHeaders("Studio", studio);
 
-<<<<<<< HEAD
-		return this.__util.send(
-			queryVars[1] +
-			`id name isAnimationStudio siteUrl isFavourite favourites 
-            media { nodes { id title { romaji english native userPreferred } } } } }`,
-			queryVars[0]
-		);
-	}
-=======
         return this.__util.send(queryVars[1] + `id name isAnimationStudio siteUrl isFavourite favourites 
             media { nodes { id title { romaji english native userPreferred } } } } }`, queryVars[0]);
     }
->>>>>>> parent of 690c714 (Rerun npm run docs)
 
     /**
      * Searches AniList based on a specific term.
