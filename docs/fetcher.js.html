@@ -244,12 +244,12 @@ function convertFuzzyDate(fuzzyDate) {
  * @private
  * @param { Object } media
  */
-async function formatMedia(media) {
+function formatMedia(media) {
 	media.reviews = media.reviews.nodes.length === 0 ? null : media.reviews.nodes;
 
-	media.externalLinks = await edgeRemove(media.externalLinks);
-	media.characters = await edgeRemove(media.characters.nodes);
-	media.staff = await edgeRemove(media.staff.nodes);
+	media.externalLinks = edgeRemove(media.externalLinks);
+	media.characters = edgeRemove(media.characters.nodes);
+	media.staff = edgeRemove(media.staff.nodes);
 
 	if (media.airingSchedule) {
 		media.airingSchedule = media.airingSchedule.nodes;
@@ -314,18 +314,20 @@ module.exports = {
 			options.headers.Authorization = `Bearer ${this.key}`;
 		}
 
-		const response = await fetch("https://graphql.anilist.co", options).catch((error) => {
-			if (error instanceof fetch.AbortError) {
-				throw new Error(`ERROR: Request timed out after ${timeoutMs}ms, is AniList up?`)
-			}
-		}).finally(() => {
-			clearTimeout(requestTimeout);
-		});
+		const response = await fetch("https://graphql.anilist.co", options)
+			.catch((error) => {
+				if (error instanceof fetch.AbortError) {
+					throw new Error(`ERROR: Request timed out after ${timeoutMs}ms, is AniList up?`);
+				}
+			})
+			.finally(() => {
+				clearTimeout(requestTimeout);
+			});
 
 		let json = await response.json();
 
-		if (Object.keys(json) &lt; 0) {
-			throw new Error("ERROR: AniList API is down. Please refer to offical channels for more information.");
+		if (Object.keys(json).length &lt; 0) {
+			throw new Error("ERROR: AniList API is down. Please refer to official channels for more information.");
 		}
 
 		if (json.errors) {
@@ -333,7 +335,7 @@ module.exports = {
 		}
 
 		if (json.data.Media) {
-			return await formatMedia(json.data.Media);
+			return formatMedia(json.data.Media);
 		}
 
 		if (json.data.Character) {
@@ -344,8 +346,8 @@ module.exports = {
 
 		if (json.data.Staff) {
 			json.data.Staff.name = await nameEditor(json.data.Staff.name);
-			json.data.Staff.staffMedia = await edgeRemove(json.data.Staff.staffMedia.nodes);
-			json.data.Staff.characters = await edgeRemove(json.data.Staff.characters.nodes);
+			json.data.Staff.staffMedia = edgeRemove(json.data.Staff.staffMedia.nodes);
+			json.data.Staff.characters = edgeRemove(json.data.Staff.characters.nodes);
 			if (json.data.Staff.description.length &lt; 1) {
 				json.data.Staff.description = null;
 			}
@@ -366,7 +368,7 @@ module.exports = {
 		}
 
 		if (json.data.Studio) {
-			json.data.Studio.media = await edgeRemove(json.data.Studio.media.nodes);
+			json.data.Studio.media = edgeRemove(json.data.Studio.media.nodes);
 			return json.data.Studio;
 		}
 
@@ -392,8 +394,8 @@ module.exports = {
 			//Move all node objects up one level.
 			userObj.favourites.anime = userObj.favourites.anime.nodes;
 			userObj.favourites.manga = userObj.favourites.manga.nodes;
-			userObj.favourites.characters = await edgeRemove(userObj.favourites.characters.nodes);
-			userObj.favourites.staff = await edgeRemove(userObj.favourites.staff.nodes);
+			userObj.favourites.characters = edgeRemove(userObj.favourites.characters.nodes);
+			userObj.favourites.staff = edgeRemove(userObj.favourites.staff.nodes);
 			userObj.favourites.studios = userObj.favourites.studios.nodes;
 
 			return userObj;

@@ -203,8 +203,7 @@ class AniList {
 		}
 
 		if (options &amp;&amp; options.timeout) {
-			if (typeof options.timeout !== "number")
-				throw new TypeError("ERROR: 'options.timeout' should be a number")
+			if (typeof options.timeout !== "number") throw new TypeError("ERROR: 'options.timeout' should be a number");
 		}
 
 		// Import utilities for the classes.
