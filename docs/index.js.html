@@ -192,14 +192,20 @@ class AniList {
 	 * @param {String} [accessKey] - The AniList API token. If no key is provided,
 	 *      the user will not be able to access private information such as
 	 *      the authorized user's profile (if set to private).
+	 * @param {Object} [options] - Optional options to use when getting info from AniList
 	 */
-	constructor(accessKey) {
+	constructor(accessKey, options = {}) {
 		if (!accessKey) {
 			accessKey = null;
 		}
 
+		if (options &amp;&amp; options.timeout) {
+			if (typeof options.timeout !== "number")
+				throw new TypeError("ERROR: 'options.timeout' should be a number")
+		}
+
 		// Import utilities for the classes.
-		this.__util = new util(accessKey);
+		this.__util = new util(accessKey, options);
 
 		/**
 		 * @augments User
@@ -262,7 +268,7 @@ class AniList {
 
 		return this.__util.send(
 			queryVars[1] +
-				`id name isAnimationStudio siteUrl isFavourite favourites 
+			`id name isAnimationStudio siteUrl isFavourite favourites 
             media { nodes { id title { romaji english native userPreferred } } } } }`,
 			queryVars[0]
 		);

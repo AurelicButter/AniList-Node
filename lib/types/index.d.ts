@@ -69,8 +69,9 @@ declare class Anilist {
      * @param {String} [accessKey] - The AniList API token. If no key is provided,
      *      the user will not be able to access private information such as
      *      the authorized user's profile (if set to private).
+     * @param {Object} [options] - Optional options used while getting info from AniList
      */
-    constructor(accessKey?: string);
+    constructor(accessKey?: string, options?: object);
 
     /**
      * Grabs data on a studio

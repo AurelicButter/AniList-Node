@@ -182,9 +182,11 @@ class Utilities {
     /**
      * @constructor
      * @param {String} [accessKey] - The AniList API token.
+     * @param {Object} [options] - Optional options used while getting info from AniList
      */
-    constructor(accessKey) {
+    constructor(accessKey, options) {
         this.key = accessKey;
+        this.options = options || {};
     }
 
     /**
