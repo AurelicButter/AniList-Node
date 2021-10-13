@@ -640,6 +640,18 @@ export declare interface UserOptionsInput {
     mangaListOptions: MediaListOptionsInput
 }
 
+export declare interface MediaListOptions {
+    sectionOrder: string[],
+    splitCompletedSectionByFormat: boolean,
+    customLists: string[],
+    advancedScoring: string[],
+    advancedScoringEnabled: boolean
+}
+
+export declare interface MediaListOptionsInput extends MediaListOptions {
+    theme: string
+}
+
 export declare interface UserProfileOptions extends UserOptions {
     about: string,
     options: UserOptionsWithTime,
