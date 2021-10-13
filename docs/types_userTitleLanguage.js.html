@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>lists.js - AniList-Node Documentation</title>
+		<title>types/userTitleLanguage.js - AniList-Node Documentation</title>
 
 		<meta name="description" content="Documentation for the AniList-Node NPM package." />
 
@@ -169,70 +169,28 @@
 		</nav>
 
 		<div id="main">
-			<h1 class="page-title">lists.js</h1>
+			<h1 class="page-title">types/userTitleLanguage.js</h1>
 
 			<section>
 				<article>
 					<pre class="prettyprint source linenums"><code>/**
- * Access a user's AniList list data.
- * @since 1.1.0
- * @memberof AniList
+ * An enum for user title settings
+ * @enum {String}
+ * @readonly
  */
-class Lists {
-	/**
-	 * @description This constructor is meant for internal use and is apart of initializing. You cannot access this
-	 * through the AniList class and are not expect to.
-	 * @param { Utilities } utilities - The AniList Utilities class.
-	 * @hideconstructor
-	 */
-	constructor(utilities) {
-		this.util = utilities;
-	}
 
-	/**
-	 * Fetch a user's AniList anime lists.
-	 * @param { Number | String } user - Required. Can either be the username or the AniList ID.
-	 * @returns { UserList }
-	 * @since 1.1.0
-	 */
-	anime(user) {
-		let queryVars = this.util.generateQueryHeaders("MediaListCollection", user, "ANIME");
+const UserTitleLanguage = {
+	ROMAJI: "ROMAJI",
+	ENGLISH: "ENGLISH",
+	NATIVE: "NATIVE",
+	ROMAJI_STYLISED: "ROMAJI_STYLISED",
+	ENGLISH_STYLISED: "ENGLISH_STYLISED",
+	NATIVE_STYLISED: "NATIVE_STYLISED"
+};
 
-		return this.util.send(
-			queryVars[1] +
-				`lists { name isCustomList isSplitCompletedList status entries {
-            media { id idMal title { romaji english native userPreferred } 
-            episodes description format startDate { year month day } endDate { year month day }
-            duration genres synonyms tags { name isMediaSpoiler } isFavourite isAdult siteUrl }
-            status score progress repeat priority private notes hiddenFromStatusLists
-            advancedScores startedAt { year month day } completedAt { year month day } updatedAt createdAt } } } }`,
-			queryVars[0]
-		);
-	}
+Object.freeze(UserTitleLanguage);
 
-	/**
-	 * Fetch a user's AniList manga lists.
-	 * @param { Number | String } user - Required. Can either be the username or the AniList ID.
-	 * @returns { UserList }
-	 * @since 1.1.0
-	 */
-	manga(user) {
-		let queryVars = this.util.generateQueryHeaders("MediaListCollection", user, "MANGA");
-
-		return this.util.send(
-			queryVars[1] +
-				`lists { name isCustomList isSplitCompletedList status entries {
-            media { id idMal title { romaji english native userPreferred } 
-            volumes chapters description format startDate { year month day } endDate { year month day }
-            genres synonyms tags { name isMediaSpoiler } isFavourite isAdult siteUrl }
-            status score progress progressVolumes repeat priority private notes hiddenFromStatusLists
-            advancedScores startedAt { year month day } completedAt { year month day } updatedAt createdAt } } } }`,
-			queryVars[0]
-		);
-	}
-}
-
-module.exports = Lists;
+module.exports = UserTitleLanguage;
 </code></pre>
 				</article>
 			</section>
