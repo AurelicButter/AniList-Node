@@ -131,6 +131,7 @@
 				<li><a href="global.html#CharacterEntry">CharacterEntry</a></li>
 				<li><a href="global.html#CountryCode">CountryCode</a></li>
 				<li><a href="global.html#FuzzyDateInt">FuzzyDateInt</a></li>
+				<li><a href="global.html#InitOptions">InitOptions</a></li>
 				<li><a href="global.html#ListActivity">ListActivity</a></li>
 				<li><a href="global.html#ListEntry">ListEntry</a></li>
 				<li><a href="global.html#MangaEntry">MangaEntry</a></li>
@@ -195,14 +196,21 @@ class AniList {
 	 * @param {String} [accessKey] - The AniList API token. If no key is provided,
 	 *      the user will not be able to access private information such as
 	 *      the authorized user's profile (if set to private).
+	 * @param {Object} [options] - Optional options to use when getting info from AniList
 	 */
-	constructor(accessKey) {
+	constructor(accessKey, options = {}) {
 		if (!accessKey) {
 			accessKey = null;
 		}
 
+		if (options.timeout) {
+			if (typeof options.timeout !== "number") throw new TypeError("ERROR: 'options.timeout' should be a number");
+		} else {
+			options.timeout = 15000;
+		}
+
 		// Import utilities for the classes.
-		this.__util = new util(accessKey);
+		this.__util = new util(accessKey, options);
 
 		/**
 		 * @augments User
