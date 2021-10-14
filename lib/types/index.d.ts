@@ -1037,4 +1037,8 @@ export declare interface SingleRecommendation extends RecommendationEntry {
     media: MediaRelation
 }
 
+export declare interface InitOptions {
+    timeout: number
+}
+
 export default Anilist;
