@@ -14,7 +14,7 @@
 	"scripts": {
 		"test": "node tests/mediaTest.js",
 		"docs": "node utilities/clearDocs.js && jsdoc -u tutorials -c utilities/docConfig.json && prettier --write ./docs",
-		"eslint": "eslint .",
+		"eslint": "eslint . --fix",
 		"prettier": "prettier --write .",
 		"prepare": "husky install"
 	},
