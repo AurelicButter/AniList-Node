@@ -236,6 +236,12 @@ declare class Activity {
      * @since 1.7.0
      */
     getUserActivity(user: number, page?: number, perPage?: number): Promise<Array<ListActivity | TextActivity | MessageActivity>>;
+
+    postText(text: string, id?:number): TextActivity;
+
+    postMessage(text: string, recipientId: number, isPrivate?:boolean, id?: number): MessageActivity;
+
+    delete(id: number): boolean;
 }
 
 declare class Search {
@@ -896,29 +902,34 @@ export declare interface UserList {
 }
 export declare interface BaseActivity {
     id: number,
+    userId: number,
     type: string,
-    progress: number,
-    media: MediaRelation,
     createdAt: number,
-    likeCount: number,
     replies: {
         id: number,
-        text: string
-    }
+        text: string,
+        likeCount: number
+    },
+    isLocked: boolean,
+    isSubscribed: boolean,
+    isLiked: boolean,
+    likes: UserRelation[]
 }
 
 export declare interface ListActivity extends BaseActivity {
+    progress: number,
+    media: MediaRelation,
     status: string
 }
 
 export declare interface TextActivity extends BaseActivity {
-    userId: number,
-    text: string,
+    text: string
 }
 
 export declare interface MessageActivity extends BaseActivity {
     recipientId: number,
-    message: string
+    message: string,
+    isPrivate: boolean
 }
 
 export declare interface MediaFilterTypes {
