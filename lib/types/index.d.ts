@@ -65,6 +65,13 @@ declare class Anilist {
     recommendation: Recommendation;
 
     /**
+     * Access AniList's threads
+     * @since 1.11.0
+     * @memberof AniList
+     */
+    thread: Thread;
+
+    /**
      * @constructor
      * @param {String} [accessKey] - The AniList API token. If no key is provided,
      *      the user will not be able to access private information such as
@@ -337,6 +344,16 @@ declare class Recommendation {
      * @since 1.8.0
      */
     get(recommendID: Number): Promise<SingleRecommendation>;
+}
+
+declare class Thread {
+    /**
+	 * Get a specific thread by its AniList ID
+     * @param {Number} id - The AniList ID of the thread
+	 * @returns {ThreadEntry}
+     * @since 1.11.0
+	 */
+	get(id: number): ThreadEntry;
 }
 
 export declare type MediaType = 'ANIME' | 'MANGA';
@@ -1050,6 +1067,29 @@ export declare interface SingleRecommendation extends RecommendationEntry {
 
 export declare interface InitOptions {
     timeout: number
+}
+
+export declare interface ThreadEntry {
+    id: number,
+    title: string,
+    body: string,
+    user: UserRelation,
+    replyCommentId: number,
+    viewCount: number,
+    isLocked: boolean,
+    isSticky: boolean,
+    isSubscribed: boolean,
+    replyUser: UserRelation,
+    isLiked: boolean,
+    repliedAt: number,
+    createdAt: number,
+    updatedAt: number,
+    likes: UserRelation[],
+    categories: {
+        id: number,
+        name: string
+    }[],
+    mediaCategories: MediaRelation[]
 }
 
 export default Anilist;
