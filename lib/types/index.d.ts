@@ -902,7 +902,7 @@ export declare interface UserList {
 }
 export declare interface BaseActivity {
     id: number,
-    userId: number,
+    user: UserRelation,
     type: string,
     createdAt: number,
     replies: {
@@ -927,7 +927,7 @@ export declare interface TextActivity extends BaseActivity {
 }
 
 export declare interface MessageActivity extends BaseActivity {
-    recipientId: number,
+    recipient: UserRelation,
     message: string,
     isPrivate: boolean
 }
