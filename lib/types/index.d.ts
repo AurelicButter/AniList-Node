@@ -65,12 +65,20 @@ declare class Anilist {
     recommendation: Recommendation;
 
     /**
+     * Access AniList's threads
+     * @since 1.11.0
+     * @memberof AniList
+     */
+    thread: Thread;
+
+    /**
      * @constructor
      * @param {String} [accessKey] - The AniList API token. If no key is provided,
      *      the user will not be able to access private information such as
      *      the authorized user's profile (if set to private).
+     * @param { InitOptions } [options] - Optional options used while getting info from AniList
      */
-    constructor(accessKey?: string);
+    constructor(accessKey?: string, options?: InitOptions);
 
     /**
      * Grabs data on a studio
@@ -235,6 +243,12 @@ declare class Activity {
      * @since 1.7.0
      */
     getUserActivity(user: number, page?: number, perPage?: number): Promise<Array<ListActivity | TextActivity | MessageActivity>>;
+
+    postText(text: string, id?:number): TextActivity;
+
+    postMessage(text: string, recipientId: number, isPrivate?:boolean, id?: number): MessageActivity;
+
+    delete(id: number): boolean;
 }
 
 declare class Search {
@@ -330,6 +344,16 @@ declare class Recommendation {
      * @since 1.8.0
      */
     get(recommendID: Number): Promise<SingleRecommendation>;
+}
+
+declare class Thread {
+    /**
+	 * Get a specific thread by its AniList ID
+     * @param {Number} id - The AniList ID of the thread
+	 * @returns {ThreadEntry}
+     * @since 1.11.0
+	 */
+	get(id: number): ThreadEntry;
 }
 
 export declare type MediaType = 'ANIME' | 'MANGA';
@@ -895,29 +919,34 @@ export declare interface UserList {
 }
 export declare interface BaseActivity {
     id: number,
+    user: UserRelation,
     type: string,
-    progress: number,
-    media: MediaRelation,
     createdAt: number,
-    likeCount: number,
     replies: {
         id: number,
-        text: string
-    }
+        text: string,
+        likeCount: number
+    },
+    isLocked: boolean,
+    isSubscribed: boolean,
+    isLiked: boolean,
+    likes: UserRelation[]
 }
 
 export declare interface ListActivity extends BaseActivity {
+    progress: number,
+    media: MediaRelation,
     status: string
 }
 
 export declare interface TextActivity extends BaseActivity {
-    userId: number,
-    text: string,
+    text: string
 }
 
 export declare interface MessageActivity extends BaseActivity {
-    recipientId: number,
-    message: string
+    recipient: UserRelation,
+    message: string,
+    isPrivate: boolean
 }
 
 export declare interface MediaFilterTypes {
@@ -1034,6 +1063,33 @@ export declare interface RecommendationEntry {
 
 export declare interface SingleRecommendation extends RecommendationEntry {
     media: MediaRelation
+}
+
+export declare interface InitOptions {
+    timeout: number
+}
+
+export declare interface ThreadEntry {
+    id: number,
+    title: string,
+    body: string,
+    user: UserRelation,
+    replyCommentId: number,
+    viewCount: number,
+    isLocked: boolean,
+    isSticky: boolean,
+    isSubscribed: boolean,
+    replyUser: UserRelation,
+    isLiked: boolean,
+    repliedAt: number,
+    createdAt: number,
+    updatedAt: number,
+    likes: UserRelation[],
+    categories: {
+        id: number,
+        name: string
+    }[],
+    mediaCategories: MediaRelation[]
 }
 
 export default Anilist;
