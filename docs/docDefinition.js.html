@@ -59,8 +59,11 @@
 				<li>
 					<a href="AniList.Activity.html">Activity</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.Activity.html#delete">delete</a></li>
 						<li data-type="method"><a href="AniList.Activity.html#get">get</a></li>
 						<li data-type="method"><a href="AniList.Activity.html#getUserActivity">getUserActivity</a></li>
+						<li data-type="method"><a href="AniList.Activity.html#postMessage">postMessage</a></li>
+						<li data-type="method"><a href="AniList.Activity.html#postText">postText</a></li>
 					</ul>
 				</li>
 				<li>
@@ -101,6 +104,12 @@
 						<li data-type="method"><a href="AniList.Search.html#staff">staff</a></li>
 						<li data-type="method"><a href="AniList.Search.html#studio">studio</a></li>
 						<li data-type="method"><a href="AniList.Search.html#user">user</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="AniList.Thread.html">Thread</a>
+					<ul class="methods">
+						<li data-type="method"><a href="AniList.Thread.html#get">get</a></li>
 					</ul>
 				</li>
 				<li>
@@ -161,6 +170,7 @@
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
+				<li><a href="global.html#ThreadEntry">ThreadEntry</a></li>
 				<li><a href="global.html#UserList">UserList</a></li>
 				<li><a href="global.html#UserOptions">UserOptions</a></li>
 				<li><a href="global.html#UserOptionsInput">UserOptionsInput</a></li>
@@ -674,46 +684,58 @@
  * @typedef { Object } ListActivity
  * @enum
  * @property { Number } id - The id of the activity
+ * @property { UserRelation } user - The user of the activity
  * @property { String } status - The status of the update
  * @property { String } type - The activity type
  * @property { Number | null } progress - Progress of the media
  * @property { MediaRelation } media - The target media
  * @property { Number } createdAt - The timestamp of the creation time
- * @property { Number } likeCount - The amount of likes the activity has
- * @property { Object } replies - The replies for the activity
+ * @property { Object[] } replies - The replies for the activity
  * @property { Number } replies.id - The id of the reply
  * @property { String } replies.text - The content of the reply
- * @property { Number } likeCount - The amount of likes on the reply
+ * @property { Number } replies.likeCount - The amount of likes on the reply
+ * @property { Boolean } isLocked - True if the activity cannot receive replies
+ * @property { Boolean } isSubscribed - [Requires Login] True if the authorized user is subscribed. 
+ * @property { Boolean } isLiked - [Requires Login] True if authorized user liked it
+ * @property { UserRelation[] } likes - All users who liked the activity
  */
 
 /**
  * @typedef { Object } TextActivity
  * @enum
  * @property { Number } id - The id of the activity
- * @property { Number } userId - The id of the user
+ * @property { UserRelation } user - The user of the activity
  * @property { String } text - The content of the activity
  * @property { String } type - The activity type
  * @property { Number } createdAt - The timestamp of the creation time
- * @property { Number } likeCount - The amount of likes the activity has
  * @property { Object } replies - The replies for the activity
  * @property { Number } replies.id - The id of the reply
  * @property { String } replies.text - The content of the reply
- * @property { Number } likeCount - The amount of likes on the reply
+ * @property { Number } replies.likeCount - The amount of likes on the reply
+ * @property { Boolean } isLocked - True if the activity cannot receive replies
+ * @property { Boolean } isSubscribed - [Requires Login] True if the authorized user is subscribed. 
+ * @property { Boolean } isLiked - [Requires Login] True if authorized user liked it
+ * @property { UserRelation[] } likes - All users who liked the activity
  */
 
 /**
  * @typedef { Object } MessageActivity
  * @enum
  * @property { Number } id - The id of the activity
- * @property { Number } recipientId - The id of the user receiving the message
+ * @property { UserRelation } user - The sender of the activity
+ * @property { UserRelation } recipient - The user receiving the message
  * @property { String } message - The content of the activity
  * @property { String } type - The activity type
  * @property { Number } createdAt - The timestamp of the creation time
- * @property { Number } likeCount - The amount of likes the activity has
+ * @property { Boolean } isPrivate - True if message is private and only viewable to sender and recipients
  * @property { Object } replies - The replies for the activity
  * @property { Number } replies.id - The id of the reply
  * @property { String } replies.text - The content of the reply
- * @property { Number } likeCount - The amount of likes on the reply
+ * @property { Number } replies.likeCount - The amount of likes on the reply
+ * @property { Boolean } isLocked - True if the activity cannot receive replies
+ * @property { Boolean } isSubscribed - [Requires Login] True if the authorized user is subscribed.
+ * @property { Boolean } isLiked - [Requires Login] True if authorized user liked it
+ * @property { UserRelation[] } likes - All users who liked the activity
  */
 
 /**
@@ -927,6 +949,29 @@
  * @property {String[]} customLists - The names of the user's custom lists
  * @property {String[]} advancedScoring - The names of the user's advanced scoring sections
  * @property {Boolean} advancedScoringEnabled - Check if advanced scoring is enabled for the user's lists
+ */
+
+/**
+ * @typedef ThreadEntry
+ * @property {Number} id - The AniList ID of the thread
+ * @property {String} title - Title of the thread
+ * @property {String} body - Contents of the thread
+ * @property {UserRelation} user - Author of the thread
+ * @property {Number} replyCommentId - Comment ID of the latest reply
+ * @property {Number} viewCount - Number of how many people looked at the thread
+ * @property {Boolean} isLocked - True if locked. Users cannot comment on thread
+ * @property {Boolean} isSticky - True if sticky. Thread is pinned at the top of the forum
+ * @property {Boolean} isSubscribed - [Requires Login] True if authorized user is subscribed to thread
+ * @property {UserRelation} replyUser - Latest user to reply to the thread.
+ * @property {Boolean} isLiked - [Requires Login] True if the authorized user liked the thread.
+ * @property {Number} repliedAt - Timestamp of when the thread was last replied at
+ * @property {Number} createdAt - Timestamp of when the thread was created
+ * @property {Number} updatedAt - Timestamp of when the thread was last edited
+ * @property {UserRelation[]} likes - List of all users who liked the thread
+ * @property {Object[]} categories - List of all categories the thread is labeled with
+ * @property {Number} categories.id - ID of the forum category
+ * @property {String} categories.name - Name of the forum category
+ * @property {MediaRelation[]} mediaCategories - List of related media entries for the thread
  */
 </code></pre>
 				</article>

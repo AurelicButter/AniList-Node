@@ -59,8 +59,11 @@
 				<li>
 					<a href="AniList.Activity.html">Activity</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.Activity.html#delete">delete</a></li>
 						<li data-type="method"><a href="AniList.Activity.html#get">get</a></li>
 						<li data-type="method"><a href="AniList.Activity.html#getUserActivity">getUserActivity</a></li>
+						<li data-type="method"><a href="AniList.Activity.html#postMessage">postMessage</a></li>
+						<li data-type="method"><a href="AniList.Activity.html#postText">postText</a></li>
 					</ul>
 				</li>
 				<li>
@@ -101,6 +104,12 @@
 						<li data-type="method"><a href="AniList.Search.html#staff">staff</a></li>
 						<li data-type="method"><a href="AniList.Search.html#studio">studio</a></li>
 						<li data-type="method"><a href="AniList.Search.html#user">user</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="AniList.Thread.html">Thread</a>
+					<ul class="methods">
+						<li data-type="method"><a href="AniList.Thread.html#get">get</a></li>
 					</ul>
 				</li>
 				<li>
@@ -161,6 +170,7 @@
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
+				<li><a href="global.html#ThreadEntry">ThreadEntry</a></li>
 				<li><a href="global.html#UserList">UserList</a></li>
 				<li><a href="global.html#UserOptions">UserOptions</a></li>
 				<li><a href="global.html#UserOptionsInput">UserOptionsInput</a></li>
@@ -189,6 +199,71 @@
 				<article>
 					<h3 class="subsection-title">Methods</h3>
 
+					<h4 class="name" id="delete">
+						<span class="type-signature"></span>delete<span class="signature">(id)</span
+						><span class="type-signature"> &rarr; {Boolean}</span>
+					</h4>
+
+					<dl class="details">
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="activity.js.html">activity.js</a>,
+									<a href="activity.js.html#line145">line 145</a>
+								</li>
+							</ul>
+						</dd>
+
+						<dt class="tag-since">Since:</dt>
+						<dd class="tag-since">
+							<ul class="dummy">
+								<li>1.11.0</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<div class="description usertext">
+						[Require Login] Delete the current authorized user's activity post
+					</div>
+
+					<h5>Parameters:</h5>
+
+					<table class="params">
+						<thead>
+							<tr>
+								<th>Name</th>
+
+								<th>Type</th>
+
+								<th class="last">Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="name"><code>id</code></td>
+
+								<td class="type">
+									<span class="param-type">Number</span>
+								</td>
+
+								<td class="description last">The AniList activity ID to delete</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5>Returns:</h5>
+
+					<div class="param-desc">Returns true if successful</div>
+
+					<dl class="param-type">
+						<dt>Type</dt>
+						<dd>
+							<span class="param-type">Boolean</span>
+						</dd>
+					</dl>
+
 					<h4 class="name" id="get">
 						<span class="type-signature"></span>get<span class="signature">(activityID)</span
 						><span class="type-signature">
@@ -205,7 +280,7 @@
 							<ul class="dummy">
 								<li>
 									<a href="activity.js.html">activity.js</a>,
-									<a href="activity.js.html#line24">line 24</a>
+									<a href="activity.js.html#line26">line 26</a>
 								</li>
 							</ul>
 						</dd>
@@ -281,7 +356,7 @@
 							<ul class="dummy">
 								<li>
 									<a href="activity.js.html">activity.js</a>,
-									<a href="activity.js.html#line55">line 55</a>
+									<a href="activity.js.html#line58">line 58</a>
 								</li>
 							</ul>
 						</dd>
@@ -370,6 +445,208 @@
 						<dt>Type</dt>
 						<dd>
 							<span class="param-type">Array.&lt;Object></span>
+						</dd>
+					</dl>
+
+					<h4 class="name" id="postMessage">
+						<span class="type-signature"></span>postMessage<span class="signature"
+							>(text, recipientId, isPrivate, id<span class="signature-attributes">nullable</span>)</span
+						><span class="type-signature">
+							&rarr; {<a href="global.html#MessageActivity">MessageActivity</a>}</span
+						>
+					</h4>
+
+					<dl class="details">
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="activity.js.html">activity.js</a>,
+									<a href="activity.js.html#line116">line 116</a>
+								</li>
+							</ul>
+						</dd>
+
+						<dt class="tag-since">Since:</dt>
+						<dd class="tag-since">
+							<ul class="dummy">
+								<li>1.11.0</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<div class="description usertext">
+						[Require Login] Post a new message activity or update the activity with its ID
+					</div>
+
+					<h5>Parameters:</h5>
+
+					<table class="params">
+						<thead>
+							<tr>
+								<th>Name</th>
+
+								<th>Type</th>
+
+								<th>Attributes</th>
+
+								<th>Default</th>
+
+								<th class="last">Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="name"><code>text</code></td>
+
+								<td class="type">
+									<span class="param-type">String</span>
+								</td>
+
+								<td class="attributes"></td>
+
+								<td class="default"></td>
+
+								<td class="description last">The activity message text</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>recipientId</code></td>
+
+								<td class="type">
+									<span class="param-type">Number</span>
+								</td>
+
+								<td class="attributes"></td>
+
+								<td class="default"></td>
+
+								<td class="description last">The target user to send the message to</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>isPrivate</code></td>
+
+								<td class="type">
+									<span class="param-type">Boolean</span>
+								</td>
+
+								<td class="attributes"></td>
+
+								<td class="default">
+									<code>false</code>
+								</td>
+
+								<td class="description last">Set to true if it is a private message</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>id</code></td>
+
+								<td class="type">
+									<span class="param-type">Number</span>
+								</td>
+
+								<td class="attributes">&lt;nullable><br /></td>
+
+								<td class="default"></td>
+
+								<td class="description last">AniList Activity ID. Null to create, number to update.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5>Returns:</h5>
+
+					<dl class="param-type">
+						<dt>Type</dt>
+						<dd>
+							<span class="param-type"><a href="global.html#MessageActivity">MessageActivity</a></span>
+						</dd>
+					</dl>
+
+					<h4 class="name" id="postText">
+						<span class="type-signature"></span>postText<span class="signature"
+							>(text, id<span class="signature-attributes">nullable</span>)</span
+						><span class="type-signature">
+							&rarr; {<a href="global.html#TextActivity">TextActivity</a>}</span
+						>
+					</h4>
+
+					<dl class="details">
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="activity.js.html">activity.js</a>,
+									<a href="activity.js.html#line87">line 87</a>
+								</li>
+							</ul>
+						</dd>
+
+						<dt class="tag-since">Since:</dt>
+						<dd class="tag-since">
+							<ul class="dummy">
+								<li>1.11.0</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<div class="description usertext">
+						[Require Login] Post a new text activity or update the activity with its ID
+					</div>
+
+					<h5>Parameters:</h5>
+
+					<table class="params">
+						<thead>
+							<tr>
+								<th>Name</th>
+
+								<th>Type</th>
+
+								<th>Attributes</th>
+
+								<th class="last">Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="name"><code>text</code></td>
+
+								<td class="type">
+									<span class="param-type">String</span>
+								</td>
+
+								<td class="attributes"></td>
+
+								<td class="description last">The content of the activity.</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>id</code></td>
+
+								<td class="type">
+									<span class="param-type">Number</span>
+								</td>
+
+								<td class="attributes">&lt;nullable><br /></td>
+
+								<td class="description last">
+									The AniList activity ID. Null to create, number for update
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5>Returns:</h5>
+
+					<dl class="param-type">
+						<dt>Type</dt>
+						<dd>
+							<span class="param-type"><a href="global.html#TextActivity">TextActivity</a></span>
 						</dd>
 					</dl>
 				</article>

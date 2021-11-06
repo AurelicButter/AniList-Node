@@ -59,8 +59,11 @@
 				<li>
 					<a href="AniList.Activity.html">Activity</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.Activity.html#delete">delete</a></li>
 						<li data-type="method"><a href="AniList.Activity.html#get">get</a></li>
 						<li data-type="method"><a href="AniList.Activity.html#getUserActivity">getUserActivity</a></li>
+						<li data-type="method"><a href="AniList.Activity.html#postMessage">postMessage</a></li>
+						<li data-type="method"><a href="AniList.Activity.html#postText">postText</a></li>
 					</ul>
 				</li>
 				<li>
@@ -101,6 +104,12 @@
 						<li data-type="method"><a href="AniList.Search.html#staff">staff</a></li>
 						<li data-type="method"><a href="AniList.Search.html#studio">studio</a></li>
 						<li data-type="method"><a href="AniList.Search.html#user">user</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="AniList.Thread.html">Thread</a>
+					<ul class="methods">
+						<li data-type="method"><a href="AniList.Thread.html#get">get</a></li>
 					</ul>
 				</li>
 				<li>
@@ -161,6 +170,7 @@
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
+				<li><a href="global.html#ThreadEntry">ThreadEntry</a></li>
 				<li><a href="global.html#UserList">UserList</a></li>
 				<li><a href="global.html#UserOptions">UserOptions</a></li>
 				<li><a href="global.html#UserOptionsInput">UserOptionsInput</a></li>
@@ -200,7 +210,7 @@
 							<dd class="tag-source">
 								<ul class="dummy">
 									<li>
-										<a href="index.js.html">index.js</a>, <a href="index.js.html#line14">line 14</a>
+										<a href="index.js.html">index.js</a>, <a href="index.js.html#line15">line 15</a>
 									</li>
 								</ul>
 							</dd>
@@ -249,7 +259,9 @@
 									<td class="name"><code>options</code></td>
 
 									<td class="type">
-										<span class="param-type">Object</span>
+										<span class="param-type"
+											><a href="global.html#InitOptions">InitOptions</a></span
+										>
 									</td>
 
 									<td class="attributes">&lt;optional><br /></td>
@@ -283,6 +295,9 @@
 						<dt><a href="AniList.Search.html">Search</a></dt>
 						<dd></dd>
 
+						<dt><a href="AniList.Thread.html">Thread</a></dt>
+						<dd></dd>
+
 						<dt><a href="AniList.User.html">User</a></dt>
 						<dd></dd>
 					</dl>
@@ -298,7 +313,7 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="index.js.html">index.js</a>, <a href="index.js.html#line69">line 69</a>
+									<a href="index.js.html">index.js</a>, <a href="index.js.html#line70">line 70</a>
 								</li>
 							</ul>
 						</dd>
@@ -327,7 +342,7 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="index.js.html">index.js</a>, <a href="index.js.html#line48">line 48</a>
+									<a href="index.js.html">index.js</a>, <a href="index.js.html#line49">line 49</a>
 								</li>
 							</ul>
 						</dd>
@@ -356,7 +371,7 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="index.js.html">index.js</a>, <a href="index.js.html#line55">line 55</a>
+									<a href="index.js.html">index.js</a>, <a href="index.js.html#line56">line 56</a>
 								</li>
 							</ul>
 						</dd>
@@ -385,7 +400,7 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="index.js.html">index.js</a>, <a href="index.js.html#line62">line 62</a>
+									<a href="index.js.html">index.js</a>, <a href="index.js.html#line63">line 63</a>
 								</li>
 							</ul>
 						</dd>
@@ -414,7 +429,7 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="index.js.html">index.js</a>, <a href="index.js.html#line83">line 83</a>
+									<a href="index.js.html">index.js</a>, <a href="index.js.html#line84">line 84</a>
 								</li>
 							</ul>
 						</dd>
@@ -443,7 +458,7 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="index.js.html">index.js</a>, <a href="index.js.html#line76">line 76</a>
+									<a href="index.js.html">index.js</a>, <a href="index.js.html#line77">line 77</a>
 								</li>
 							</ul>
 						</dd>
@@ -463,6 +478,35 @@
 						</dd>
 					</dl>
 
+					<h4 class="name" id="thread">
+						<span class="type-signature"></span>thread<span class="type-signature"></span>
+					</h4>
+
+					<dl class="details">
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="index.js.html">index.js</a>, <a href="index.js.html#line91">line 91</a>
+								</li>
+							</ul>
+						</dd>
+
+						<dt class="tag-since">Since:</dt>
+						<dd class="tag-since">
+							<ul class="dummy">
+								<li>1.11.0</li>
+							</ul>
+						</dd>
+
+						<dt class="tag-see">See:</dt>
+						<dd class="tag-see">
+							<ul>
+								<li><a href="AniList.Thread.html">AniList.Thread</a></li>
+							</ul>
+						</dd>
+					</dl>
+
 					<h4 class="name" id="user">
 						<span class="type-signature"></span>user<span class="type-signature"></span>
 					</h4>
@@ -472,7 +516,7 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="index.js.html">index.js</a>, <a href="index.js.html#line41">line 41</a>
+									<a href="index.js.html">index.js</a>, <a href="index.js.html#line42">line 42</a>
 								</li>
 							</ul>
 						</dd>
@@ -505,7 +549,7 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="index.js.html">index.js</a>, <a href="index.js.html#line114">line 114</a>
+									<a href="index.js.html">index.js</a>, <a href="index.js.html#line122">line 122</a>
 								</li>
 							</ul>
 						</dd>
@@ -630,7 +674,7 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="index.js.html">index.js</a>, <a href="index.js.html#line92">line 92</a>
+									<a href="index.js.html">index.js</a>, <a href="index.js.html#line100">line 100</a>
 								</li>
 							</ul>
 						</dd>
