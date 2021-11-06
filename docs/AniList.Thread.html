@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>types/modRoles.js - AniList-Node Documentation</title>
+		<title>Thread - AniList-Node Documentation</title>
 
 		<meta name="description" content="Documentation for the AniList-Node NPM package." />
 
@@ -183,88 +183,81 @@
 		</nav>
 
 		<div id="main">
-			<h1 class="page-title">types/modRoles.js</h1>
+			<h1 class="page-title">Thread</h1>
 
 			<section>
+				<header>
+					<h2>
+						<span class="ancestors"><a href="AniList.html">AniList</a>.</span>
+
+						Thread
+					</h2>
+
+					<div class="class-description usertext">Access threads on AniList</div>
+				</header>
+
 				<article>
-					<pre class="prettyprint source linenums"><code>/**
- * An enum for moderator roles on users
- * @enum {String}
- * @readonly
- */
+					<h3 class="subsection-title">Methods</h3>
 
-const ModRole = {
-	/**
-	 * @member {String}
-	 * @description An AniList administrator
-	 */
-	ADMIN: "ADMIN",
-	/**
-	 * @member {String}
-	 * @description A head developer of AniList
-	 */
-	LEAD_DEVELOPER: "LEAD_DEVELOPER",
-	/**
-	 * @member {String}
-	 * @description An AniList developer
-	 */
-	DEVELOPER: "DEVELOPER",
-	/**
-	 * @member {String}
-	 * @description A lead community moderator
-	 */
-	LEAD_COMMUNITY: "LEAD_COMMUNITY",
-	/**
-	 * @member {String}
-	 * @description A community moderator
-	 */
-	COMMUNITY: "COMMUNITY",
-	/**
-	 * @member {String}
-	 * @description A discord community moderator
-	 */
-	DISCORD_COMMUNITY: "DISCORD_COMMUNITY",
-	/**
-	 * @member {String}
-	 * @description A lead anime data moderator
-	 */
-	LEAD_ANIME_DATA: "LEAD_ANIME_DATA",
-	/**
-	 * @member {String}
-	 * @description An anime data moderator
-	 */
-	ANIME_DATA: "ANIME_DATA",
-	/**
-	 * @member {String}
-	 * @description A lead manga data moderator
-	 */
-	LEAD_MANGA_DATA: "LEAD_MANGA_DATA",
-	/**
-	 * @member {String}
-	 * @description A manga data moderator
-	 */
-	MANGA_DATA: "MANGA_DATA",
-	/**
-	 * @member {String}
-	 * @description A lead social media moderator
-	 */
-	LEAD_SOCIAL_MEDIA: "LEAD_SOCIAL_MEDIA",
-	/**
-	 * @member {String}
-	 * @description A social media moderator
-	 */
-	SOCIAL_MEDIA: "SOCIAL_MEDIA",
-	/**
-	 * @member {String}
-	 * @description A retired moderator
-	 */
-	RETIRED: "RETIRED"
-};
+					<h4 class="name" id="get">
+						<span class="type-signature"></span>get<span class="signature">(id)</span
+						><span class="type-signature"> &rarr; {<a href="global.html#ThreadEntry">ThreadEntry</a>}</span>
+					</h4>
 
-Object.freeze(ModRole);
+					<dl class="details">
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="thread.js.html">thread.js</a>, <a href="thread.js.html#line24">line 24</a>
+								</li>
+							</ul>
+						</dd>
 
-module.exports = ModRole;
-</code></pre>
+						<dt class="tag-since">Since:</dt>
+						<dd class="tag-since">
+							<ul class="dummy">
+								<li>1.11.0</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<div class="description usertext">Get a specific thread by its AniList ID</div>
+
+					<h5>Parameters:</h5>
+
+					<table class="params">
+						<thead>
+							<tr>
+								<th>Name</th>
+
+								<th>Type</th>
+
+								<th class="last">Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="name"><code>id</code></td>
+
+								<td class="type">
+									<span class="param-type">Number</span>
+								</td>
+
+								<td class="description last">The AniList ID of the thread</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5>Returns:</h5>
+
+					<dl class="param-type">
+						<dt>Type</dt>
+						<dd>
+							<span class="param-type"><a href="global.html#ThreadEntry">ThreadEntry</a></span>
+						</dd>
+					</dl>
 				</article>
 			</section>
 		</div>

@@ -59,8 +59,11 @@
 				<li>
 					<a href="AniList.Activity.html">Activity</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.Activity.html#delete">delete</a></li>
 						<li data-type="method"><a href="AniList.Activity.html#get">get</a></li>
 						<li data-type="method"><a href="AniList.Activity.html#getUserActivity">getUserActivity</a></li>
+						<li data-type="method"><a href="AniList.Activity.html#postMessage">postMessage</a></li>
+						<li data-type="method"><a href="AniList.Activity.html#postText">postText</a></li>
 					</ul>
 				</li>
 				<li>
@@ -101,6 +104,12 @@
 						<li data-type="method"><a href="AniList.Search.html#staff">staff</a></li>
 						<li data-type="method"><a href="AniList.Search.html#studio">studio</a></li>
 						<li data-type="method"><a href="AniList.Search.html#user">user</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="AniList.Thread.html">Thread</a>
+					<ul class="methods">
+						<li data-type="method"><a href="AniList.Thread.html#get">get</a></li>
 					</ul>
 				</li>
 				<li>
@@ -161,6 +170,7 @@
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
+				<li><a href="global.html#ThreadEntry">ThreadEntry</a></li>
 				<li><a href="global.html#UserList">UserList</a></li>
 				<li><a href="global.html#UserOptions">UserOptions</a></li>
 				<li><a href="global.html#UserOptionsInput">UserOptionsInput</a></li>
@@ -196,17 +206,6 @@ class Utilities {
 	}
 
 	/**
-	 * Send a call to the AniList API with a query and variables.
-	 * @param { String } query - The query to send to the AniList API
-	 * @param { Object } variables - Any variables required such as a username or ID
-	 * @returns { Object } Returns a customized object containing all of the data fetched.
-	 * @since 1.0.0
-	 */
-	send(query, variables) {
-		return fetcher(query, variables);
-	}
-
-	/**
 	 * Generate the appropriate query header for the query.
 	 *
 	 * @param { String } type - The query type of the header. (ie: User or Character)
@@ -234,12 +233,11 @@ class Utilities {
 							"query ($id: Int, $type: MediaType) { MediaListCollection(userId: $id, type: $type) {"
 						];
 					case "User":
-						return [{ id: item }, "query ($id: Int) { User (id: $id) { "];
-					// Both staff and character need the same query header.
 					case "Staff":
 					case "Character":
 					case "Studio":
 					case "Activity":
+					case "Thread":
 						return [{ id: item }, `query ($id: Int) { ${type} (id: $id) { `];
 					default:
 						throw new Error("This type doesn't have a query assigned to it!");
@@ -266,6 +264,15 @@ class Utilities {
 		}
 	}
 }
+
+/**
+ * Send a call to the AniList API with a query and variables.
+ * @param { String } query - The query to send to the AniList API
+ * @param { Object } variables - Any variables required such as a username or ID
+ * @returns { Object } Returns a customized object containing all of the data fetched.
+ * @since 1.0.0
+ */
+Utilities.prototype.send = fetcher;
 
 module.exports = Utilities;
 </code></pre>

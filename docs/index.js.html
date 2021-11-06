@@ -59,8 +59,11 @@
 				<li>
 					<a href="AniList.Activity.html">Activity</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.Activity.html#delete">delete</a></li>
 						<li data-type="method"><a href="AniList.Activity.html#get">get</a></li>
 						<li data-type="method"><a href="AniList.Activity.html#getUserActivity">getUserActivity</a></li>
+						<li data-type="method"><a href="AniList.Activity.html#postMessage">postMessage</a></li>
+						<li data-type="method"><a href="AniList.Activity.html#postText">postText</a></li>
 					</ul>
 				</li>
 				<li>
@@ -101,6 +104,12 @@
 						<li data-type="method"><a href="AniList.Search.html#staff">staff</a></li>
 						<li data-type="method"><a href="AniList.Search.html#studio">studio</a></li>
 						<li data-type="method"><a href="AniList.Search.html#user">user</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="AniList.Thread.html">Thread</a>
+					<ul class="methods">
+						<li data-type="method"><a href="AniList.Thread.html#get">get</a></li>
 					</ul>
 				</li>
 				<li>
@@ -161,6 +170,7 @@
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
+				<li><a href="global.html#ThreadEntry">ThreadEntry</a></li>
 				<li><a href="global.html#UserList">UserList</a></li>
 				<li><a href="global.html#UserOptions">UserOptions</a></li>
 				<li><a href="global.html#UserOptionsInput">UserOptionsInput</a></li>
@@ -183,6 +193,7 @@
 	people = require("./people"),
 	recommendation = require("./recommendation"),
 	searchEntry = require("./search"),
+	Thread = require("./thread"),
 	User = require("./user"),
 	util = require("./utilities");
 
@@ -196,7 +207,7 @@ class AniList {
 	 * @param {String} [accessKey] - The AniList API token. If no key is provided,
 	 *      the user will not be able to access private information such as
 	 *      the authorized user's profile (if set to private).
-	 * @param {Object} [options] - Optional options to use when getting info from AniList
+	 * @param {InitOptions} [options] - Optional options to use when getting info from AniList
 	 */
 	constructor(accessKey, options = {}) {
 		if (!accessKey) {
@@ -260,6 +271,13 @@ class AniList {
 		 * @since 1.8.0
 		 */
 		this.recommendation = new recommendation(this.__util);
+
+		/**
+		 * @augments Thread
+		 * @see {@Link AniList.Thread}
+		 * @since 1.11.0
+		 */
+		this.thread = new Thread(this.__util);
 	}
 
 	/**
