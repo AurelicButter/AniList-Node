@@ -10,3 +10,4 @@ utilities/
 .prettierignore
 .prettierrc.json
 token.json
+Jenkinsfile
