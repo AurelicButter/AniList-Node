@@ -101,6 +101,18 @@ declare class Anilist {
      */
     search(type: 'anime' | 'manga' | 'character' | 'staff' | 'studio' | 'user', term: string, page?: number, amount?: number)
         : Promise<MediaSearchEntry | CharacterSearchEntry | StaffSearchEntry | StudioSearchEntry | UserSearchEntry>;
+
+    /**
+	 * Grabs all possible genres
+	 * @since 1.12.0
+	 */
+	genres(): Promise<String[]>;
+
+    /**
+	 * Grabs all possible media tags
+	 * @since 1.12.0
+	 */
+	mediaTags(): Promise<MediaTag[]>;
 }
 
 declare class User {
@@ -515,6 +527,7 @@ export declare interface AiringEntry {
 }
 
 export declare interface Tags {
+    id: number,
     name: string,
     isMediaSpoiler: boolean
 }
@@ -1090,6 +1103,14 @@ export declare interface ThreadEntry {
         name: string
     }[],
     mediaCategories: MediaRelation[]
+}
+
+export declare interface MediaTag {
+    id: number,
+    name: string,
+    description: string,
+    category: string,
+    isAdult: boolean
 }
 
 export default Anilist;
