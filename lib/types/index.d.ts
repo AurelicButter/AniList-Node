@@ -89,6 +89,14 @@ declare class Anilist {
     studio(studio: number | string): Promise<StudioEntry>;
 
     /**
+	 * [Requires Login] Favourite/Unfavourite a studio
+	 * @param {Number} id - Required. The ID tied to the AniList entry.
+	 * @returns {Boolean} Returns true if added, false otherwise.
+	 * @since 1.12.0
+	 */
+    favouriteStudio(id: number): Promise<Boolean>;
+
+    /**
      * Searches AniList based on a specific term.
      * @param {String} type - Required. Either anime, manga, character, staff, studio, or user.
      * @param {String} term - Required. The term to lookup. (ie: "Honzuki no Gekokujou" or "Butterstroke")
@@ -205,6 +213,14 @@ declare class Media {
     anime(id: number): Promise<AnimeEntry>;
 
     /**
+	 * [Requires Login] Favourite/Unfavourite an anime
+	 * @param {Number} id - Required. The ID tied to the AniList entry.
+	 * @returns {Boolean} Returns true if added, false otherwise.
+	 * @since 1.12.0
+	 */
+    favouriteAnime(id: number): Promise<Boolean>;
+
+    /**
      * Fetch a manga entry by its AniList ID.
      * @param { Number } id - Required. The ID tied to the AniList entry.
      * @returns { MangaEntry }
@@ -212,6 +228,13 @@ declare class Media {
      */
     manga(id: number): Promise<MangaEntry>;
 
+    /**
+	 * [Requires Login] Favourite/Unfavourite a manga
+	 * @param {Number} id - Required. The ID tied to the AniList entry.
+	 * @returns {Boolean} Returns true if added, false otherwise.
+	 * @since 1.12.0
+	 */
+    favouriteManga(id: number): Promise<Boolean>;
 }
 
 declare class People {
@@ -225,12 +248,28 @@ declare class People {
     character(id: number | string): Promise<CharacterEntry>;
 
     /**
+	 * [Requires Login] Favourite/Unfavourite a character
+	 * @param {Number} id - Required. The ID tied to the AniList entry.
+	 * @returns {Boolean} Returns true if added, false otherwise.
+	 * @since 1.12.0
+	 */
+    favouriteChar(id: number): Promise<Boolean>;
+
+    /**
      * Fetch a staff entry by its AniList ID or their name.
      * @param { Number|String } id - Required. The ID can either be the AniList ID or the staff's name.
      * @returns { StaffEntry }
      * @since 1.0.0
      */
     staff(id: number | string): Promise<StaffEntry>;
+
+    /**
+	 * [Requires Login] Favourite/Unfavourite a staff entry
+	 * @param {Number} id - Required. The ID tied to the AniList entry.
+	 * @returns {Boolean} Returns true if added, false otherwise.
+	 * @since 1.12.0
+	 */
+    favouriteStaff(id: number): Promise<Boolean>;
 }
 
 declare class Activity {
@@ -366,6 +405,26 @@ declare class Thread {
      * @since 1.11.0
 	 */
 	get(id: number): ThreadEntry;
+
+    /**
+	 * [Require Login] Delete a thread
+	 * @param {Number} id - The AniList thread ID to delete
+	 *
+	 * @returns {Boolean} Returns true if successful
+	 * @since 1.12.0
+	 */
+	delete(id: number): Promise<Boolean>; 
+
+	/**
+	 * Get thread comments for a thread
+	 * @param {Number} id - The AniList thread ID
+     * @param {Number} page - The page number
+     * @param {Number} perPage - How many entries per page
+	 *
+	 * @returns {ThreadComments[]}
+	 * @since 1.12.0
+	 */
+	getComments(id: number, page: number, perPage: number): Promise<ThreadComment[]>;
 }
 
 export declare type MediaType = 'ANIME' | 'MANGA';
@@ -1111,6 +1170,18 @@ export declare interface MediaTag {
     description: string,
     category: string,
     isAdult: boolean
+}
+
+export declare interface ThreadComment {
+    id: number,
+    user: UserRelation,
+    comment: string,
+    isLiked: boolean,
+    createdAt: number,
+    updatedAt: number,
+    likes: UserRelation[],
+    childComments: ThreadComment[],
+    isLocked: boolean
 }
 
 export default Anilist;
