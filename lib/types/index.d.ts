@@ -174,7 +174,16 @@ declare class User {
 	 * 
 	 * @since 1.10.0
 	 */
-	update(options: UserOptions): UserProfileOptions;
+	update(options: UserOptions): Promise<UserProfileOptions>;
+
+    /**
+	 * [Requires Login] Follow/Unfollow a user
+	 * @param {Number} userID - The user ID of the account to follow
+	 * @returns {Boolean} True if following, false otherwise.
+	 *
+	 * @since 1.12.0
+	 */
+	async follow(userID): Promise<Boolean>;
 }
 
 declare class Lists {
@@ -295,11 +304,11 @@ declare class Activity {
      */
     getUserActivity(user: number, page?: number, perPage?: number): Promise<Array<ListActivity | TextActivity | MessageActivity>>;
 
-    postText(text: string, id?:number): TextActivity;
+    postText(text: string, id?:number): Promise<TextActivity>;
 
-    postMessage(text: string, recipientId: number, isPrivate?:boolean, id?: number): MessageActivity;
+    postMessage(text: string, recipientId: number, isPrivate?:boolean, id?: number): Promise<MessageActivity>;
 
-    delete(id: number): boolean;
+    delete(id: number): Promise<boolean>;
 }
 
 declare class Search {
@@ -404,7 +413,7 @@ declare class Thread {
 	 * @returns {ThreadEntry}
      * @since 1.11.0
 	 */
-	get(id: number): ThreadEntry;
+	get(id: number): Promise<ThreadEntry>;
 
     /**
 	 * [Require Login] Delete a thread
