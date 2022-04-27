@@ -52,6 +52,9 @@
 				<li>
 					<a href="AniList.html">AniList</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.html#favouriteStudio">favouriteStudio</a></li>
+						<li data-type="method"><a href="AniList.html#genres">genres</a></li>
+						<li data-type="method"><a href="AniList.html#mediaTags">mediaTags</a></li>
 						<li data-type="method"><a href="AniList.html#search">search</a></li>
 						<li data-type="method"><a href="AniList.html#studio">studio</a></li>
 					</ul>
@@ -77,6 +80,8 @@
 					<a href="AniList.Media.html">Media</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.Media.html#anime">anime</a></li>
+						<li data-type="method"><a href="AniList.Media.html#favouriteAnime">favouriteAnime</a></li>
+						<li data-type="method"><a href="AniList.Media.html#favouriteManga">favouriteManga</a></li>
 						<li data-type="method"><a href="AniList.Media.html#manga">manga</a></li>
 					</ul>
 				</li>
@@ -84,6 +89,8 @@
 					<a href="AniList.People.html">People</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.People.html#character">character</a></li>
+						<li data-type="method"><a href="AniList.People.html#favouriteChar">favouriteChar</a></li>
+						<li data-type="method"><a href="AniList.People.html#favouriteStaff">favouriteStaff</a></li>
 						<li data-type="method"><a href="AniList.People.html#staff">staff</a></li>
 					</ul>
 				</li>
@@ -109,13 +116,16 @@
 				<li>
 					<a href="AniList.Thread.html">Thread</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.Thread.html#delete">delete</a></li>
 						<li data-type="method"><a href="AniList.Thread.html#get">get</a></li>
+						<li data-type="method"><a href="AniList.Thread.html#getComments">getComments</a></li>
 					</ul>
 				</li>
 				<li>
 					<a href="AniList.User.html">User</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.User.html#all">all</a></li>
+						<li data-type="method"><a href="AniList.User.html#follow">follow</a></li>
 						<li data-type="method"><a href="AniList.User.html#getAuthorized">getAuthorized</a></li>
 						<li data-type="method"><a href="AniList.User.html#getRecentActivity">getRecentActivity</a></li>
 						<li data-type="method"><a href="AniList.User.html#profile">profile</a></li>
@@ -153,6 +163,7 @@
 				<li><a href="global.html#MediaSort">MediaSort</a></li>
 				<li><a href="global.html#MediaSource">MediaSource</a></li>
 				<li><a href="global.html#MediaStatus">MediaStatus</a></li>
+				<li><a href="global.html#MediaTag">MediaTag</a></li>
 				<li><a href="global.html#MediaTitle">MediaTitle</a></li>
 				<li><a href="global.html#MediaType">MediaType</a></li>
 				<li><a href="global.html#MessageActivity">MessageActivity</a></li>
@@ -170,6 +181,7 @@
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
+				<li><a href="global.html#ThreadComment">ThreadComment</a></li>
 				<li><a href="global.html#ThreadEntry">ThreadEntry</a></li>
 				<li><a href="global.html#UserList">UserList</a></li>
 				<li><a href="global.html#UserOptions">UserOptions</a></li>
@@ -299,6 +311,30 @@ class User {
 
 		const data = await this.util.send(UserUpdateQuery, options);
 		return data.updateUser;
+	}
+
+	/**
+	 * [Requires Login] Follow/Unfollow a user
+	 * @param {Number} userID - The user ID of the account to follow
+	 * @returns {Boolean} True if following, false otherwise.
+	 *
+	 * @since 1.12.0
+	 */
+	async follow(userID) {
+		if (typeof userID !== "number") {
+			throw new Error("userID is not a number type.");
+		}
+
+		return this.util
+			.send(`mutation ($userID: Int) { ToggleFollow(userId: $userID) { isFollowing } }`, {
+				userID: userID
+			})
+			.then((data) => {
+				if (Array.isArray(data)) {
+					return data;
+				}
+				return data.ToggleFollow.isFollowing;
+			});
 	}
 }
 

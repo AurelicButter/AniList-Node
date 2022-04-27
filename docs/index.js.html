@@ -52,6 +52,9 @@
 				<li>
 					<a href="AniList.html">AniList</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.html#favouriteStudio">favouriteStudio</a></li>
+						<li data-type="method"><a href="AniList.html#genres">genres</a></li>
+						<li data-type="method"><a href="AniList.html#mediaTags">mediaTags</a></li>
 						<li data-type="method"><a href="AniList.html#search">search</a></li>
 						<li data-type="method"><a href="AniList.html#studio">studio</a></li>
 					</ul>
@@ -77,6 +80,8 @@
 					<a href="AniList.Media.html">Media</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.Media.html#anime">anime</a></li>
+						<li data-type="method"><a href="AniList.Media.html#favouriteAnime">favouriteAnime</a></li>
+						<li data-type="method"><a href="AniList.Media.html#favouriteManga">favouriteManga</a></li>
 						<li data-type="method"><a href="AniList.Media.html#manga">manga</a></li>
 					</ul>
 				</li>
@@ -84,6 +89,8 @@
 					<a href="AniList.People.html">People</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.People.html#character">character</a></li>
+						<li data-type="method"><a href="AniList.People.html#favouriteChar">favouriteChar</a></li>
+						<li data-type="method"><a href="AniList.People.html#favouriteStaff">favouriteStaff</a></li>
 						<li data-type="method"><a href="AniList.People.html#staff">staff</a></li>
 					</ul>
 				</li>
@@ -109,13 +116,16 @@
 				<li>
 					<a href="AniList.Thread.html">Thread</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.Thread.html#delete">delete</a></li>
 						<li data-type="method"><a href="AniList.Thread.html#get">get</a></li>
+						<li data-type="method"><a href="AniList.Thread.html#getComments">getComments</a></li>
 					</ul>
 				</li>
 				<li>
 					<a href="AniList.User.html">User</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.User.html#all">all</a></li>
+						<li data-type="method"><a href="AniList.User.html#follow">follow</a></li>
 						<li data-type="method"><a href="AniList.User.html#getAuthorized">getAuthorized</a></li>
 						<li data-type="method"><a href="AniList.User.html#getRecentActivity">getRecentActivity</a></li>
 						<li data-type="method"><a href="AniList.User.html#profile">profile</a></li>
@@ -153,6 +163,7 @@
 				<li><a href="global.html#MediaSort">MediaSort</a></li>
 				<li><a href="global.html#MediaSource">MediaSource</a></li>
 				<li><a href="global.html#MediaStatus">MediaStatus</a></li>
+				<li><a href="global.html#MediaTag">MediaTag</a></li>
 				<li><a href="global.html#MediaTitle">MediaTitle</a></li>
 				<li><a href="global.html#MediaType">MediaType</a></li>
 				<li><a href="global.html#MessageActivity">MessageActivity</a></li>
@@ -170,6 +181,7 @@
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
+				<li><a href="global.html#ThreadComment">ThreadComment</a></li>
 				<li><a href="global.html#ThreadEntry">ThreadEntry</a></li>
 				<li><a href="global.html#UserList">UserList</a></li>
 				<li><a href="global.html#UserOptions">UserOptions</a></li>
@@ -298,6 +310,33 @@ class AniList {
 	}
 
 	/**
+	 * [Requires Login] Favourite/Unfavourite a studio
+	 * @param {Number} id - Required. The ID tied to the AniList entry.
+	 * @returns {Boolean} Returns true if added, false otherwise.
+	 * @since 1.12.0
+	 */
+	async favouriteStudio(id) {
+		if (!id || typeof id !== "number") {
+			throw new Error("AniList ID is not provided!");
+		}
+
+		const data = await this.util.send(
+			`mutation ($studioID: Int) {
+				ToggleFavourite(studioId: $studioID) {
+					studios (page: 1, perPage: 25) {
+					nodes { id }
+			} } }`,
+			{ studioID: id }
+		);
+
+		return data.ToggleFavourite.studios.nodes.some((e) => {
+			if (e.id === id) {
+				return true;
+			}
+		});
+	}
+
+	/**
 	 * Searches AniList based on a specific term.
 	 * @param {String} type - Required. Either anime, manga, character, staff, studio, or user.
 	 * @param {String} term - Required. The term to lookup. (ie: "Honzuki no Gekokujou" or "Butterstroke")
@@ -348,6 +387,35 @@ class AniList {
         Page (page: $page, perPage: $perPage) { pageInfo { total currentPage lastPage hasNextPage perPage } ${query} } }`,
 			{ search: term, page: page, perPage: amount }
 		);
+	}
+
+	/**
+	 * Grabs all possible genres
+	 * @return { String[] }
+	 * @since 1.12.0
+	 */
+	genres() {
+		return this.__util.send("query { GenreCollection }", null).then((data) => {
+			return data.GenreCollection;
+		});
+	}
+
+	/**
+	 * Grabs all possible media tags
+	 * @return { MediaTag[] }
+	 * @since 1.12.0
+	 */
+	mediaTags() {
+		return this.__util
+			.send(
+				`query { MediaTagCollection {
+				id name description category isAdult
+			} }`,
+				null
+			)
+			.then((data) => {
+				return data.MediaTagCollection;
+			});
 	}
 }
 

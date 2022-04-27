@@ -52,6 +52,9 @@
 				<li>
 					<a href="AniList.html">AniList</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.html#favouriteStudio">favouriteStudio</a></li>
+						<li data-type="method"><a href="AniList.html#genres">genres</a></li>
+						<li data-type="method"><a href="AniList.html#mediaTags">mediaTags</a></li>
 						<li data-type="method"><a href="AniList.html#search">search</a></li>
 						<li data-type="method"><a href="AniList.html#studio">studio</a></li>
 					</ul>
@@ -77,6 +80,8 @@
 					<a href="AniList.Media.html">Media</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.Media.html#anime">anime</a></li>
+						<li data-type="method"><a href="AniList.Media.html#favouriteAnime">favouriteAnime</a></li>
+						<li data-type="method"><a href="AniList.Media.html#favouriteManga">favouriteManga</a></li>
 						<li data-type="method"><a href="AniList.Media.html#manga">manga</a></li>
 					</ul>
 				</li>
@@ -84,6 +89,8 @@
 					<a href="AniList.People.html">People</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.People.html#character">character</a></li>
+						<li data-type="method"><a href="AniList.People.html#favouriteChar">favouriteChar</a></li>
+						<li data-type="method"><a href="AniList.People.html#favouriteStaff">favouriteStaff</a></li>
 						<li data-type="method"><a href="AniList.People.html#staff">staff</a></li>
 					</ul>
 				</li>
@@ -109,13 +116,16 @@
 				<li>
 					<a href="AniList.Thread.html">Thread</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.Thread.html#delete">delete</a></li>
 						<li data-type="method"><a href="AniList.Thread.html#get">get</a></li>
+						<li data-type="method"><a href="AniList.Thread.html#getComments">getComments</a></li>
 					</ul>
 				</li>
 				<li>
 					<a href="AniList.User.html">User</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.User.html#all">all</a></li>
+						<li data-type="method"><a href="AniList.User.html#follow">follow</a></li>
 						<li data-type="method"><a href="AniList.User.html#getAuthorized">getAuthorized</a></li>
 						<li data-type="method"><a href="AniList.User.html#getRecentActivity">getRecentActivity</a></li>
 						<li data-type="method"><a href="AniList.User.html#profile">profile</a></li>
@@ -153,6 +163,7 @@
 				<li><a href="global.html#MediaSort">MediaSort</a></li>
 				<li><a href="global.html#MediaSource">MediaSource</a></li>
 				<li><a href="global.html#MediaStatus">MediaStatus</a></li>
+				<li><a href="global.html#MediaTag">MediaTag</a></li>
 				<li><a href="global.html#MediaTitle">MediaTitle</a></li>
 				<li><a href="global.html#MediaType">MediaType</a></li>
 				<li><a href="global.html#MessageActivity">MessageActivity</a></li>
@@ -170,6 +181,7 @@
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
+				<li><a href="global.html#ThreadComment">ThreadComment</a></li>
 				<li><a href="global.html#ThreadEntry">ThreadEntry</a></li>
 				<li><a href="global.html#UserList">UserList</a></li>
 				<li><a href="global.html#UserOptions">UserOptions</a></li>
@@ -378,6 +390,7 @@
  * @property { Boolean } studios.isAnimationStudio - Check if the studio is the animation studio for the anime.
  * @property { String[] } synonyms - The media's alternative titles
  * @property { Object[] } tags - Tags that describes the media
+ * @property {Number} tags.id - The ID of the tag
  * @property { String } tags.name - The name of the tag
  * @property { Boolean } tags.isMediaSpoiler - Checks if the tag is a spoiler for the media.
  * @property { MediaTitle } title - The manga's titles
@@ -444,6 +457,7 @@
  * @property { String } status - The current status of the media
  * @property { String[] } synonyms - The media's alternative titles
  * @property { Object[] } tags - Tags that describes the media
+ * @property {Number} tags.id - The ID of the tag
  * @property { String } tags.name - The name of the tag
  * @property { Boolean } tags.isMediaSpoiler - Checks if the tag is a spoiler for the media.
  * @property { MediaTitle } title - The manga's titles
@@ -972,6 +986,28 @@
  * @property {Number} categories.id - ID of the forum category
  * @property {String} categories.name - Name of the forum category
  * @property {MediaRelation[]} mediaCategories - List of related media entries for the thread
+ */
+
+/**
+ * @typedef MediaTag
+ * @property {Number} id - The ID of the tag
+ * @property {String} name - Name of the tag
+ * @property {String} description - What the tag is about
+ * @property {String} category - The category that the tag belongs to
+ * @property {Boolean} isAdult - True if tag is meant for adult content
+ */
+
+/**
+ * @typedef ThreadComment
+ * @property {Number} id - The ID of the thread comment
+ * @property {UserRelation} user - The author of the comment
+ * @property {String} comment - The content of the comment
+ * @property {Boolean} isLiked - [Requires Login] True if current user liked
+ * @property {Number} createdAt - The timestamp it was created at
+ * @property {Number} updatedAt - The timestamp it was updated at
+ * @property {UserRelation[]} likes - An array of users who liked the post
+ * @property {ThreadComment[]} childComments - Comments in reply to this comment
+ * @property {Boolean} isLocked - True if users can no longer interact with comment.
  */
 </code></pre>
 				</article>
