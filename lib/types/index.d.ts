@@ -183,7 +183,7 @@ declare class User {
 	 *
 	 * @since 1.12.0
 	 */
-	async follow(userID): Promise<Boolean>;
+	follow(userID : number): Promise<Boolean>;
 }
 
 declare class Lists {
