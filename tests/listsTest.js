@@ -12,9 +12,7 @@ animeLists.then((lists) => console.log(lists.filter((list) => list.status === "C
 mangaLists.then((lists) => console.log(lists.filter((list) => list.status === "CURRENT")));
 
 // Display a sample user list entry
-animeLists.then((lists) =>
-	console.log(lists.filter((list) => list.status === "COMPLETED")[0].entries.filter((e) => e.media.id === 20912))
-);
+animeLists.then((lists) => console.log(lists.filter((list) => list.status === "CURRENT")[0].entries));
 
 // Add an entry to a user's list.
 AniList.lists
@@ -28,3 +26,13 @@ AniList.lists
 		}
 	})
 	.then((data) => console.log(data));
+
+// Update entry on a user's list with a list ID
+AniList.lists
+	.updateEntry(295799608, {
+		status: "DROPPED"
+	})
+	.then((data) => console.log(data));
+
+// Remove an entry on a user's list with same list ID
+AniList.lists.removeEntry(295799608).then((data) => console.log(data));

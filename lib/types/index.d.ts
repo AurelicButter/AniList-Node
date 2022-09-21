@@ -203,6 +203,32 @@ declare class Lists {
      * @since 1.1.0
      */
     manga(user: number | string): Promise<UserList[]>;
+
+    /**
+	 * [Requires Login] Add an entry to a user's list.
+	 * @param {Number} id - The AniList ID of the entry to add
+	 * @param {UpdateEntryOptions} options - Values to save with.
+	 * @returns {UpdatedEntry}
+	 * @since 1.13.0
+	 */
+	async addEntry(id: number, options: UpdateEntryOptions): UpdatedEntry;
+
+    /**
+	 * [Requires Login] Update a list entry to a user's list.
+	 * @param {Number} id - The AniList list ID of the entry to edit.
+	 * @param {UpdateEntryOptions} options - Values to save with.
+	 * @returns {UpdatedEntry}
+	 * @since 1.13.0
+	 */
+	async updateEntry(id: number, options:UpdateEntryOptions): UpdatedEntry;
+
+	/**
+	 * [Requires Login] Remove an entry from a user's lists.
+	 * @param {Number} id - The AniList list ID of the entry to remove.
+	 * @returns {Boolean} Returns true if removed, false otherwise.
+	 * @since 1.13.0
+	 */
+	async removeEntry(id: number): Boolean;
 }
 
 
@@ -469,6 +495,8 @@ export declare type ScoreFormat = "POINT_100" | "POINT_10_DECIMAL" | "POINT_10" 
 export declare type NotificationType = "ACTIVITY_MESSAGE" | "ACTIVITY_REPLY" | "FOLLOWING" | "ACTIVITY_MENTION" | "THREAD_COMMENT_MENTION" | "THREAD_SUBSCRIBED" |
     "THREAD_COMMENT_REPLY" | "AIRING" | "ACTIVITY_LIKE" | "ACTIVITY_REPLY_LIKE" | "THREAD_LIKE" | "THREAD_COMMENT_LIKE" | "ACTIVITY_REPLY_SUBSCRIBED" |
     "RELATED_MEDIA_ADDITION" | "MEDIA_DATA_CHANGE" | "MEDIA_MERGE" | "MEDIA_DELETION";
+
+export declare type EntryStatus = "CURRENT" | "PLANNING" | "COMPLETED" | "DROPPED" | "PAUSED" | "REPEATING";
 
 export declare interface FuzzyDate {
     year: number,
@@ -967,6 +995,7 @@ export declare interface ListEntry {
         volumes?: number,
         chapters?: number
     },
+    id: number,
     status: MediaStatus,
     score: number,
     progress: number,
@@ -995,7 +1024,7 @@ export declare interface UserList {
     name: string,
     isCustomList: boolean,
     isSplitCompletedList: boolean,
-    status: string,
+    status: EntryStatus,
     entries: ListEntry[]
 }
 export declare interface BaseActivity {
@@ -1191,6 +1220,49 @@ export declare interface ThreadComment {
     likes: UserRelation[],
     childComments: ThreadComment[],
     isLocked: boolean
+}
+
+export declare interface UpdateEntryOptions {
+    id: number,
+    mediaId: number,
+    status: EntryStatus,
+    score: number,
+    scoreRaw: number,
+    progress: number,
+    progressVolumes: number,
+    repeat: number,
+    priority: number,
+    private: boolean,
+    customLists: string[],
+    advancedScores: number[],
+    startedAt: {
+        year: number,
+        month: number,
+        day: number
+    },
+    completedAt: {
+        year: number,
+        month: number,
+        day: number
+    }
+}
+
+export declare interface UpdatedEntry {
+    id: number,
+    mediaId: number,
+    status: EntryStatus,
+    score: number,
+    progress: number,
+    progressVolumes: number | null,
+    repeat: number,
+    priority: number,
+    private: boolean,
+    hiddenFromStatusLists: boolean,
+    customLists: string[] | null,
+    startedAt: { year: number, month: number, day: number }
+    completedAt: { year: number, month: number, day: number }
+    notes: string | null,
+    advancedScores: { Story: number, Characters: number, Visuals: number, Audio: number, Enjoyment: number }
 }
 
 export default Anilist;
