@@ -52,6 +52,9 @@
 				<li>
 					<a href="AniList.html">AniList</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.html#favouriteStudio">favouriteStudio</a></li>
+						<li data-type="method"><a href="AniList.html#genres">genres</a></li>
+						<li data-type="method"><a href="AniList.html#mediaTags">mediaTags</a></li>
 						<li data-type="method"><a href="AniList.html#search">search</a></li>
 						<li data-type="method"><a href="AniList.html#studio">studio</a></li>
 					</ul>
@@ -69,14 +72,19 @@
 				<li>
 					<a href="AniList.Lists.html">Lists</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.Lists.html#addEntry">addEntry</a></li>
 						<li data-type="method"><a href="AniList.Lists.html#anime">anime</a></li>
 						<li data-type="method"><a href="AniList.Lists.html#manga">manga</a></li>
+						<li data-type="method"><a href="AniList.Lists.html#removeEntry">removeEntry</a></li>
+						<li data-type="method"><a href="AniList.Lists.html#updateEntry">updateEntry</a></li>
 					</ul>
 				</li>
 				<li>
 					<a href="AniList.Media.html">Media</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.Media.html#anime">anime</a></li>
+						<li data-type="method"><a href="AniList.Media.html#favouriteAnime">favouriteAnime</a></li>
+						<li data-type="method"><a href="AniList.Media.html#favouriteManga">favouriteManga</a></li>
 						<li data-type="method"><a href="AniList.Media.html#manga">manga</a></li>
 					</ul>
 				</li>
@@ -84,6 +92,8 @@
 					<a href="AniList.People.html">People</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.People.html#character">character</a></li>
+						<li data-type="method"><a href="AniList.People.html#favouriteChar">favouriteChar</a></li>
+						<li data-type="method"><a href="AniList.People.html#favouriteStaff">favouriteStaff</a></li>
 						<li data-type="method"><a href="AniList.People.html#staff">staff</a></li>
 					</ul>
 				</li>
@@ -109,13 +119,16 @@
 				<li>
 					<a href="AniList.Thread.html">Thread</a>
 					<ul class="methods">
+						<li data-type="method"><a href="AniList.Thread.html#delete">delete</a></li>
 						<li data-type="method"><a href="AniList.Thread.html#get">get</a></li>
+						<li data-type="method"><a href="AniList.Thread.html#getComments">getComments</a></li>
 					</ul>
 				</li>
 				<li>
 					<a href="AniList.User.html">User</a>
 					<ul class="methods">
 						<li data-type="method"><a href="AniList.User.html#all">all</a></li>
+						<li data-type="method"><a href="AniList.User.html#follow">follow</a></li>
 						<li data-type="method"><a href="AniList.User.html#getAuthorized">getAuthorized</a></li>
 						<li data-type="method"><a href="AniList.User.html#getRecentActivity">getRecentActivity</a></li>
 						<li data-type="method"><a href="AniList.User.html#profile">profile</a></li>
@@ -139,7 +152,9 @@
 				<li><a href="global.html#AnimeEntry">AnimeEntry</a></li>
 				<li><a href="global.html#CharacterEntry">CharacterEntry</a></li>
 				<li><a href="global.html#CountryCode">CountryCode</a></li>
+				<li><a href="global.html#EntryStatus">EntryStatus</a></li>
 				<li><a href="global.html#FuzzyDateInt">FuzzyDateInt</a></li>
+				<li><a href="global.html#headerBuilder">headerBuilder</a></li>
 				<li><a href="global.html#InitOptions">InitOptions</a></li>
 				<li><a href="global.html#ListActivity">ListActivity</a></li>
 				<li><a href="global.html#ListEntry">ListEntry</a></li>
@@ -153,6 +168,7 @@
 				<li><a href="global.html#MediaSort">MediaSort</a></li>
 				<li><a href="global.html#MediaSource">MediaSource</a></li>
 				<li><a href="global.html#MediaStatus">MediaStatus</a></li>
+				<li><a href="global.html#MediaTag">MediaTag</a></li>
 				<li><a href="global.html#MediaTitle">MediaTitle</a></li>
 				<li><a href="global.html#MediaType">MediaType</a></li>
 				<li><a href="global.html#MessageActivity">MessageActivity</a></li>
@@ -170,7 +186,10 @@
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
+				<li><a href="global.html#ThreadComment">ThreadComment</a></li>
 				<li><a href="global.html#ThreadEntry">ThreadEntry</a></li>
+				<li><a href="global.html#UpdatedEntry">UpdatedEntry</a></li>
+				<li><a href="global.html#UpdateEntryOptions">UpdateEntryOptions</a></li>
 				<li><a href="global.html#UserList">UserList</a></li>
 				<li><a href="global.html#UserOptions">UserOptions</a></li>
 				<li><a href="global.html#UserOptionsInput">UserOptionsInput</a></li>
@@ -378,6 +397,7 @@
  * @property { Boolean } studios.isAnimationStudio - Check if the studio is the animation studio for the anime.
  * @property { String[] } synonyms - The media's alternative titles
  * @property { Object[] } tags - Tags that describes the media
+ * @property {Number} tags.id - The ID of the tag
  * @property { String } tags.name - The name of the tag
  * @property { Boolean } tags.isMediaSpoiler - Checks if the tag is a spoiler for the media.
  * @property { MediaTitle } title - The manga's titles
@@ -444,6 +464,7 @@
  * @property { String } status - The current status of the media
  * @property { String[] } synonyms - The media's alternative titles
  * @property { Object[] } tags - Tags that describes the media
+ * @property {Number} tags.id - The ID of the tag
  * @property { String } tags.name - The name of the tag
  * @property { Boolean } tags.isMediaSpoiler - Checks if the tag is a spoiler for the media.
  * @property { MediaTitle } title - The manga's titles
@@ -636,7 +657,7 @@
  * @property { String } name - The user's list name
  * @property { Boolean } isCustomList - Checks if the list is a custom one (not created by default)
  * @property { Boolean } isSplitCompletedList - Checks if the list is a split completed list. (ie: If the user chose to have each media format in a separate list)
- * @property { String } status - The user's list status. Returns either "CURRENT", "PLANNING", "COMPLETED", "PAUSED", "DROPPED", "REPEATING"
+ * @property { EntryStatus } status - The user's list status. Returns either "CURRENT", "PLANNING", "COMPLETED", "PAUSED", "DROPPED", "REPEATING"
  * @property { ListEntry[] } entries - A list of entries on this list
  */
 
@@ -663,6 +684,7 @@
  * @property { Number } media.episodes - Number of episodes (Anime only)
  * @property { Number } media.volumes - Number of volumes (Manga only)
  * @property { Number } media.chapters - Number of chapters (Manga only)
+ * @property { Number } id - The AniList list ID for the entry
  * @property { String } status - The user's status ("CURRENT", "PLANNING", "COMPLETED", "PAUSED", "DROPPED", "REPEATING") for that media
  * @property { Number } score - The user's score for the entry
  * @property { Number } progress - The user's progress for that entry. (Episode count for anime, chapter count for manga)
@@ -973,6 +995,85 @@
  * @property {String} categories.name - Name of the forum category
  * @property {MediaRelation[]} mediaCategories - List of related media entries for the thread
  */
+
+/**
+ * @typedef MediaTag
+ * @property {Number} id - The ID of the tag
+ * @property {String} name - Name of the tag
+ * @property {String} description - What the tag is about
+ * @property {String} category - The category that the tag belongs to
+ * @property {Boolean} isAdult - True if tag is meant for adult content
+ */
+
+/**
+ * @typedef ThreadComment
+ * @property {Number} id - The ID of the thread comment
+ * @property {UserRelation} user - The author of the comment
+ * @property {String} comment - The content of the comment
+ * @property {Boolean} isLiked - [Requires Login] True if current user liked
+ * @property {Number} createdAt - The timestamp it was created at
+ * @property {Number} updatedAt - The timestamp it was updated at
+ * @property {UserRelation[]} likes - An array of users who liked the post
+ * @property {ThreadComment[]} childComments - Comments in reply to this comment
+ * @property {Boolean} isLocked - True if users can no longer interact with comment.
+ */
+
+/**
+ * @typedef UpdateEntryOptions
+ * @property {Number} id - The ID of the list entry
+ * @property {Number} mediaId - The ID of the media to add
+ * @property {EntryStatus} status - The status on the list (ie: WATCHING)
+ * @property {Number} score - The score of the media in the user's chosen scoring method
+ * @property {Number} scoreRaw - The score in 100 point form
+ * @property {Number} progress - The amount of episodes/chapters
+ * @property {Number} progressVolumes - Amount of volumes read by the user
+ * @property {Number} repeat - Amount of repeats
+ * @property {Number} priority - Priority of planning
+ * @property {Boolean} private - True if the entry is visible only to the authorized user
+ * @property {String} notes - Text notes
+ * @property {Boolean} hiddenFromStatusLists - True if entry should be hidden on non-custom lists
+ * @property {String[]} customLists - Array of list names that the entry should be displayed on
+ * @property {Number[]} advancedScores - Array of advanced scores
+ * @property {Object} startedAt - Starting date
+ * @property {Number} startedAt.year
+ * @property {Number} startedAt.month
+ * @property {Number} startedAt.day
+ * @property {Object} completedAt - Completion date
+ * @property {Number} completedAt.year
+ * @property {Number} completedAt.month
+ * @property {Number} completedAt.day
+ */
+
+/**
+ * @typedef UpdatedEntry
+ * @property {Number} id - The ID of the list entry
+ * @property {Number} mediaId - The ID of the media to add
+ * @property {EntryStatus} status - The status on the list (ie: WATCHING)
+ * @property {Number} score - The score of the media in the user's chosen scoring method
+ * @property {Number} scoreRaw - The score in 100 point form
+ * @property {Number} progress - The amount of episodes/chapters
+ * @property {Number | null} progressVolumes - Amount of volumes read by the user
+ * @property {Number} repeat - Amount of repeats
+ * @property {Number} priority - Priority of planning
+ * @property {Boolean} private - True if the entry is visible only to the authorized user
+ * @property {String | null} notes - Text notes
+ * @property {Boolean} hiddenFromStatusLists - True if entry should be hidden on non-custom lists
+ * @property {String[] | null} customLists - Array of list names that the entry should be displayed on
+ * @property {Object} advancedScores
+ * @property {Number} advancedScores.Story
+ * @property {Number} advancedScores.Characters
+ * @property {Number} advancedScores.Visuals
+ * @property {Number} advancedScores.Audio
+ * @property {Number} advancedScores.Enjoyment
+ * @property {Object} startedAt - Starting date
+ * @property {Number} startedAt.year
+ * @property {Number} startedAt.month
+ * @property {Number} startedAt.day
+ * @property {Object} completedAt - Completion date
+ * @property {Number} completedAt.year
+ * @property {Number} completedAt.month
+ * @property {Number} completedAt.day
+ */
 </code></pre>
 				</article>
 			</section>
@@ -981,7 +1082,7 @@
 		<br class="clear" />
 
 		<footer>
-			Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> using the
+			Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> using the
 			<a href="https://github.com/clenemt/docdash">docdash</a> theme.
 		</footer>
 
