@@ -983,8 +983,16 @@ export declare interface ListEntry {
         description: string,
         format: string,
         tags: Tags[],
-        startDate: number,
-        endDate: number,
+        startDate: {
+            year: number,
+            month: number,
+            day: number
+        },
+        endDate: {
+            year: number,
+            month: number,
+            day: number
+        },
         genres: string[],
         isFavourite: boolean,
         isAdult: boolean,
