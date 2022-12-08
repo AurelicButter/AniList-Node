@@ -673,8 +673,14 @@
  * @property { Object[] } media.tags - Tags relating to the media
  * @property { String } media.tags.name - The name of the tag
  * @property { Boolean } media.tags.isMediaSpoiler - Checks if the tag is a spoiler or not.
- * @property { Number } media.startDate - The official release date
- * @property { Number } media.endDate - The official end date
+ * @property {Object} media.startDate  - Starting date
+ * @property {Number} media.startDate.year
+ * @property {Number} media.startDate.month
+ * @property {Number} media.startDate.day
+ * @property {Object} media.endDate  - The official end date
+ * @property {Number} media.endDate.year
+ * @property {Number} media.endDate.month
+ * @property {Number} media.endDate.day
  * @property { String[] } media.genres - The genres of the media
  * @property { Boolean } media.isFavourite - [Requires Login] Checks if the media is on the user's favourites list
  * @property { Boolean } media.isAdult - Checks if the media is for adult audiences (ie: Hentai)
@@ -1074,7 +1080,6 @@
  * @property {Number} completedAt.month
  * @property {Number} completedAt.day
  */
-
 </code></pre>
 				</article>
 			</section>
