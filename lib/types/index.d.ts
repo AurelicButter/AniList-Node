@@ -211,7 +211,7 @@ declare class Lists {
 	 * @returns {UpdatedEntry}
 	 * @since 1.13.0
 	 */
-	async addEntry(id: number, options: UpdateEntryOptions): UpdatedEntry;
+	addEntry(id: number, options: UpdateEntryOptions): Promise<UpdatedEntry>;
 
     /**
 	 * [Requires Login] Update a list entry to a user's list.
@@ -220,7 +220,7 @@ declare class Lists {
 	 * @returns {UpdatedEntry}
 	 * @since 1.13.0
 	 */
-	async updateEntry(id: number, options:UpdateEntryOptions): UpdatedEntry;
+	updateEntry(id: number, options:UpdateEntryOptions): Promise<UpdatedEntry>;
 
 	/**
 	 * [Requires Login] Remove an entry from a user's lists.
@@ -228,7 +228,7 @@ declare class Lists {
 	 * @returns {Boolean} Returns true if removed, false otherwise.
 	 * @since 1.13.0
 	 */
-	async removeEntry(id: number): Boolean;
+	removeEntry(id: number): Promise<Boolean>;
 }
 
 
@@ -983,8 +983,8 @@ export declare interface ListEntry {
         description: string,
         format: string,
         tags: Tags[],
-        startDate: number,
-        endDate: number,
+        startDate: FuzzyDate,
+        endDate: FuzzyDate,
         genres: string[],
         isFavourite: boolean,
         isAdult: boolean,
