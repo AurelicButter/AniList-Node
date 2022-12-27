@@ -374,7 +374,7 @@ class Search {
 
 		let query = filterBuilder("anime", filter);
 
-		query += "id title { romaji english native userPreferred } } } }";
+		query += "id status format title { romaji english native userPreferred } } } }";
 		return this.util.send(query, { search: term, page: page, perPage: amount });
 	}
 
@@ -400,7 +400,7 @@ class Search {
 
 		let query = filterBuilder("manga", filter);
 
-		query += "id title { romaji english native userPreferred } } } }";
+		query += "id status format title { romaji english native userPreferred } } } }";
 		return this.util.send(query, { search: term, page: page, perPage: amount });
 	}
 
