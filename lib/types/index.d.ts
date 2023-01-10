@@ -13,7 +13,7 @@
  * The main class for AniList-Node
  * @since 1.0.0
  */
-declare class Anilist {
+declare class AniList {
 
     /**
      * Access AniList's user data.
@@ -553,7 +553,9 @@ export declare interface MediaRelation {
 export declare interface MediaSearchEntry extends PageInfo {
     media: [{
         id: number,
-        title: MediaTitle
+        title: MediaTitle,
+        status: MediaStatus,
+        format: MediaFormat,
     }]
 }
 
@@ -1265,4 +1267,4 @@ export declare interface UpdatedEntry {
     advancedScores: { Story: number, Characters: number, Visuals: number, Audio: number, Enjoyment: number }
 }
 
-export default Anilist;
+export default AniList;
