@@ -25,14 +25,14 @@ AniList.lists
 			day: 20
 		}
 	})
-	.then((data) => console.log(data));
+	.then(console.log);
 
 // Update entry on a user's list with a list ID
 AniList.lists
 	.updateEntry(295799608, {
 		status: "DROPPED"
 	})
-	.then((data) => console.log(data));
+	.then(console.log);
 
 // Remove an entry on a user's list with same list ID
-AniList.lists.removeEntry(295799608).then((data) => console.log(data));
+AniList.lists.removeEntry(295799608).then(console.log);
