@@ -44,7 +44,9 @@ const AniList = require("anilist-node");
 const anilist = new AniList();
 
 // You can either use then...
-anilist.people.character(126156).then(data => { console.log(data); });
+anilist.people.character(126156).then((data) => {
+	return console.log(data);
+});
 
 // Or await it!
 const data = await anilist.people.character(126156);

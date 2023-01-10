@@ -3,9 +3,9 @@ const { token } = require("../token.json");
 const anilist = new AnilistNode(token);
 
 // Fetch a user's profile
-anilist.user.profile("Butterstroke").then((data) => console.log(data));
+anilist.user.profile("Butterstroke").then(console.log);
 
 // Fetch the currently authorized user.
-anilist.user.getAuthorized().then((data) => console.log(data));
+anilist.user.getAuthorized().then(console.log);
 
-anilist.user.update({ scoreFormat: "POINT_3" }).then((data) => console.log(data));
+anilist.user.update({ scoreFormat: "POINT_3" }).then(console.log);

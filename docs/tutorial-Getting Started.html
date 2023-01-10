@@ -276,7 +276,7 @@ const Anilist = new anilist(settings.token /* This being your token */);
 const anilist = new AniList();
 
 // You can either use then...
-anilist.people.character(126156).then(data => { console.log(data); });
+anilist.people.character(126156).then(console.log);
 
 // Or await it!
 const data = await anilist.people.character(126156);
