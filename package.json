@@ -27,7 +27,7 @@
 	},
 	"author": {
 		"name": "Frederick Katsura",
-		"email": "katsurinstudios@protonmail.ch"
+		"email": "fkatsura@katsurin.com"
 	},
 	"repository": {
 		"type": "git",
@@ -48,13 +48,13 @@
 		"node.js"
 	],
 	"devDependencies": {
-		"docdash": "^1.2.0",
-		"eslint": "^8.29.0",
+		"docdash": "^2.0.1",
+		"eslint": "^8.36.0",
 		"eslint-plugin-prettier": "^4.2.1",
-		"husky": "^7.0.4",
-		"jsdoc": "^3.6.11",
-		"lint-staged": "^13.1.0",
-		"prettier": "^2.8.1",
-		"typescript": "^4.9.4"
+		"husky": "^8.0.3",
+		"jsdoc": "^4.0.2",
+		"lint-staged": "^13.2.0",
+		"prettier": "^2.8.4",
+		"typescript": "^5.0.2"
 	}
 }
