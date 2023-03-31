@@ -1,6 +1,6 @@
 {
 	"name": "anilist-node",
-	"version": "1.13.1",
+	"version": "1.13.2",
 	"description": "A lightweight Node.js wrapper for the AniList API",
 	"main": "./lib/index.js",
 	"types": "./lib/types/index.d.ts",
@@ -39,7 +39,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"abort-controller": "^3.0.0",
-		"node-fetch": "^2.6.7"
+		"node-fetch": "^2.6.9"
 	},
 	"keywords": [
 		"anilist",
@@ -49,12 +49,12 @@
 	],
 	"devDependencies": {
 		"docdash": "^2.0.1",
-		"eslint": "^8.36.0",
+		"eslint": "^8.37.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"husky": "^8.0.3",
 		"jsdoc": "^4.0.2",
 		"lint-staged": "^13.2.0",
-		"prettier": "^2.8.4",
-		"typescript": "^5.0.2"
+		"prettier": "^2.8.7",
+		"typescript": "^5.0.3"
 	}
 }
