@@ -673,7 +673,7 @@ export declare interface Trends {
     inProgress: number
 }
 
-export declare interface MediaEntry {
+declare interface MediaEntry {
     id: number,
     idMal: number,
     title: MediaTitle,
