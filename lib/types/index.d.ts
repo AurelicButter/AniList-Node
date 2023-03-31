@@ -13,7 +13,7 @@
  * The main class for AniList-Node
  * @since 1.0.0
  */
-declare class Anilist {
+export class Anilist {
 
     /**
      * Access AniList's user data.
@@ -673,7 +673,7 @@ export declare interface Trends {
     inProgress: number
 }
 
-export declare interface MediaEntry {
+declare interface MediaEntry {
     id: number,
     idMal: number,
     title: MediaTitle,

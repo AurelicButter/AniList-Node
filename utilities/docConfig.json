@@ -16,10 +16,17 @@
 		}
 	},
 	"docdash": {
+		"openGraph": {
+			"title": "AniList-Node Documentation",
+			"type": "website",
+			"site_name": "AniList-Node Documentation",
+			"url": "https://katsurin.com/docs/anilist-node/"
+		},
 		"meta": {
 			"title": "AniList-Node Documentation",
 			"description": "Documentation for the AniList-Node NPM package."
 		},
+		"sort": true,
 		"search": true,
 		"typedefs": true,
 		"menu": {

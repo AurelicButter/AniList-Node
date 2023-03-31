@@ -6,6 +6,12 @@
 
 		<meta name="description" content="Documentation for the AniList-Node NPM package." />
 
+		<meta property="og:title" content="AniList-Node Documentation" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="" />
+		<meta property="og:site_name" content="AniList-Node Documentation" />
+		<meta property="og:url" content="https://katsurin.com/docs/anilist-node/" />
+
 		<script src="scripts/prettify/prettify.js"></script>
 		<script src="scripts/prettify/lang-css.js"></script>
 		<!--[if lt IE 9]>
@@ -14,6 +20,7 @@
 		<link type="text/css" rel="stylesheet" href="styles/prettify.css" />
 		<link type="text/css" rel="stylesheet" href="styles/jsdoc.css" />
 		<script src="scripts/nav.js" defer></script>
+
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	</head>
 	<body>
@@ -154,7 +161,6 @@
 				<li><a href="global.html#CountryCode">CountryCode</a></li>
 				<li><a href="global.html#EntryStatus">EntryStatus</a></li>
 				<li><a href="global.html#FuzzyDateInt">FuzzyDateInt</a></li>
-				<li><a href="global.html#headerBuilder">headerBuilder</a></li>
 				<li><a href="global.html#InitOptions">InitOptions</a></li>
 				<li><a href="global.html#ListActivity">ListActivity</a></li>
 				<li><a href="global.html#ListEntry">ListEntry</a></li>
@@ -188,8 +194,8 @@
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
 				<li><a href="global.html#ThreadComment">ThreadComment</a></li>
 				<li><a href="global.html#ThreadEntry">ThreadEntry</a></li>
-				<li><a href="global.html#UpdatedEntry">UpdatedEntry</a></li>
 				<li><a href="global.html#UpdateEntryOptions">UpdateEntryOptions</a></li>
+				<li><a href="global.html#UpdatedEntry">UpdatedEntry</a></li>
 				<li><a href="global.html#UserList">UserList</a></li>
 				<li><a href="global.html#UserOptions">UserOptions</a></li>
 				<li><a href="global.html#UserOptionsInput">UserOptionsInput</a></li>
@@ -198,6 +204,7 @@
 				<li><a href="global.html#UserStaffNameLanguage">UserStaffNameLanguage</a></li>
 				<li><a href="global.html#UserStats">UserStats</a></li>
 				<li><a href="global.html#UserTitleLanguage">UserTitleLanguage</a></li>
+				<li><a href="global.html#headerBuilder">headerBuilder</a></li>
 			</ul>
 		</nav>
 
@@ -219,11 +226,19 @@
 					<h3 class="subsection-title">Methods</h3>
 
 					<h4 class="name" id="delete">
-						<span class="type-signature">(async) </span>delete<span class="signature">(id)</span
+						<span class="type-signature type-signature-async">(async) </span>delete<span class="signature"
+							>(id)</span
 						><span class="type-signature"> &rarr; {Boolean}</span>
 					</h4>
 
 					<dl class="details">
+						<dt class="tag-description">Description:</dt>
+						<dd class="tag-description">
+							<ul class="dummy">
+								<li>[Require Login] Delete a thread</li>
+							</ul>
+						</dd>
+
 						<dt class="tag-source">Source:</dt>
 						<dd class="tag-source">
 							<ul class="dummy">
@@ -241,9 +256,7 @@
 						</dd>
 					</dl>
 
-					<div class="description usertext">[Require Login] Delete a thread</div>
-
-					<h5>Parameters:</h5>
+					<h5 class="h5-parameters">Parameters:</h5>
 
 					<table class="params">
 						<thead>
@@ -269,7 +282,7 @@
 						</tbody>
 					</table>
 
-					<h5>Returns:</h5>
+					<h5 class="h5-returns">Returns:</h5>
 
 					<div class="param-desc">Returns true if successful</div>
 
@@ -286,6 +299,13 @@
 					</h4>
 
 					<dl class="details">
+						<dt class="tag-description">Description:</dt>
+						<dd class="tag-description">
+							<ul class="dummy">
+								<li>Get a specific thread by its AniList ID</li>
+							</ul>
+						</dd>
+
 						<dt class="tag-source">Source:</dt>
 						<dd class="tag-source">
 							<ul class="dummy">
@@ -303,9 +323,7 @@
 						</dd>
 					</dl>
 
-					<div class="description usertext">Get a specific thread by its AniList ID</div>
-
-					<h5>Parameters:</h5>
+					<h5 class="h5-parameters">Parameters:</h5>
 
 					<table class="params">
 						<thead>
@@ -331,7 +349,7 @@
 						</tbody>
 					</table>
 
-					<h5>Returns:</h5>
+					<h5 class="h5-returns">Returns:</h5>
 
 					<dl class="param-type">
 						<dt>Type</dt>
@@ -348,6 +366,13 @@
 					</h4>
 
 					<dl class="details">
+						<dt class="tag-description">Description:</dt>
+						<dd class="tag-description">
+							<ul class="dummy">
+								<li>Get thread comments for a thread</li>
+							</ul>
+						</dd>
+
 						<dt class="tag-source">Source:</dt>
 						<dd class="tag-source">
 							<ul class="dummy">
@@ -365,9 +390,7 @@
 						</dd>
 					</dl>
 
-					<div class="description usertext">Get thread comments for a thread</div>
-
-					<h5>Parameters:</h5>
+					<h5 class="h5-parameters">Parameters:</h5>
 
 					<table class="params">
 						<thead>
@@ -425,7 +448,7 @@
 						</tbody>
 					</table>
 
-					<h5>Returns:</h5>
+					<h5 class="h5-returns">Returns:</h5>
 
 					<dl class="param-type">
 						<dt>Type</dt>
@@ -442,7 +465,7 @@
 		<br class="clear" />
 
 		<footer>
-			Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> using the
+			Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> using the
 			<a href="https://github.com/clenemt/docdash">docdash</a> theme.
 		</footer>
 
