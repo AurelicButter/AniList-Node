@@ -1,6 +1,6 @@
 ## How to Import
 
-AniList-Node is a class based, asyncronous package, meaning the main class needed to be constructed and all of its methods are async. 
+AniList-Node is a class based, asynchronous package, meaning the main class needed to be constructed and all of its methods are async. 
 
 For JavaScript, a simple require line and new class is perfect for the job.
 ```JavaScript
@@ -9,9 +9,13 @@ const AniList = require("anilist-node");
 const anilist = new AniList();
 ```
 
-However with TypeScript installs, the class is exported under the name AniList and therefore should be imported as directed below.
+However with TypeScript installs, the class is exported under the name AniList and therefore should be imported as such. AniList-Node is a CommonJS package so depending on your configurations, you may need to import it differently.
 ```TypeScript
-import AniList from "anilist-node";
+// For projects using CommonJS modules
+import AniList from "anilist-node"; 
+
+// For projects using ES modules
+import { AniList } from "anilist-node";
 
 const anilist = new AniList();
 ```

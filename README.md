@@ -34,6 +34,8 @@ Anilist.media.anime(21708).then(data => {
 });
 ```
 
+For a more in-depth guide on getting started, check out our [Getting Started](https://katsurin.com/docs/anilist-node/tutorial-Getting%20Started.html) guide on our site or on the static HTML site under the docs directory.
+
 ## Documentation
 Documentation is provided in two locations. A static HTML site is avalible with the package under the docs directory. Or users can view the same site online here: [katsurin.com/docs/anilist-node](https://www.katsurin.com/docs/anilist-node/index.html).
 
