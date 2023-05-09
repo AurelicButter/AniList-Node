@@ -537,7 +537,22 @@ export declare interface MediaTitle {
 export declare interface PersonName {
     english: string,
     native: string,
-    alternative: string
+    alternative: string[]
+}
+
+export declare interface CharacterName {
+    english: string,
+    native: string,
+    alternative: string[],
+    alternativeSpoiler: string[],
+    userPreferred: string
+}
+
+export declare interface StaffName {
+    english: string,
+    native: string,
+    alternative: string[],
+    userPreferred: string
 }
 
 export declare interface PageInfo {
@@ -589,24 +604,37 @@ export declare interface ActivityEntry extends PageInfo {
 
 export declare interface StaffEntry {
     id: number,
-    name: PersonName,
+    name: StaffName,
     image: ImageSize,
     description: string,
+    primaryOccupations: string[],
+    gender: string,
+    dateOfBirth: Object | null,
+    dateOfDeath: Object | null,
+    age: number,
+    yearsActive: number[],
+    homeTown: string,
+    bloodType: string,
     isFavourite: boolean,
-    siteUrl: string,
+    isFavouriteBlocked: boolean,
     favourites: number,
     language: string,
     staffMedia: MediaRelation[],
-    characters: PersonRelation[]
+    characters: PersonRelation[],
+    characterMedia: MediaRelation[]
 }
 
 export declare interface CharacterEntry {
     id: number,
-    name: PersonName,
+    name: CharacterName,
     image: ImageSize,
+    gender: string,
+    dateOfBirth: Object | null,
+    age: string,
+    bloodType: string,
     description: string,
     isFavourite: boolean,
-    siteUrl: string,
+    isFavouriteBlocked: boolean,
     favourites: number,
     media: MediaRelation[]
 }
