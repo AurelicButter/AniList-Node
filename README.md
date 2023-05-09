@@ -46,4 +46,4 @@ Please refer to the [Contributing Guide](https://github.com/Butterstroke/AniList
 ## License and Contact
 AniList-Node is licensed under the [MIT License](LICENSE).
 
-For issues and bugs, please use the issue tracker on the [GitHub repository](https://github.com/Butterstroke/AniList-Node/issues). For other needs, either contact me by email [katsurinstudios@protonmail.ch](mailto:katsurinstudios@protonmail.ch) or in my [Discord server](https://discord.gg/qKfqsjW) in the #anilist-node channel.
+For issues and bugs, please use the issue tracker on the [GitHub repository](https://github.com/Butterstroke/AniList-Node/issues). For other needs, either contact me by email [fkatsura@katsurin.com](mailto:fkatsura@katsurin.com) or in my [Discord server](https://discord.gg/qKfqsjW) in the #anilist-node channel.
