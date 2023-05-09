@@ -126,7 +126,7 @@ export class Anilist {
 	 * Grabs the site's statistics over the last seven days
 	 * @since 1.14.0
 	 */
-	mediaTags(): Promise<AniListStats>;
+	siteStatistics(): Promise<AniListStats>;
 }
 
 declare class User {
@@ -296,6 +296,8 @@ declare class People {
 	 */
     favouriteChar(id: number): Promise<Boolean>;
 
+    getBirthdayCharacter(page: number): Promise<PersonRelation[]>;
+
     /**
      * Fetch a staff entry by its AniList ID or their name.
      * @param { Number|String } id - Required. The ID can either be the AniList ID or the staff's name.
@@ -311,6 +313,8 @@ declare class People {
 	 * @since 1.12.0
 	 */
     favouriteStaff(id: number): Promise<Boolean>;
+
+    getBirthdayStaff(page: number): Promise<PersonRelation[]>;
 }
 
 declare class Activity {
