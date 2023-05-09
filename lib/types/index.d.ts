@@ -121,6 +121,12 @@ export class Anilist {
 	 * @since 1.12.0
 	 */
 	mediaTags(): Promise<MediaTag[]>;
+
+    /**
+	 * Grabs the site's statistics over the last seven days
+	 * @since 1.14.0
+	 */
+	mediaTags(): Promise<AniListStats>;
 }
 
 declare class User {
@@ -1263,6 +1269,22 @@ export declare interface UpdatedEntry {
     completedAt: { year: number, month: number, day: number }
     notes: string | null,
     advancedScores: { Story: number, Characters: number, Visuals: number, Audio: number, Enjoyment: number }
+}
+
+export declare interface DayStats {
+    date: Date,
+    count: number,
+    change: number
+}
+
+export declare interface AniListStats {
+    users: DayStats[],
+    anime: DayStats[],
+    manga: DayStats[],
+    characters: DayStats[],
+    staff: DayStats[],
+    studios: DayStats[],
+    reviews: DayStats[]
 }
 
 export default Anilist;
