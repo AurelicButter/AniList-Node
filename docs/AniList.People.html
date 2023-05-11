@@ -63,6 +63,7 @@
 						<li data-type="method"><a href="AniList.html#genres">genres</a></li>
 						<li data-type="method"><a href="AniList.html#mediaTags">mediaTags</a></li>
 						<li data-type="method"><a href="AniList.html#search">search</a></li>
+						<li data-type="method"><a href="AniList.html#siteStatistics">siteStatistics</a></li>
 						<li data-type="method"><a href="AniList.html#studio">studio</a></li>
 					</ul>
 				</li>
@@ -101,6 +102,10 @@
 						<li data-type="method"><a href="AniList.People.html#character">character</a></li>
 						<li data-type="method"><a href="AniList.People.html#favouriteChar">favouriteChar</a></li>
 						<li data-type="method"><a href="AniList.People.html#favouriteStaff">favouriteStaff</a></li>
+						<li data-type="method">
+							<a href="AniList.People.html#getBirthdayCharacters">getBirthdayCharacters</a>
+						</li>
+						<li data-type="method"><a href="AniList.People.html#getBirthdayStaff">getBirthdayStaff</a></li>
 						<li data-type="method"><a href="AniList.People.html#staff">staff</a></li>
 					</ul>
 				</li>
@@ -156,8 +161,10 @@
 				<li><a href="global.html#ActivitySort">ActivitySort</a></li>
 				<li><a href="global.html#ActivityType">ActivityType</a></li>
 				<li><a href="global.html#AiringEntry">AiringEntry</a></li>
+				<li><a href="global.html#AniListStats">AniListStats</a></li>
 				<li><a href="global.html#AnimeEntry">AnimeEntry</a></li>
 				<li><a href="global.html#CharacterEntry">CharacterEntry</a></li>
+				<li><a href="global.html#CharacterName">CharacterName</a></li>
 				<li><a href="global.html#CountryCode">CountryCode</a></li>
 				<li><a href="global.html#EntryStatus">EntryStatus</a></li>
 				<li><a href="global.html#FuzzyDateInt">FuzzyDateInt</a></li>
@@ -190,6 +197,7 @@
 				<li><a href="global.html#SearchEntry">SearchEntry</a></li>
 				<li><a href="global.html#SingleRecommendation">SingleRecommendation</a></li>
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
+				<li><a href="global.html#StaffName">StaffName</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
 				<li><a href="global.html#ThreadComment">ThreadComment</a></li>
@@ -314,7 +322,7 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="people.js.html">people.js</a>, <a href="people.js.html#line41">line 41</a>
+									<a href="people.js.html">people.js</a>, <a href="people.js.html#line42">line 42</a>
 								</li>
 							</ul>
 						</dd>
@@ -383,7 +391,8 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="people.js.html">people.js</a>, <a href="people.js.html#line87">line 87</a>
+									<a href="people.js.html">people.js</a>,
+									<a href="people.js.html#line112">line 112</a>
 								</li>
 							</ul>
 						</dd>
@@ -433,6 +442,161 @@
 						</dd>
 					</dl>
 
+					<h4 class="name" id="getBirthdayCharacters">
+						<span class="type-signature type-signature-async">(async) </span>getBirthdayCharacters<span
+							class="signature"
+							>(page)</span
+						><span class="type-signature">
+							&rarr; {Array.&lt;<a href="global.html#PersonRelation">PersonRelation</a>>}</span
+						>
+					</h4>
+
+					<dl class="details">
+						<dt class="tag-description">Description:</dt>
+						<dd class="tag-description">
+							<ul class="dummy">
+								<li>Get all characters who's birthday is today</li>
+							</ul>
+						</dd>
+
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="people.js.html">people.js</a>, <a href="people.js.html#line69">line 69</a>
+								</li>
+							</ul>
+						</dd>
+
+						<dt class="tag-since">Since:</dt>
+						<dd class="tag-since">
+							<ul class="dummy">
+								<li>1.14.0</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<h5 class="h5-parameters">Parameters:</h5>
+
+					<table class="params">
+						<thead>
+							<tr>
+								<th>Name</th>
+
+								<th>Type</th>
+
+								<th>Default</th>
+
+								<th class="last">Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="name"><code>page</code></td>
+
+								<td class="type">
+									<span class="param-type">Number</span>
+								</td>
+
+								<td class="default">
+									<code>1</code>
+								</td>
+
+								<td class="description last">What page in the search to target. Defaults at 1.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5 class="h5-returns">Returns:</h5>
+
+					<dl class="param-type">
+						<dt>Type</dt>
+						<dd>
+							<span class="param-type"
+								>Array.&lt;<a href="global.html#PersonRelation">PersonRelation</a>></span
+							>
+						</dd>
+					</dl>
+
+					<h4 class="name" id="getBirthdayStaff">
+						<span class="type-signature type-signature-async">(async) </span>getBirthdayStaff<span
+							class="signature"
+							>(page)</span
+						><span class="type-signature">
+							&rarr; {Array.&lt;<a href="global.html#PersonRelation">PersonRelation</a>>}</span
+						>
+					</h4>
+
+					<dl class="details">
+						<dt class="tag-description">Description:</dt>
+						<dd class="tag-description">
+							<ul class="dummy">
+								<li>Get all staff entries who's birthday is today</li>
+							</ul>
+						</dd>
+
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="people.js.html">people.js</a>,
+									<a href="people.js.html#line139">line 139</a>
+								</li>
+							</ul>
+						</dd>
+
+						<dt class="tag-since">Since:</dt>
+						<dd class="tag-since">
+							<ul class="dummy">
+								<li>1.14.0</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<h5 class="h5-parameters">Parameters:</h5>
+
+					<table class="params">
+						<thead>
+							<tr>
+								<th>Name</th>
+
+								<th>Type</th>
+
+								<th>Default</th>
+
+								<th class="last">Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="name"><code>page</code></td>
+
+								<td class="type">
+									<span class="param-type">Number</span>
+								</td>
+
+								<td class="default">
+									<code>1</code>
+								</td>
+
+								<td class="description last">What page in the search to target. Defaults at 1.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5 class="h5-returns">Returns:</h5>
+
+					<dl class="param-type">
+						<dt>Type</dt>
+						<dd>
+							<span class="param-type"
+								>Array.&lt;<a href="global.html#PersonRelation">PersonRelation</a>></span
+							>
+						</dd>
+					</dl>
+
 					<h4 class="name" id="staff">
 						<span class="type-signature"></span>staff<span class="signature">(id)</span
 						><span class="type-signature"> &rarr; {<a href="global.html#StaffEntry">StaffEntry</a>}</span>
@@ -450,7 +614,7 @@
 						<dd class="tag-source">
 							<ul class="dummy">
 								<li>
-									<a href="people.js.html">people.js</a>, <a href="people.js.html#line68">line 68</a>
+									<a href="people.js.html">people.js</a>, <a href="people.js.html#line91">line 91</a>
 								</li>
 							</ul>
 						</dd>

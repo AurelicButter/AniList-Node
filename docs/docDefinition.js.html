@@ -63,6 +63,7 @@
 						<li data-type="method"><a href="AniList.html#genres">genres</a></li>
 						<li data-type="method"><a href="AniList.html#mediaTags">mediaTags</a></li>
 						<li data-type="method"><a href="AniList.html#search">search</a></li>
+						<li data-type="method"><a href="AniList.html#siteStatistics">siteStatistics</a></li>
 						<li data-type="method"><a href="AniList.html#studio">studio</a></li>
 					</ul>
 				</li>
@@ -101,6 +102,10 @@
 						<li data-type="method"><a href="AniList.People.html#character">character</a></li>
 						<li data-type="method"><a href="AniList.People.html#favouriteChar">favouriteChar</a></li>
 						<li data-type="method"><a href="AniList.People.html#favouriteStaff">favouriteStaff</a></li>
+						<li data-type="method">
+							<a href="AniList.People.html#getBirthdayCharacters">getBirthdayCharacters</a>
+						</li>
+						<li data-type="method"><a href="AniList.People.html#getBirthdayStaff">getBirthdayStaff</a></li>
 						<li data-type="method"><a href="AniList.People.html#staff">staff</a></li>
 					</ul>
 				</li>
@@ -156,8 +161,10 @@
 				<li><a href="global.html#ActivitySort">ActivitySort</a></li>
 				<li><a href="global.html#ActivityType">ActivityType</a></li>
 				<li><a href="global.html#AiringEntry">AiringEntry</a></li>
+				<li><a href="global.html#AniListStats">AniListStats</a></li>
 				<li><a href="global.html#AnimeEntry">AnimeEntry</a></li>
 				<li><a href="global.html#CharacterEntry">CharacterEntry</a></li>
+				<li><a href="global.html#CharacterName">CharacterName</a></li>
 				<li><a href="global.html#CountryCode">CountryCode</a></li>
 				<li><a href="global.html#EntryStatus">EntryStatus</a></li>
 				<li><a href="global.html#FuzzyDateInt">FuzzyDateInt</a></li>
@@ -190,6 +197,7 @@
 				<li><a href="global.html#SearchEntry">SearchEntry</a></li>
 				<li><a href="global.html#SingleRecommendation">SingleRecommendation</a></li>
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
+				<li><a href="global.html#StaffName">StaffName</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
 				<li><a href="global.html#ThreadComment">ThreadComment</a></li>
@@ -236,6 +244,25 @@
  */
 
 /**
+ * @typedef { Object } CharacterName
+ * @enum
+ * @property { String } english - The person's first and last name in English
+ * @property { String } native - The person's name in Japanese
+ * @property { String[] } alternative - Any nicknames or titles the person goes by.
+ * @property { String[] } alternativeSpoiler - Any nicknames or titles the person goes by but is marked as spoilers
+ * @property { String } userPreferred - The user's preferred name language. Defaults to romaji for non-authenticated
+ */
+
+/**
+ * @typedef { Object } StaffName
+ * @enum
+ * @property { String } english - The person's first and last name in English
+ * @property { String } native - The person's name in Japanese
+ * @property { String[] } alternative - Any nicknames or titles the person goes by.
+ * @property { String } userPreferred - The user's preferred name language. Defaults to romaji for non-authenticated
+ */
+
+/**
  * @typedef { Object } SearchEntry
  * @enum
  * @property { Object } pageInfo - Information about the search result page
@@ -270,30 +297,52 @@
  * @typedef { Object } StaffEntry
  * @enum
  * @property { Number } id - The person's ID on AniList
- * @property { PersonName } name - The person's name
+ * @property { StaffName } name - The person's name
  * @property { Object } image - The person's cover image.
  * @property { string } image.large - The large file
  * @property { string } image.medium - The medium file
  * @property { String } description - The person's description
+ * @property { string[] } primaryOccupations - The primary occupations that the person does
+ * @property { string } gender - The person's gender
+ * @property { Object | null } dateOfBirth - The person's date of birth
+ * @property { Number } dateOfBirth.year
+ * @property { Number } dateOfBirth.month
+ * @property { Number } dateOfBirth.day
+ * @property { Object | null } dateOfDeath - The person's date of death
+ * @property { Number } dateOfDeath.year
+ * @property { Number } dateOfDeath.month
+ * @property { Number } dateOfDeath.day
+ * @property { number } age - The person's age
+ * @property { number[] } yearsActive - Read as (start, end). If only one year is availible, person is still active.
+ * @property { string } homeTown - Where the person is from
+ * @property { string } bloodType - The person's blood type
  * @property { Boolean } isFavourite - [Requires Login] Check if the person is favourited
- * @property { String } siteUrl - The person's AniList page
+ * @property { Boolean } isFavouriteBlocked - True if user is not allowed to favourite the person
  * @property { Number } favourites - The number of users that have favourited the person
  * @property { String } language - The staff's language
  * @property { MediaRelation[] } staffMedia - An array of ids and titles of all media that the staff has been apart of. (Up to the first 25 entries)
  * @property { PersonRelation[] } characters - An array of ids and the english names of all characters that the staff has voiced. (Up to the first 25 entries)
+ * @property { MediaRelation[] } characterMedia - An array of ids and titles of all media that the person voiced characters in. (Up to the first 25 entries)
  */
 
 /**
  * @typedef { Object } CharacterEntry
  * @enum
  * @property { Number } id - The person's ID on AniList
- * @property { PersonName } name - The person's name
+ * @property { CharacterName } name - The person's name
  * @property { Object } image - The person's cover image.
  * @property { string } image.large - The large file
  * @property { string } image.medium - The medium file
+ * @property { string } gender - The character's gender. Could be male, female, non-binary, etc...
+ * @property { Object | null } dateOfBirth - The character's date of birth
+ * @property { Number } dateOfBirth.year
+ * @property { Number } dateOfBirth.month
+ * @property { Number } dateOfBirth.day
+ * @property { string } age - The character's age. Listed as a string as it may contain additional text or ranges.
+ * @property { string } bloodType - The character's blood type
  * @property { String } description - The person's description
  * @property { Boolean } isFavourite - [Requires Login] Check if the person is favourited
- * @property { String } siteUrl - The person's AniList page
+ * @property { Boolean } isFavouriteBlocked - True if the user is unable to favourite the entry
  * @property { Number } favourites - The number of users that have favourited the person
  * @property { MediaRelation[] } media - All media that the character is in. (Up to the first 25 entries)
  */
@@ -1090,6 +1139,38 @@
  * @property {Number} completedAt.year
  * @property {Number} completedAt.month
  * @property {Number} completedAt.day
+ */
+
+/**
+ * @typedef AniListStats
+ * @property {Object[]} users - User count over the past seven days
+ * @property {Date} users.date - Date recorded
+ * @property {Number} users.count - Count on date
+ * @property {Number} users.change - Change from yesterday
+ * @property {Object[]} anime - Anime count over the past seven days
+ * @property {Date} anime.date - Date recorded
+ * @property {Number} anime.count - Count on date
+ * @property {Number} anime.change - Change from yesterday
+ * @property {Object[]} manga - Manga count over the past seven days
+ * @property {Date} manga.date - Date recorded
+ * @property {Number} manga.count - Count on date
+ * @property {Number} manga.change - Change from yesterday
+ * @property {Object[]} characters - Character entries over the past seven days
+ * @property {Date} characters.date - Date recorded
+ * @property {Number} characters.count - Count on date
+ * @property {Number} characters.change - Change from yesterday
+ * @property {Object[]} staff - Staff entries over the past seven days
+ * @property {Date} staff.date - Date recorded
+ * @property {Number} staff.count - Count on date
+ * @property {Number} staff.change - Change from yesterday
+ * @property {Object[]} studios - Studio count over the past seven days
+ * @property {Date} studios.date - Date recorded
+ * @property {Number} studios.count - Count on date
+ * @property {Number} studios.change - Change from yesterday
+ * @property {Object[]} reviews - Review count over the past seven days
+ * @property {Date} reviews.date - Date recorded
+ * @property {Number} reviews.count - Count on date
+ * @property {Number} reviews.change - Change from yesterday
  */
 </code></pre>
 				</article>
