@@ -63,6 +63,7 @@
 						<li data-type="method"><a href="AniList.html#genres">genres</a></li>
 						<li data-type="method"><a href="AniList.html#mediaTags">mediaTags</a></li>
 						<li data-type="method"><a href="AniList.html#search">search</a></li>
+						<li data-type="method"><a href="AniList.html#siteStatistics">siteStatistics</a></li>
 						<li data-type="method"><a href="AniList.html#studio">studio</a></li>
 					</ul>
 				</li>
@@ -101,6 +102,10 @@
 						<li data-type="method"><a href="AniList.People.html#character">character</a></li>
 						<li data-type="method"><a href="AniList.People.html#favouriteChar">favouriteChar</a></li>
 						<li data-type="method"><a href="AniList.People.html#favouriteStaff">favouriteStaff</a></li>
+						<li data-type="method">
+							<a href="AniList.People.html#getBirthdayCharacters">getBirthdayCharacters</a>
+						</li>
+						<li data-type="method"><a href="AniList.People.html#getBirthdayStaff">getBirthdayStaff</a></li>
 						<li data-type="method"><a href="AniList.People.html#staff">staff</a></li>
 					</ul>
 				</li>
@@ -156,8 +161,10 @@
 				<li><a href="global.html#ActivitySort">ActivitySort</a></li>
 				<li><a href="global.html#ActivityType">ActivityType</a></li>
 				<li><a href="global.html#AiringEntry">AiringEntry</a></li>
+				<li><a href="global.html#AniListStats">AniListStats</a></li>
 				<li><a href="global.html#AnimeEntry">AnimeEntry</a></li>
 				<li><a href="global.html#CharacterEntry">CharacterEntry</a></li>
+				<li><a href="global.html#CharacterName">CharacterName</a></li>
 				<li><a href="global.html#CountryCode">CountryCode</a></li>
 				<li><a href="global.html#EntryStatus">EntryStatus</a></li>
 				<li><a href="global.html#FuzzyDateInt">FuzzyDateInt</a></li>
@@ -190,6 +197,7 @@
 				<li><a href="global.html#SearchEntry">SearchEntry</a></li>
 				<li><a href="global.html#SingleRecommendation">SingleRecommendation</a></li>
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
+				<li><a href="global.html#StaffName">StaffName</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
 				<li><a href="global.html#ThreadComment">ThreadComment</a></li>
@@ -2373,7 +2381,7 @@
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line39">line 39</a>
+									<a href="docDefinition.js.html#line58">line 58</a>
 								</li>
 							</ul>
 						</dd>
@@ -2546,7 +2554,7 @@
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line652">line 652</a>
+									<a href="docDefinition.js.html#line693">line 693</a>
 								</li>
 							</ul>
 						</dd>
@@ -2850,7 +2858,7 @@
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line115">line 115</a>
+									<a href="docDefinition.js.html#line156">line 156</a>
 								</li>
 							</ul>
 						</dd>
@@ -2909,6 +2917,435 @@
 						</li>
 					</ul>
 
+					<h4 class="name" id="AniListStats">AniListStats</h4>
+
+					<dl class="details">
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="docDefinition.js.html">docDefinition.js</a>,
+									<a href="docDefinition.js.html#line921">line 921</a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<h5 class="subsection-title">Properties:</h5>
+
+					<table class="props">
+						<thead>
+							<tr>
+								<th>Name</th>
+
+								<th>Type</th>
+
+								<th class="last">Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="name"><code>users</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;Object></span>
+								</td>
+
+								<td class="description last">
+									User count over the past seven days
+									<h6>Properties</h6>
+
+									<table class="props">
+										<thead>
+											<tr>
+												<th>Name</th>
+
+												<th>Type</th>
+
+												<th class="last">Description</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td class="name"><code>date</code></td>
+
+												<td class="type">
+													<span class="param-type">Date</span>
+												</td>
+
+												<td class="description last">Date recorded</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>count</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Count on date</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>change</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Change from yesterday</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>anime</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;Object></span>
+								</td>
+
+								<td class="description last">
+									Anime count over the past seven days
+									<h6>Properties</h6>
+
+									<table class="props">
+										<thead>
+											<tr>
+												<th>Name</th>
+
+												<th>Type</th>
+
+												<th class="last">Description</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td class="name"><code>date</code></td>
+
+												<td class="type">
+													<span class="param-type">Date</span>
+												</td>
+
+												<td class="description last">Date recorded</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>count</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Count on date</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>change</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Change from yesterday</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>manga</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;Object></span>
+								</td>
+
+								<td class="description last">
+									Manga count over the past seven days
+									<h6>Properties</h6>
+
+									<table class="props">
+										<thead>
+											<tr>
+												<th>Name</th>
+
+												<th>Type</th>
+
+												<th class="last">Description</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td class="name"><code>date</code></td>
+
+												<td class="type">
+													<span class="param-type">Date</span>
+												</td>
+
+												<td class="description last">Date recorded</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>count</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Count on date</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>change</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Change from yesterday</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>characters</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;Object></span>
+								</td>
+
+								<td class="description last">
+									Character entries over the past seven days
+									<h6>Properties</h6>
+
+									<table class="props">
+										<thead>
+											<tr>
+												<th>Name</th>
+
+												<th>Type</th>
+
+												<th class="last">Description</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td class="name"><code>date</code></td>
+
+												<td class="type">
+													<span class="param-type">Date</span>
+												</td>
+
+												<td class="description last">Date recorded</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>count</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Count on date</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>change</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Change from yesterday</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>staff</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;Object></span>
+								</td>
+
+								<td class="description last">
+									Staff entries over the past seven days
+									<h6>Properties</h6>
+
+									<table class="props">
+										<thead>
+											<tr>
+												<th>Name</th>
+
+												<th>Type</th>
+
+												<th class="last">Description</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td class="name"><code>date</code></td>
+
+												<td class="type">
+													<span class="param-type">Date</span>
+												</td>
+
+												<td class="description last">Date recorded</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>count</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Count on date</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>change</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Change from yesterday</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>studios</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;Object></span>
+								</td>
+
+								<td class="description last">
+									Studio count over the past seven days
+									<h6>Properties</h6>
+
+									<table class="props">
+										<thead>
+											<tr>
+												<th>Name</th>
+
+												<th>Type</th>
+
+												<th class="last">Description</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td class="name"><code>date</code></td>
+
+												<td class="type">
+													<span class="param-type">Date</span>
+												</td>
+
+												<td class="description last">Date recorded</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>count</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Count on date</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>change</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Change from yesterday</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>reviews</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;Object></span>
+								</td>
+
+								<td class="description last">
+									Review count over the past seven days
+									<h6>Properties</h6>
+
+									<table class="props">
+										<thead>
+											<tr>
+												<th>Name</th>
+
+												<th>Type</th>
+
+												<th class="last">Description</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td class="name"><code>date</code></td>
+
+												<td class="type">
+													<span class="param-type">Date</span>
+												</td>
+
+												<td class="description last">Date recorded</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>count</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Count on date</td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>change</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last">Change from yesterday</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
 					<h4 class="name" id="AnimeEntry">AnimeEntry</h4>
 
 					<dl class="details">
@@ -2917,7 +3354,7 @@
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line123">line 123</a>
+									<a href="docDefinition.js.html#line164">line 164</a>
 								</li>
 							</ul>
 						</dd>
@@ -3969,7 +4406,7 @@
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line71">line 71</a>
+									<a href="docDefinition.js.html#line105">line 105</a>
 								</li>
 							</ul>
 						</dd>
@@ -4003,7 +4440,9 @@
 								<td class="name"><code>name</code></td>
 
 								<td class="type">
-									<span class="param-type"><a href="global.html#PersonName">PersonName</a></span>
+									<span class="param-type"
+										><a href="global.html#CharacterName">CharacterName</a></span
+									>
 								</td>
 
 								<td class="description last">The person's name</td>
@@ -4057,6 +4496,100 @@
 							</tr>
 
 							<tr>
+								<td class="name"><code>gender</code></td>
+
+								<td class="type">
+									<span class="param-type">string</span>
+								</td>
+
+								<td class="description last">
+									The character's gender. Could be male, female, non-binary, etc...
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>dateOfBirth</code></td>
+
+								<td class="type">
+									<span class="param-type">Object</span>
+									|
+
+									<span class="param-type">null</span>
+								</td>
+
+								<td class="description last">
+									The character's date of birth
+									<h6>Properties</h6>
+
+									<table class="props">
+										<thead>
+											<tr>
+												<th>Name</th>
+
+												<th>Type</th>
+
+												<th class="last">Description</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td class="name"><code>year</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last"></td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>month</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last"></td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>day</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last"></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>age</code></td>
+
+								<td class="type">
+									<span class="param-type">string</span>
+								</td>
+
+								<td class="description last">
+									The character's age. Listed as a string as it may contain additional text or ranges.
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>bloodType</code></td>
+
+								<td class="type">
+									<span class="param-type">string</span>
+								</td>
+
+								<td class="description last">The character's blood type</td>
+							</tr>
+
+							<tr>
 								<td class="name"><code>description</code></td>
 
 								<td class="type">
@@ -4077,13 +4610,13 @@
 							</tr>
 
 							<tr>
-								<td class="name"><code>siteUrl</code></td>
+								<td class="name"><code>isFavouriteBlocked</code></td>
 
 								<td class="type">
-									<span class="param-type">String</span>
+									<span class="param-type">Boolean</span>
 								</td>
 
-								<td class="description last">The person's AniList page</td>
+								<td class="description last">True if the user is unable to favourite the entry</td>
 							</tr>
 
 							<tr>
@@ -4119,6 +4652,97 @@
 						</li>
 					</ul>
 
+					<h4 class="name" id="CharacterName">CharacterName</h4>
+
+					<dl class="details">
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="docDefinition.js.html">docDefinition.js</a>,
+									<a href="docDefinition.js.html#line23">line 23</a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<h5 class="subsection-title">Properties:</h5>
+
+					<table class="props">
+						<thead>
+							<tr>
+								<th>Name</th>
+
+								<th>Type</th>
+
+								<th class="last">Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="name"><code>english</code></td>
+
+								<td class="type">
+									<span class="param-type">String</span>
+								</td>
+
+								<td class="description last">The person's first and last name in English</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>native</code></td>
+
+								<td class="type">
+									<span class="param-type">String</span>
+								</td>
+
+								<td class="description last">The person's name in Japanese</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>alternative</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;String></span>
+								</td>
+
+								<td class="description last">Any nicknames or titles the person goes by.</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>alternativeSpoiler</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;String></span>
+								</td>
+
+								<td class="description last">
+									Any nicknames or titles the person goes by but is marked as spoilers
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>userPreferred</code></td>
+
+								<td class="type">
+									<span class="param-type">String</span>
+								</td>
+
+								<td class="description last">
+									The user's preferred name language. Defaults to romaji for non-authenticated
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5 class="h5-types">Type:</h5>
+					<ul>
+						<li>
+							<span class="param-type">Object</span>
+						</li>
+					</ul>
+
 					<h4 class="name" id="CountryCode">CountryCode</h4>
 
 					<dl class="details">
@@ -4134,7 +4758,7 @@
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line574">line 574</a>
+									<a href="docDefinition.js.html#line615">line 615</a>
 								</li>
 							</ul>
 						</dd>
@@ -4164,7 +4788,7 @@
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line565">line 565</a>
+									<a href="docDefinition.js.html#line606">line 606</a>
 								</li>
 							</ul>
 						</dd>
@@ -4244,7 +4868,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line507">line 507</a>
+									<a href="docDefinition.js.html#line548">line 548</a>
 								</li>
 							</ul>
 						</dd>
@@ -4457,7 +5081,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line460">line 460</a>
+									<a href="docDefinition.js.html#line501">line 501</a>
 								</li>
 							</ul>
 						</dd>
@@ -5028,7 +5652,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line208">line 208</a>
+									<a href="docDefinition.js.html#line249">line 249</a>
 								</li>
 							</ul>
 						</dd>
@@ -5867,7 +6491,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line579">line 579</a>
+									<a href="docDefinition.js.html#line620">line 620</a>
 								</li>
 							</ul>
 						</dd>
@@ -6612,7 +7236,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line769">line 769</a>
+									<a href="docDefinition.js.html#line810">line 810</a>
 								</li>
 							</ul>
 						</dd>
@@ -6703,7 +7327,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line720">line 720</a>
+									<a href="docDefinition.js.html#line761">line 761</a>
 								</li>
 							</ul>
 						</dd>
@@ -6797,7 +7421,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line86">line 86</a>
+									<a href="docDefinition.js.html#line127">line 127</a>
 								</li>
 							</ul>
 						</dd>
@@ -6866,7 +7490,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line801">line 801</a>
+									<a href="docDefinition.js.html#line842">line 842</a>
 								</li>
 							</ul>
 						</dd>
@@ -7023,7 +7647,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line545">line 545</a>
+									<a href="docDefinition.js.html#line586">line 586</a>
 								</li>
 							</ul>
 						</dd>
@@ -7240,7 +7864,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line713">line 713</a>
+									<a href="docDefinition.js.html#line754">line 754</a>
 								</li>
 							</ul>
 						</dd>
@@ -7361,7 +7985,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line94">line 94</a>
+									<a href="docDefinition.js.html#line135">line 135</a>
 								</li>
 							</ul>
 						</dd>
@@ -7425,7 +8049,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line692">line 692</a>
+									<a href="docDefinition.js.html#line733">line 733</a>
 								</li>
 							</ul>
 						</dd>
@@ -7520,7 +8144,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line685">line 685</a>
+									<a href="docDefinition.js.html#line726">line 726</a>
 								</li>
 							</ul>
 						</dd>
@@ -7577,7 +8201,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line23">line 23</a>
+									<a href="docDefinition.js.html#line42">line 42</a>
 								</li>
 							</ul>
 						</dd>
@@ -7777,7 +8401,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line702">line 702</a>
+									<a href="docDefinition.js.html#line743">line 743</a>
 								</li>
 							</ul>
 						</dd>
@@ -7877,7 +8501,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line54">line 54</a>
+									<a href="docDefinition.js.html#line73">line 73</a>
 								</li>
 							</ul>
 						</dd>
@@ -7911,7 +8535,7 @@ April 2016 = 20160400
 								<td class="name"><code>name</code></td>
 
 								<td class="type">
-									<span class="param-type"><a href="global.html#PersonName">PersonName</a></span>
+									<span class="param-type"><a href="global.html#StaffName">StaffName</a></span>
 								</td>
 
 								<td class="description last">The person's name</td>
@@ -7975,6 +8599,188 @@ April 2016 = 20160400
 							</tr>
 
 							<tr>
+								<td class="name"><code>primaryOccupations</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;string></span>
+								</td>
+
+								<td class="description last">The primary occupations that the person does</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>gender</code></td>
+
+								<td class="type">
+									<span class="param-type">string</span>
+								</td>
+
+								<td class="description last">The person's gender</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>dateOfBirth</code></td>
+
+								<td class="type">
+									<span class="param-type">Object</span>
+									|
+
+									<span class="param-type">null</span>
+								</td>
+
+								<td class="description last">
+									The person's date of birth
+									<h6>Properties</h6>
+
+									<table class="props">
+										<thead>
+											<tr>
+												<th>Name</th>
+
+												<th>Type</th>
+
+												<th class="last">Description</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td class="name"><code>year</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last"></td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>month</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last"></td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>day</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last"></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>dateOfDeath</code></td>
+
+								<td class="type">
+									<span class="param-type">Object</span>
+									|
+
+									<span class="param-type">null</span>
+								</td>
+
+								<td class="description last">
+									The person's date of death
+									<h6>Properties</h6>
+
+									<table class="props">
+										<thead>
+											<tr>
+												<th>Name</th>
+
+												<th>Type</th>
+
+												<th class="last">Description</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td class="name"><code>year</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last"></td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>month</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last"></td>
+											</tr>
+
+											<tr>
+												<td class="name"><code>day</code></td>
+
+												<td class="type">
+													<span class="param-type">Number</span>
+												</td>
+
+												<td class="description last"></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>age</code></td>
+
+								<td class="type">
+									<span class="param-type">number</span>
+								</td>
+
+								<td class="description last">The person's age</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>yearsActive</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;number></span>
+								</td>
+
+								<td class="description last">
+									Read as (start, end). If only one year is availible, person is still active.
+								</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>homeTown</code></td>
+
+								<td class="type">
+									<span class="param-type">string</span>
+								</td>
+
+								<td class="description last">Where the person is from</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>bloodType</code></td>
+
+								<td class="type">
+									<span class="param-type">string</span>
+								</td>
+
+								<td class="description last">The person's blood type</td>
+							</tr>
+
+							<tr>
 								<td class="name"><code>isFavourite</code></td>
 
 								<td class="type">
@@ -7985,13 +8791,13 @@ April 2016 = 20160400
 							</tr>
 
 							<tr>
-								<td class="name"><code>siteUrl</code></td>
+								<td class="name"><code>isFavouriteBlocked</code></td>
 
 								<td class="type">
-									<span class="param-type">String</span>
+									<span class="param-type">Boolean</span>
 								</td>
 
-								<td class="description last">The person's AniList page</td>
+								<td class="description last">True if user is not allowed to favourite the person</td>
 							</tr>
 
 							<tr>
@@ -8043,6 +8849,100 @@ April 2016 = 20160400
 									(Up to the first 25 entries)
 								</td>
 							</tr>
+
+							<tr>
+								<td class="name"><code>characterMedia</code></td>
+
+								<td class="type">
+									<span class="param-type"
+										>Array.&lt;<a href="global.html#MediaRelation">MediaRelation</a>></span
+									>
+								</td>
+
+								<td class="description last">
+									An array of ids and titles of all media that the person voiced characters in. (Up to
+									the first 25 entries)
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5 class="h5-types">Type:</h5>
+					<ul>
+						<li>
+							<span class="param-type">Object</span>
+						</li>
+					</ul>
+
+					<h4 class="name" id="StaffName">StaffName</h4>
+
+					<dl class="details">
+						<dt class="tag-source">Source:</dt>
+						<dd class="tag-source">
+							<ul class="dummy">
+								<li>
+									<a href="docDefinition.js.html">docDefinition.js</a>,
+									<a href="docDefinition.js.html#line33">line 33</a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<h5 class="subsection-title">Properties:</h5>
+
+					<table class="props">
+						<thead>
+							<tr>
+								<th>Name</th>
+
+								<th>Type</th>
+
+								<th class="last">Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="name"><code>english</code></td>
+
+								<td class="type">
+									<span class="param-type">String</span>
+								</td>
+
+								<td class="description last">The person's first and last name in English</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>native</code></td>
+
+								<td class="type">
+									<span class="param-type">String</span>
+								</td>
+
+								<td class="description last">The person's name in Japanese</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>alternative</code></td>
+
+								<td class="type">
+									<span class="param-type">Array.&lt;String></span>
+								</td>
+
+								<td class="description last">Any nicknames or titles the person goes by.</td>
+							</tr>
+
+							<tr>
+								<td class="name"><code>userPreferred</code></td>
+
+								<td class="type">
+									<span class="param-type">String</span>
+								</td>
+
+								<td class="description last">
+									The user's preferred name language. Defaults to romaji for non-authenticated
+								</td>
+							</tr>
 						</tbody>
 					</table>
 
@@ -8061,7 +8961,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line101">line 101</a>
+									<a href="docDefinition.js.html#line142">line 142</a>
 								</li>
 							</ul>
 						</dd>
@@ -8210,7 +9110,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line527">line 527</a>
+									<a href="docDefinition.js.html#line568">line 568</a>
 								</li>
 							</ul>
 						</dd>
@@ -8398,7 +9298,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line810">line 810</a>
+									<a href="docDefinition.js.html#line851">line 851</a>
 								</li>
 							</ul>
 						</dd>
@@ -8522,7 +9422,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line778">line 778</a>
+									<a href="docDefinition.js.html#line819">line 819</a>
 								</li>
 							</ul>
 						</dd>
@@ -8769,7 +9669,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line823">line 823</a>
+									<a href="docDefinition.js.html#line864">line 864</a>
 								</li>
 							</ul>
 						</dd>
@@ -9059,7 +9959,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line849">line 849</a>
+									<a href="docDefinition.js.html#line890">line 890</a>
 								</li>
 							</ul>
 						</dd>
@@ -9424,7 +10324,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line450">line 450</a>
+									<a href="docDefinition.js.html#line491">line 491</a>
 								</li>
 							</ul>
 						</dd>
@@ -9521,7 +10421,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line749">line 749</a>
+									<a href="docDefinition.js.html#line790">line 790</a>
 								</li>
 							</ul>
 						</dd>
@@ -9776,7 +10676,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line731">line 731</a>
+									<a href="docDefinition.js.html#line772">line 772</a>
 								</li>
 							</ul>
 						</dd>
@@ -9960,7 +10860,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line284">line 284</a>
+									<a href="docDefinition.js.html#line325">line 325</a>
 								</li>
 							</ul>
 						</dd>
@@ -10511,7 +11411,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line277">line 277</a>
+									<a href="docDefinition.js.html#line318">line 318</a>
 								</li>
 							</ul>
 						</dd>
@@ -10568,7 +11468,7 @@ April 2016 = 20160400
 							<ul class="dummy">
 								<li>
 									<a href="docDefinition.js.html">docDefinition.js</a>,
-									<a href="docDefinition.js.html#line327">line 327</a>
+									<a href="docDefinition.js.html#line368">line 368</a>
 								</li>
 							</ul>
 						</dd>

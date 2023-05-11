@@ -121,6 +121,12 @@ export class Anilist {
 	 * @since 1.12.0
 	 */
 	mediaTags(): Promise<MediaTag[]>;
+
+    /**
+	 * Grabs the site's statistics over the last seven days
+	 * @since 1.14.0
+	 */
+	siteStatistics(): Promise<AniListStats>;
 }
 
 declare class User {
@@ -290,6 +296,8 @@ declare class People {
 	 */
     favouriteChar(id: number): Promise<Boolean>;
 
+    getBirthdayCharacter(page: number): Promise<PersonRelation[]>;
+
     /**
      * Fetch a staff entry by its AniList ID or their name.
      * @param { Number|String } id - Required. The ID can either be the AniList ID or the staff's name.
@@ -305,6 +313,8 @@ declare class People {
 	 * @since 1.12.0
 	 */
     favouriteStaff(id: number): Promise<Boolean>;
+
+    getBirthdayStaff(page: number): Promise<PersonRelation[]>;
 }
 
 declare class Activity {
@@ -531,7 +541,22 @@ export declare interface MediaTitle {
 export declare interface PersonName {
     english: string,
     native: string,
-    alternative: string
+    alternative: string[]
+}
+
+export declare interface CharacterName {
+    english: string,
+    native: string,
+    alternative: string[],
+    alternativeSpoiler: string[],
+    userPreferred: string
+}
+
+export declare interface StaffName {
+    english: string,
+    native: string,
+    alternative: string[],
+    userPreferred: string
 }
 
 export declare interface PageInfo {
@@ -583,24 +608,37 @@ export declare interface ActivityEntry extends PageInfo {
 
 export declare interface StaffEntry {
     id: number,
-    name: PersonName,
+    name: StaffName,
     image: ImageSize,
     description: string,
+    primaryOccupations: string[],
+    gender: string,
+    dateOfBirth: Object | null,
+    dateOfDeath: Object | null,
+    age: number,
+    yearsActive: number[],
+    homeTown: string,
+    bloodType: string,
     isFavourite: boolean,
-    siteUrl: string,
+    isFavouriteBlocked: boolean,
     favourites: number,
     language: string,
     staffMedia: MediaRelation[],
-    characters: PersonRelation[]
+    characters: PersonRelation[],
+    characterMedia: MediaRelation[]
 }
 
 export declare interface CharacterEntry {
     id: number,
-    name: PersonName,
+    name: CharacterName,
     image: ImageSize,
+    gender: string,
+    dateOfBirth: Object | null,
+    age: string,
+    bloodType: string,
     description: string,
     isFavourite: boolean,
-    siteUrl: string,
+    isFavouriteBlocked: boolean,
     favourites: number,
     media: MediaRelation[]
 }
@@ -1263,6 +1301,22 @@ export declare interface UpdatedEntry {
     completedAt: { year: number, month: number, day: number }
     notes: string | null,
     advancedScores: { Story: number, Characters: number, Visuals: number, Audio: number, Enjoyment: number }
+}
+
+export declare interface DayStats {
+    date: Date,
+    count: number,
+    change: number
+}
+
+export declare interface AniListStats {
+    users: DayStats[],
+    anime: DayStats[],
+    manga: DayStats[],
+    characters: DayStats[],
+    staff: DayStats[],
+    studios: DayStats[],
+    reviews: DayStats[]
 }
 
 export default Anilist;

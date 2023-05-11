@@ -63,6 +63,7 @@
 						<li data-type="method"><a href="AniList.html#genres">genres</a></li>
 						<li data-type="method"><a href="AniList.html#mediaTags">mediaTags</a></li>
 						<li data-type="method"><a href="AniList.html#search">search</a></li>
+						<li data-type="method"><a href="AniList.html#siteStatistics">siteStatistics</a></li>
 						<li data-type="method"><a href="AniList.html#studio">studio</a></li>
 					</ul>
 				</li>
@@ -101,6 +102,10 @@
 						<li data-type="method"><a href="AniList.People.html#character">character</a></li>
 						<li data-type="method"><a href="AniList.People.html#favouriteChar">favouriteChar</a></li>
 						<li data-type="method"><a href="AniList.People.html#favouriteStaff">favouriteStaff</a></li>
+						<li data-type="method">
+							<a href="AniList.People.html#getBirthdayCharacters">getBirthdayCharacters</a>
+						</li>
+						<li data-type="method"><a href="AniList.People.html#getBirthdayStaff">getBirthdayStaff</a></li>
 						<li data-type="method"><a href="AniList.People.html#staff">staff</a></li>
 					</ul>
 				</li>
@@ -156,8 +161,10 @@
 				<li><a href="global.html#ActivitySort">ActivitySort</a></li>
 				<li><a href="global.html#ActivityType">ActivityType</a></li>
 				<li><a href="global.html#AiringEntry">AiringEntry</a></li>
+				<li><a href="global.html#AniListStats">AniListStats</a></li>
 				<li><a href="global.html#AnimeEntry">AnimeEntry</a></li>
 				<li><a href="global.html#CharacterEntry">CharacterEntry</a></li>
+				<li><a href="global.html#CharacterName">CharacterName</a></li>
 				<li><a href="global.html#CountryCode">CountryCode</a></li>
 				<li><a href="global.html#EntryStatus">EntryStatus</a></li>
 				<li><a href="global.html#FuzzyDateInt">FuzzyDateInt</a></li>
@@ -190,6 +197,7 @@
 				<li><a href="global.html#SearchEntry">SearchEntry</a></li>
 				<li><a href="global.html#SingleRecommendation">SingleRecommendation</a></li>
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
+				<li><a href="global.html#StaffName">StaffName</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
 				<li><a href="global.html#ThreadComment">ThreadComment</a></li>
@@ -217,19 +225,14 @@
 const { AbortController } = require("abort-controller");
 
 /**
- * Edit a person's name data object for better use.
+ * Converts date object into null if year, month, and day are missing
  * @private
- * @param { Object } obj - A name object of the person.
- * @returns { Object } An edited object of the person.
+ * @param { Object } obj
+ * @returns { Object | null }
  */
-function nameEditor(obj) {
-	if (obj.alternative.length &lt; 1 || obj.alternative[0] === "") {
-		obj.alternative = null;
-	}
-
-	if (obj.full &amp;&amp; obj.english === null) {
-		obj.english = obj.full;
-		delete obj.full;
+function convertPossibleDateNull(obj) {
+	if (obj.year === null &amp;&amp; obj.month === null &amp;&amp; obj.day === null) {
+		return null;
 	}
 
 	return obj;
@@ -392,18 +395,23 @@ module.exports = {
 		}
 
 		if (json.data.Character) {
-			json.data.Character.name = nameEditor(json.data.Character.name);
 			json.data.Character.media = json.data.Character.media.nodes;
+			json.data.Character.dateOfBirth = convertPossibleDateNull(json.data.Character.dateOfBirth);
+
 			return json.data.Character;
 		}
 
 		if (json.data.Staff) {
-			json.data.Staff.name = nameEditor(json.data.Staff.name);
-			json.data.Staff.staffMedia = edgeRemove(json.data.Staff.staffMedia.nodes);
-			json.data.Staff.characters = edgeRemove(json.data.Staff.characters.nodes);
 			if (json.data.Staff.description.length &lt; 1) {
 				json.data.Staff.description = null;
 			}
+
+			json.data.Staff.dateOfBirth = convertPossibleDateNull(json.data.Staff.dateOfBirth);
+			json.data.Staff.dateOfDeath = convertPossibleDateNull(json.data.Staff.dateOfDeath);
+
+			json.data.Staff.staffMedia = json.data.Staff.staffMedia.nodes;
+			json.data.Staff.characters = json.data.Staff.characters.nodes;
+			json.data.Staff.characterMedia = json.data.Staff.characterMedia.nodes;
 			return json.data.Staff;
 		}
 
@@ -468,6 +476,18 @@ module.exports = {
 				});
 			});
 			return json.data.MediaListCollection.lists;
+		}
+
+		if (json.data.SiteStatistics) {
+			for (const key in json.data.SiteStatistics) {
+				json.data.SiteStatistics[key] = json.data.SiteStatistics[key].nodes;
+				for (const entry in json.data.SiteStatistics[key]) {
+					// Date is given in epoch time. x1000 with UTC seconds for date
+					json.data.SiteStatistics[key][entry].date = new Date(
+						json.data.SiteStatistics[key][entry].date * 1000
+					);
+				}
+			}
 		}
 
 		return json.data; //If nothing matches, return collected data

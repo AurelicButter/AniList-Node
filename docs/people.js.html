@@ -63,6 +63,7 @@
 						<li data-type="method"><a href="AniList.html#genres">genres</a></li>
 						<li data-type="method"><a href="AniList.html#mediaTags">mediaTags</a></li>
 						<li data-type="method"><a href="AniList.html#search">search</a></li>
+						<li data-type="method"><a href="AniList.html#siteStatistics">siteStatistics</a></li>
 						<li data-type="method"><a href="AniList.html#studio">studio</a></li>
 					</ul>
 				</li>
@@ -101,6 +102,10 @@
 						<li data-type="method"><a href="AniList.People.html#character">character</a></li>
 						<li data-type="method"><a href="AniList.People.html#favouriteChar">favouriteChar</a></li>
 						<li data-type="method"><a href="AniList.People.html#favouriteStaff">favouriteStaff</a></li>
+						<li data-type="method">
+							<a href="AniList.People.html#getBirthdayCharacters">getBirthdayCharacters</a>
+						</li>
+						<li data-type="method"><a href="AniList.People.html#getBirthdayStaff">getBirthdayStaff</a></li>
 						<li data-type="method"><a href="AniList.People.html#staff">staff</a></li>
 					</ul>
 				</li>
@@ -156,8 +161,10 @@
 				<li><a href="global.html#ActivitySort">ActivitySort</a></li>
 				<li><a href="global.html#ActivityType">ActivityType</a></li>
 				<li><a href="global.html#AiringEntry">AiringEntry</a></li>
+				<li><a href="global.html#AniListStats">AniListStats</a></li>
 				<li><a href="global.html#AnimeEntry">AnimeEntry</a></li>
 				<li><a href="global.html#CharacterEntry">CharacterEntry</a></li>
+				<li><a href="global.html#CharacterName">CharacterName</a></li>
 				<li><a href="global.html#CountryCode">CountryCode</a></li>
 				<li><a href="global.html#EntryStatus">EntryStatus</a></li>
 				<li><a href="global.html#FuzzyDateInt">FuzzyDateInt</a></li>
@@ -190,6 +197,7 @@
 				<li><a href="global.html#SearchEntry">SearchEntry</a></li>
 				<li><a href="global.html#SingleRecommendation">SingleRecommendation</a></li>
 				<li><a href="global.html#StaffEntry">StaffEntry</a></li>
+				<li><a href="global.html#StaffName">StaffName</a></li>
 				<li><a href="global.html#StudioEntry">StudioEntry</a></li>
 				<li><a href="global.html#TextActivity">TextActivity</a></li>
 				<li><a href="global.html#ThreadComment">ThreadComment</a></li>
@@ -240,9 +248,10 @@ class People {
 
 		return this.util.send(
 			queryVars[1] +
-				`id name { english: full native alternative } image { large medium } 
-        description isFavourite favourites siteUrl 
-        media { nodes { id title { romaji english native userPreferred } type } } } }`,
+				`id name { english: full native alternative alternativeSpoiler userPreferred } 
+				image { large medium } gender dateOfBirth { year month day } age bloodType description 
+				isFavourite favourites isFavouriteBlocked 
+        		media { nodes { id title { romaji english native userPreferred } type } } } }`,
 			queryVars[0]
 		);
 	}
@@ -275,6 +284,28 @@ class People {
 	}
 
 	/**
+	 * Get all characters who's birthday is today
+	 * @param { Number } page - What page in the search to target. Defaults at 1.
+	 * @returns { PersonRelation[] }
+	 * @since 1.14.0
+	 */
+	async getBirthdayCharacters(page = 1) {
+		if (typeof page !== "number") {
+			throw new Error("Page number is not a number");
+		}
+
+		const data = await this.util.send(
+			`query ($page: Int) { Page (page: $page) {
+				characters (isBirthday: true) {
+					id name { english: full }
+			} } }`,
+			{ page: page }
+		);
+
+		return data.Page.characters;
+	}
+
+	/**
 	 * Fetch a staff entry by its AniList ID or their name.
 	 * @param { Number|String } id - Required. The ID can either be the AniList ID or the staff's name.
 	 * @returns { StaffEntry }
@@ -285,10 +316,12 @@ class People {
 
 		return this.util.send(
 			queryVars[1] +
-				`id name { english: full native alternative } language image { large medium }
-            description isFavourite siteUrl favourites
-            staffMedia { nodes { id title { romaji english native userPreferred } type } }
-            characters { nodes { id name { english: full } } } } }`,
+				`id name { english: full native alternative userPreferred } language: languageV2 image { large medium }
+            	description primaryOccupations gender dateOfBirth { year month day } dateOfDeath { year month day }
+				age yearsActive homeTown bloodType isFavourite isFavouriteBlocked favourites
+            	staffMedia { nodes { id title { romaji english native userPreferred } type } }
+            	characters { nodes { id name { english: full } } }
+				characterMedia { nodes { id title { romaji english native userPreferred } type } } } }`,
 			queryVars[0]
 		);
 	}
@@ -318,6 +351,28 @@ class People {
 				return true;
 			}
 		});
+	}
+
+	/**
+	 * Get all staff entries who's birthday is today
+	 * @param { Number } page - What page in the search to target. Defaults at 1.
+	 * @returns { PersonRelation[] }
+	 * @since 1.14.0
+	 */
+	async getBirthdayStaff(page = 1) {
+		if (typeof page !== "number") {
+			throw new Error("Page number is not a number");
+		}
+
+		const data = await this.util.send(
+			`query ($page: Int) { Page (page: $page) {
+				staff (isBirthday: true) {
+					id name { english: full }
+			} } }`,
+			{ page: page }
+		);
+
+		return data.Page.staff;
 	}
 }
 
