@@ -1,7 +1,7 @@
 <!-- 
     Thank you for contributing! 
     If you have not already, please review the contribution guidelines before submitting:
-    https://github.com/Butterstroke/AniList-Node/tree/master/.github/CONTRIBUTING.md
+    https://github.com/AurelicButter/AniList-Node/tree/master/.github/CONTRIBUTING.md
 -->
 
 ## Description
