@@ -9,10 +9,10 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
 			return (f = r[b])
 				? f
 				: "0" <= b && b <= "7"
-				? parseInt(a.substring(1), 8)
-				: b === "u" || b === "x"
-				? parseInt(a.substring(2), 16)
-				: a.charCodeAt(1);
+					? parseInt(a.substring(1), 8)
+					: b === "u" || b === "x"
+						? parseInt(a.substring(2), 16)
+						: a.charCodeAt(1);
 		}
 		function e(a) {
 			if (a < 32) return (a < 16 ? "\\x0" : "\\x") + a.toString(16);
@@ -90,10 +90,10 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
 						j.length >= 2 && a === "["
 							? (f[c] = h(j))
 							: a !== "\\" &&
-							  (f[c] = j.replace(/[A-Za-z]/g, function (a) {
+								(f[c] = j.replace(/[A-Za-z]/g, function (a) {
 									a = a.charCodeAt(0);
 									return "[" + String.fromCharCode(a & -33, a | 32) + "]";
-							  }));
+								}));
 			return f.join("");
 		}
 		for (var t = 0, s = !1, l = !1, p = 0, d = a.length; p < d; ++p) {
@@ -141,7 +141,7 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
 		a.currentStyle
 			? (l = a.currentStyle.whiteSpace)
 			: window.getComputedStyle &&
-			  (l = document.defaultView.getComputedStyle(a, q).getPropertyValue("white-space"));
+				(l = document.defaultView.getComputedStyle(a, q).getPropertyValue("white-space"));
 		var p = l && "pre" === l.substring(0, 3);
 		m(a);
 		return { a: h.join("").replace(/\n$/, ""), c: t };
@@ -213,15 +213,15 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
 					/^(?:'''(?:[^'\\]|\\[\S\s]|''?(?=[^']))*(?:'''|$)|"""(?:[^"\\]|\\[\S\s]|""?(?=[^"]))*(?:"""|$)|'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^"\\]|\\[\S\s])*(?:"|$))/,
 					q,
 					"'\""
-			  ])
+				])
 			: a.multiLineStrings
-			? m.push([
-					"str",
-					/^(?:'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^"\\]|\\[\S\s])*(?:"|$)|`(?:[^\\`]|\\[\S\s])*(?:`|$))/,
-					q,
-					"'\"`"
-			  ])
-			: m.push(["str", /^(?:'(?:[^\n\r'\\]|\\.)*(?:'|$)|"(?:[^\n\r"\\]|\\.)*(?:"|$))/, q, "\"'"]);
+				? m.push([
+						"str",
+						/^(?:'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^"\\]|\\[\S\s])*(?:"|$)|`(?:[^\\`]|\\[\S\s])*(?:`|$))/,
+						q,
+						"'\"`"
+					])
+				: m.push(["str", /^(?:'(?:[^\n\r'\\]|\\.)*(?:'|$)|"(?:[^\n\r"\\]|\\.)*(?:"|$))/, q, "\"'"]);
 		a.verbatimStrings && e.push(["str", /^@"(?:[^"]|"")*(?:"|$)/, q]);
 		var h = a.hashComments;
 		h &&
@@ -233,8 +233,8 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
 								/^#(?:(?:define|elif|else|endif|error|ifdef|include|ifndef|line|pragma|undef|warning)\b|[^\n\r]*)/,
 								q,
 								"#"
-						  ]),
-				  e.push(["str", /^<(?:(?:(?:\.\.\/)*|\/?)(?:[\w-]+(?:\/[\w-]+)+)?[\w-]+\.h|[a-z]\w*)>/, q]))
+							]),
+					e.push(["str", /^<(?:(?:(?:\.\.\/)*|\/?)(?:[\w-]+(?:\/[\w-]+)+)?[\w-]+\.h|[a-z]\w*)>/, q]))
 				: m.push(["com", /^#[^\n\r]*/, q, "#"]));
 		a.cStyleComments && (e.push(["com", /^\/\/[^\n\r]*/, q]), e.push(["com", /^\/\*[\S\s]*?(?:\*\/|$)/, q]));
 		a.regexLiterals &&

@@ -3,7 +3,7 @@ name: Bug report
 about: For users looking to report a bug or an issue
 title: ''
 labels: Bug
-assignees: Butterstroke
+assignees: AurelicButter
 
 ---
 

@@ -37,13 +37,13 @@ Anilist.media.anime(21708).then(data => {
 For a more in-depth guide on getting started, check out our [Getting Started](https://katsurin.com/docs/anilist-node/tutorial-Getting%20Started.html) guide on our site or on the static HTML site under the docs directory.
 
 ## Documentation
-Documentation is provided in two locations. A static HTML site is avalible with the package under the docs directory. Or users can view the same site online here: [katsurin.com/docs/anilist-node](https://www.katsurin.com/docs/anilist-node/index.html).
+Documentation is provided in two locations. A static HTML site is available with the package under the docs directory. Or users can view the same site online here: [katsurin.com/docs/anilist-node](https://www.katsurin.com/docs/anilist-node/index.html).
 
 ## Contributing
 
-Please refer to the [Contributing Guide](https://github.com/Butterstroke/AniList-Node/tree/master/.github/CONTRIBUTING.md) for more information. 
+Please refer to the [Contributing Guide](https://github.com/AurelicButter/AniList-Node/tree/master/.github/CONTRIBUTING.md) for more information. 
 
 ## License and Contact
 AniList-Node is licensed under the [MIT License](LICENSE).
 
-For issues and bugs, please use the issue tracker on the [GitHub repository](https://github.com/Butterstroke/AniList-Node/issues). For other needs, either contact me by email [fkatsura@katsurin.com](mailto:fkatsura@katsurin.com) or in my [Discord server](https://discord.gg/qKfqsjW) in the #anilist-node channel.
+For issues and bugs, please use the issue tracker on the [GitHub repository](https://github.com/AurelicButter/AniList-Node/issues). For other needs, either contact me by email [fkatsura@katsurin.com](mailto:fkatsura@katsurin.com) or in my [Discord server](https://discord.gg/qKfqsjW) in the #anilist-node channel.

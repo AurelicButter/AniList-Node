@@ -768,7 +768,8 @@ html[data-search-mode] .level-hide {
 	font-style: normal;
 	font-weight: 400;
 	src: url("../fonts/Montserrat/Montserrat-Regular.eot"); /* IE9 Compat Modes */
-	src: url("../fonts/Montserrat/Montserrat-Regular.eot?#iefix") format("embedded-opentype"),
+	src:
+		url("../fonts/Montserrat/Montserrat-Regular.eot?#iefix") format("embedded-opentype"),
 		/* IE6-IE8 */ url("../fonts/Montserrat/Montserrat-Regular.woff2") format("woff2"),
 		/* Super Modern Browsers */ url("../fonts/Montserrat/Montserrat-Regular.woff") format("woff"),
 		/* Pretty Modern Browsers */ url("../fonts/Montserrat/Montserrat-Regular.ttf") format("truetype"); /* Safari, Android, iOS */
@@ -779,7 +780,8 @@ html[data-search-mode] .level-hide {
 	font-style: normal;
 	font-weight: 700;
 	src: url("../fonts/Montserrat/Montserrat-Bold.eot"); /* IE9 Compat Modes */
-	src: url("../fonts/Montserrat/Montserrat-Bold.eot?#iefix") format("embedded-opentype"),
+	src:
+		url("../fonts/Montserrat/Montserrat-Bold.eot?#iefix") format("embedded-opentype"),
 		/* IE6-IE8 */ url("../fonts/Montserrat/Montserrat-Bold.woff2") format("woff2"),
 		/* Super Modern Browsers */ url("../fonts/Montserrat/Montserrat-Bold.woff") format("woff"),
 		/* Pretty Modern Browsers */ url("../fonts/Montserrat/Montserrat-Bold.ttf") format("truetype"); /* Safari, Android, iOS */
@@ -788,7 +790,8 @@ html[data-search-mode] .level-hide {
 @font-face {
 	font-family: "Source Sans Pro";
 	src: url("../fonts/Source-Sans-Pro/sourcesanspro-regular-webfont.eot");
-	src: url("../fonts/Source-Sans-Pro/sourcesanspro-regular-webfont.eot?#iefix") format("embedded-opentype"),
+	src:
+		url("../fonts/Source-Sans-Pro/sourcesanspro-regular-webfont.eot?#iefix") format("embedded-opentype"),
 		url("../fonts/Source-Sans-Pro/sourcesanspro-regular-webfont.woff2") format("woff2"),
 		url("../fonts/Source-Sans-Pro/sourcesanspro-regular-webfont.woff") format("woff"),
 		url("../fonts/Source-Sans-Pro/sourcesanspro-regular-webfont.ttf") format("truetype"),
@@ -800,7 +803,8 @@ html[data-search-mode] .level-hide {
 @font-face {
 	font-family: "Source Sans Pro";
 	src: url("../fonts/Source-Sans-Pro/sourcesanspro-light-webfont.eot");
-	src: url("../fonts/Source-Sans-Pro/sourcesanspro-light-webfont.eot?#iefix") format("embedded-opentype"),
+	src:
+		url("../fonts/Source-Sans-Pro/sourcesanspro-light-webfont.eot?#iefix") format("embedded-opentype"),
 		url("../fonts/Source-Sans-Pro/sourcesanspro-light-webfont.woff2") format("woff2"),
 		url("../fonts/Source-Sans-Pro/sourcesanspro-light-webfont.woff") format("woff"),
 		url("../fonts/Source-Sans-Pro/sourcesanspro-light-webfont.ttf") format("truetype"),

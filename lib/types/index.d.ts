@@ -1,5 +1,5 @@
 // Type definitions for AniList-Node
-// Project: https://github.com/Butterstroke/AniList-Node
+// Project: https://github.com/AurelicButter/AniList-Node
 // Definitions by: Diego Aquino <https://github.com/typlox>
 
 /* =================== USAGE ===================
@@ -99,7 +99,7 @@ export class Anilist {
     /**
      * Searches AniList based on a specific term.
      * @param {String} type - Required. Either anime, manga, character, staff, studio, or user.
-     * @param {String} term - Required. The term to lookup. (ie: "Honzuki no Gekokujou" or "Butterstroke")
+     * @param {String} term - Required. The term to lookup. (ie: "Honzuki no Gekokujou" or "AurelicButter")
      * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
      * @param {Number} amount - The amount of results per page. AniList will cap this at 25 and function will default to 5 if not provided.
      * @return { SearchEntry }
@@ -381,7 +381,7 @@ declare class Search {
 
     /**
      * Search for a specific user
-     * @param {String} term - Required. The term to lookup. (ie: "Butterstroke")
+     * @param {String} term - Required. The term to lookup. (ie: "AurelicButter")
      * @param {Number} page - Which page of the results to look at. Will default to 1 if not provided.
      * @param {Number} amount - The amount of results per page. AniList will cap this at 25 and function will default to 5 if not provided.
      * @return { SearchEntry }
@@ -509,9 +509,9 @@ export declare type NotificationType = "ACTIVITY_MESSAGE" | "ACTIVITY_REPLY" | "
 export declare type EntryStatus = "CURRENT" | "PLANNING" | "COMPLETED" | "DROPPED" | "PAUSED" | "REPEATING";
 
 export declare interface FuzzyDate {
-    year: number,
-    month: number,
-    day: number
+    year: number | null,
+    month: number | null,
+    day: number | null
 }
 
 export declare interface CoverImage {
@@ -1129,8 +1129,8 @@ export declare interface MediaFilterTypes {
     idMal_not?: number,
     idMal_in?: number[],
     idMal_not_in?: number[],
-    startDate_greater?: FuzzyDate,
-    startDate_lesser?: FuzzyDate,
+    startDate_greater?: number,
+    startDate_lesser?: number,
     startDate_like?: string,
     endDate_greater?: number,
     endDate_lesser?: number,
@@ -1304,7 +1304,7 @@ export declare interface UpdatedEntry {
 }
 
 export declare interface DayStats {
-    date: Date,
+    date: number,
     count: number,
     change: number
 }
